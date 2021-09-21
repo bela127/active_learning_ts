@@ -1,0 +1,454 @@
+===============================================================================
+EXTENSION NAME : linecounter
+EXTENSION VERSION : 0.2.7
+-------------------------------------------------------------------------------
+count time : 2021-08-20 13:29:57
+count workspace : /home/bela/Cloud/Arbeit/KIT/Projekte/Ative Dependency Analyse/Verknüpfung mit active_learning_ts
+total files : 431
+total code lines : 1683
+total comment lines : 9
+total blank lines : 213
+
+    statistics
+   |      extension|     total code|  total comment|    total blank|percent|
+   -------------------------------------------------------------------------
+   |            .md|              9|              5|              7|   0.53|
+   |               |            125|              0|             26|    7.4|
+   |           .TAG|             10|              3|              0|   0.59|
+   |          .toml|             19|              0|              3|    1.1|
+   |            .py|            363|              1|            109|     22|
+   |          .json|            322|              0|              0|     19|
+   |          .lock|            835|              0|             68|     50|
+   -------------------------------------------------------------------------
+.gitignore, code is 110, comment is 0, blank is 25.
+.mypy_cache/.gitignore, code is 2, comment is 0, blank is 0.
+.mypy_cache/3.9/@plugins_snapshot.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/_ast.data.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/_ast.meta.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/_collections_abc.data.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/_collections_abc.meta.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/_typeshed/__init__.data.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/_typeshed/__init__.meta.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/abc.data.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/abc.meta.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/active_learning_ts/__init__.data.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/active_learning_ts/__init__.meta.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/active_learning_ts/active_learner.data.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/active_learning_ts/active_learner.meta.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/active_learning_ts/core.data.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/active_learning_ts/core.meta.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/active_learning_ts/data_blackboard.data.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/active_learning_ts/data_blackboard.meta.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/active_learning_ts/data_instance.data.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/active_learning_ts/data_instance.meta.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/active_learning_ts/data_pipeline.data.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/active_learning_ts/data_pipeline.meta.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/active_learning_ts/data_retrievement/__init__.data.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/active_learning_ts/data_retrievement/__init__.meta.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/active_learning_ts/data_retrievement/augmentation/__init__.data.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/active_learning_ts/data_retrievement/augmentation/__init__.meta.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/active_learning_ts/data_retrievement/augmentation/no_augmentation.data.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/active_learning_ts/data_retrievement/augmentation/no_augmentation.meta.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/active_learning_ts/data_retrievement/data_instance.data.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/active_learning_ts/data_retrievement/data_instance.meta.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/active_learning_ts/data_retrievement/data_pipeline.data.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/active_learning_ts/data_retrievement/data_pipeline.meta.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/active_learning_ts/data_retrievement/data_retriever.data.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/active_learning_ts/data_retrievement/data_retriever.meta.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/active_learning_ts/data_retrievement/data_source.data.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/active_learning_ts/data_retrievement/data_source.meta.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/active_learning_ts/data_retrievement/data_sources/__init__.data.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/active_learning_ts/data_retrievement/data_sources/__init__.meta.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/active_learning_ts/data_retrievement/data_sources/test_data_source.data.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/active_learning_ts/data_retrievement/data_sources/test_data_source.meta.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/active_learning_ts/data_retrievement/retrievement_strategies/__init__.data.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/active_learning_ts/data_retrievement/retrievement_strategies/__init__.meta.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/active_learning_ts/data_retrievement/retrievement_strategies/exact_retrievement.data.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/active_learning_ts/data_retrievement/retrievement_strategies/exact_retrievement.meta.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/active_learning_ts/data_retrievement/retrievement_strategy.data.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/active_learning_ts/data_retrievement/retrievement_strategy.meta.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/active_learning_ts/data_retriever.data.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/active_learning_ts/data_retriever.meta.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/active_learning_ts/data_set.data.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/active_learning_ts/data_set.meta.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/active_learning_ts/data_source.data.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/active_learning_ts/data_source.meta.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/active_learning_ts/experiments/__init__.data.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/active_learning_ts/experiments/__init__.meta.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/active_learning_ts/experiments/blueprint.data.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/active_learning_ts/experiments/blueprint.meta.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/active_learning_ts/experiments/blueprints/__init__.data.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/active_learning_ts/experiments/blueprints/__init__.meta.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/active_learning_ts/experiments/blueprints/test_blueprint.data.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/active_learning_ts/experiments/blueprints/test_blueprint.meta.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/active_learning_ts/experiments/blueprints/test_experiment.data.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/active_learning_ts/experiments/blueprints/test_experiment.meta.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/active_learning_ts/experiments/experiment.data.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/active_learning_ts/experiments/experiment.meta.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/active_learning_ts/experiments/experiment_runner.data.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/active_learning_ts/experiments/experiment_runner.meta.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/active_learning_ts/instance_cost.data.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/active_learning_ts/instance_cost.meta.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/active_learning_ts/instance_level_objective.data.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/active_learning_ts/instance_level_objective.meta.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/active_learning_ts/instance_properties/__init__.data.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/active_learning_ts/instance_properties/__init__.meta.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/active_learning_ts/instance_properties/costs/__init__.data.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/active_learning_ts/instance_properties/costs/__init__.meta.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/active_learning_ts/instance_properties/costs/constant_instance_cost.data.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/active_learning_ts/instance_properties/costs/constant_instance_cost.meta.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/active_learning_ts/instance_properties/instance_cost.data.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/active_learning_ts/instance_properties/instance_cost.meta.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/active_learning_ts/instance_properties/instance_level_objective.data.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/active_learning_ts/instance_properties/instance_level_objective.meta.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/active_learning_ts/instance_properties/instance_objective.data.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/active_learning_ts/instance_properties/instance_objective.meta.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/active_learning_ts/instance_properties/objectives/__init__.data.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/active_learning_ts/instance_properties/objectives/__init__.meta.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/active_learning_ts/instance_properties/objectives/constant_instance_objective.data.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/active_learning_ts/instance_properties/objectives/constant_instance_objective.meta.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/active_learning_ts/oracle.data.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/active_learning_ts/oracle.meta.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/active_learning_ts/pipeline_element.data.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/active_learning_ts/pipeline_element.meta.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/active_learning_ts/pool.data.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/active_learning_ts/pool.meta.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/active_learning_ts/query_selection/__init__.data.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/active_learning_ts/query_selection/__init__.meta.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/active_learning_ts/query_selection/query_optimizer.data.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/active_learning_ts/query_selection/query_optimizer.meta.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/active_learning_ts/query_selection/query_optimizers/__init__.data.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/active_learning_ts/query_selection/query_optimizers/__init__.meta.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/active_learning_ts/query_selection/query_optimizers/random_query_optimizer.data.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/active_learning_ts/query_selection/query_optimizers/random_query_optimizer.meta.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/active_learning_ts/query_selection/query_selector.data.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/active_learning_ts/query_selection/query_selector.meta.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/active_learning_ts/query_selection/selection_criteria.data.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/active_learning_ts/query_selection/selection_criteria.meta.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/active_learning_ts/query_selection/selection_criterias/__init__.data.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/active_learning_ts/query_selection/selection_criterias/__init__.meta.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/active_learning_ts/query_selection/selection_criterias/greedy_selection.data.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/active_learning_ts/query_selection/selection_criterias/greedy_selection.meta.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/active_learning_ts/retrievement_strategy.data.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/active_learning_ts/retrievement_strategy.meta.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/array.data.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/array.meta.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/ast.data.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/ast.meta.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/builtins.data.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/builtins.meta.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/codecs.data.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/codecs.meta.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/collections/__init__.data.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/collections/__init__.meta.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/data_pipeline.data.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/data_pipeline.meta.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/data_retriever.data.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/data_retriever.meta.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/dataclasses.data.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/dataclasses.meta.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/experiment_runner.data.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/experiment_runner.meta.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/genericpath.data.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/genericpath.meta.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/importlib/__init__.data.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/importlib/__init__.meta.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/importlib/abc.data.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/importlib/abc.meta.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/importlib/machinery.data.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/importlib/machinery.meta.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/instance_cost.data.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/instance_cost.meta.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/instance_level_objective.data.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/instance_level_objective.meta.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/io.data.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/io.meta.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/mmap.data.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/mmap.meta.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/no_augmentation.data.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/no_augmentation.meta.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/os/__init__.data.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/os/__init__.meta.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/os/path.data.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/os/path.meta.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/posix.data.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/posix.meta.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/posixpath.data.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/posixpath.meta.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/query_selector.data.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/query_selector.meta.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/subprocess.data.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/subprocess.meta.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/sys.data.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/sys.meta.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/tests/__init__.data.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/tests/__init__.meta.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/tests/data_retrievement/__init__.data.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/tests/data_retrievement/__init__.meta.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/tests/experiments/__init__.data.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/tests/experiments/__init__.meta.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/tests/experiments/test_experiments.data.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/tests/experiments/test_experiments.meta.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/tests/instance_properties/__init__.data.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/tests/instance_properties/__init__.meta.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/tests/query_selection/__init__.data.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/tests/query_selection/__init__.meta.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/tests/test_active_learning_ts.data.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/tests/test_active_learning_ts.meta.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/tests/training/__init__ copy.data.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/tests/training/__init__ copy.meta.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/tests/training/__init__.data.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/tests/training/__init__.meta.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/trainer.data.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/trainer.meta.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/types.data.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/types.meta.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/typing.data.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/typing.meta.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/typing_extensions.data.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/3.9/typing_extensions.meta.json, code is 1, comment is 0, blank is 0.
+.mypy_cache/CACHEDIR.TAG, code is 3, comment is 1, blank is 0.
+.pytest_cache/.gitignore, code is 2, comment is 0, blank is 0.
+.pytest_cache/CACHEDIR.TAG, code is 4, comment is 1, blank is 0.
+.pytest_cache/README.md, code is 2, comment is 0, blank is 1.
+.pytest_cache/v/cache/lastfailed, code is 3, comment is 0, blank is 0.
+.pytest_cache/v/cache/nodeids, code is 5, comment is 0, blank is 1.
+.pytest_cache/v/cache/stepwise, code is 1, comment is 0, blank is 0.
+active_learning_ts/__init__.py, code is 1, comment is 0, blank is 0.
+active_learning_ts/__pycache__/__init__.cpython-39.pyc, it is a binary file.
+active_learning_ts/__pycache__/active_learner.cpython-39.pyc, it is a binary file.
+active_learning_ts/__pycache__/data_blackboard.cpython-39.pyc, it is a binary file.
+active_learning_ts/__pycache__/data_instance.cpython-39.pyc, it is a binary file.
+active_learning_ts/__pycache__/data_pipeline.cpython-39.pyc, it is a binary file.
+active_learning_ts/__pycache__/instance_cost.cpython-39.pyc, it is a binary file.
+active_learning_ts/__pycache__/instance_level_objective.cpython-39.pyc, it is a binary file.
+active_learning_ts/__pycache__/oracle.cpython-39.pyc, it is a binary file.
+active_learning_ts/__pycache__/pipeline_element.cpython-39.pyc, it is a binary file.
+active_learning_ts/__pycache__/pool.cpython-39.pyc, it is a binary file.
+active_learning_ts/active_learner.py, code is 21, comment is 0, blank is 4.
+active_learning_ts/core.py, code is 33, comment is 0, blank is 18.
+active_learning_ts/data_blackboard.py, code is 11, comment is 0, blank is 5.
+active_learning_ts/data_instance.py, code is 13, comment is 0, blank is 4.
+active_learning_ts/data_pipeline.py, code is 7, comment is 0, blank is 3.
+active_learning_ts/data_retrievement/__init__.py, code is 0, comment is 0, blank is 0.
+active_learning_ts/data_retrievement/__pycache__/__init__.cpython-39.pyc, it is a binary file.
+active_learning_ts/data_retrievement/__pycache__/data_retriever.cpython-39.pyc, it is a binary file.
+active_learning_ts/data_retrievement/__pycache__/data_source.cpython-39.pyc, it is a binary file.
+active_learning_ts/data_retrievement/__pycache__/retrievement_strategy.cpython-39.pyc, it is a binary file.
+active_learning_ts/data_retrievement/augmentation/__init__.py, code is 0, comment is 0, blank is 0.
+active_learning_ts/data_retrievement/augmentation/__pycache__/__init__.cpython-39.pyc, it is a binary file.
+active_learning_ts/data_retrievement/augmentation/__pycache__/no_augmentation.cpython-39.pyc, it is a binary file.
+active_learning_ts/data_retrievement/augmentation/no_augmentation.py, code is 3, comment is 0, blank is 2.
+active_learning_ts/data_retrievement/data_retriever.py, code is 21, comment is 0, blank is 3.
+active_learning_ts/data_retrievement/data_source.py, code is 9, comment is 0, blank is 4.
+active_learning_ts/data_retrievement/data_sources/__init__.py, code is 0, comment is 0, blank is 0.
+active_learning_ts/data_retrievement/data_sources/__pycache__/__init__.cpython-39.pyc, it is a binary file.
+active_learning_ts/data_retrievement/data_sources/__pycache__/test_data_source.cpython-39-pytest-5.4.3.pyc, it is a binary file.
+active_learning_ts/data_retrievement/data_sources/test_data_source.py, code is 3, comment is 0, blank is 2.
+active_learning_ts/data_retrievement/retrievement_strategies/__init__.py, code is 0, comment is 0, blank is 0.
+active_learning_ts/data_retrievement/retrievement_strategies/__pycache__/__init__.cpython-39.pyc, it is a binary file.
+active_learning_ts/data_retrievement/retrievement_strategies/__pycache__/exact_retrievement.cpython-39.pyc, it is a binary file.
+active_learning_ts/data_retrievement/retrievement_strategies/exact_retrievement.py, code is 3, comment is 0, blank is 2.
+active_learning_ts/data_retrievement/retrievement_strategy.py, code is 17, comment is 0, blank is 6.
+active_learning_ts/experiments/__init__.py, code is 0, comment is 0, blank is 0.
+active_learning_ts/experiments/__pycache__/__init__.cpython-39.pyc, it is a binary file.
+active_learning_ts/experiments/__pycache__/blueprint.cpython-39.pyc, it is a binary file.
+active_learning_ts/experiments/__pycache__/experiment.cpython-39.pyc, it is a binary file.
+active_learning_ts/experiments/__pycache__/experiment_runner.cpython-39.pyc, it is a binary file.
+active_learning_ts/experiments/blueprint.py, code is 20, comment is 0, blank is 5.
+active_learning_ts/experiments/blueprints/__init__.py, code is 0, comment is 0, blank is 0.
+active_learning_ts/experiments/blueprints/__pycache__/__init__.cpython-39.pyc, it is a binary file.
+active_learning_ts/experiments/blueprints/__pycache__/test_blueprint.cpython-39-pytest-5.4.3.pyc, it is a binary file.
+active_learning_ts/experiments/blueprints/test_blueprint.py, code is 30, comment is 0, blank is 4.
+active_learning_ts/experiments/experiment.py, code is 47, comment is 0, blank is 6.
+active_learning_ts/experiments/experiment_runner.py, code is 11, comment is 0, blank is 4.
+active_learning_ts/instance_properties/__init__.py, code is 0, comment is 0, blank is 0.
+active_learning_ts/instance_properties/__pycache__/__init__.cpython-39.pyc, it is a binary file.
+active_learning_ts/instance_properties/__pycache__/instance_cost.cpython-39.pyc, it is a binary file.
+active_learning_ts/instance_properties/__pycache__/instance_objective.cpython-39.pyc, it is a binary file.
+active_learning_ts/instance_properties/costs/__init__.py, code is 0, comment is 0, blank is 0.
+active_learning_ts/instance_properties/costs/__pycache__/__init__.cpython-39.pyc, it is a binary file.
+active_learning_ts/instance_properties/costs/__pycache__/constant_instance_cost.cpython-39.pyc, it is a binary file.
+active_learning_ts/instance_properties/costs/constant_instance_cost.py, code is 3, comment is 0, blank is 2.
+active_learning_ts/instance_properties/instance_cost.py, code is 6, comment is 0, blank is 2.
+active_learning_ts/instance_properties/instance_objective.py, code is 6, comment is 0, blank is 2.
+active_learning_ts/instance_properties/objectives/__init__.py, code is 0, comment is 0, blank is 0.
+active_learning_ts/instance_properties/objectives/__pycache__/__init__.cpython-39.pyc, it is a binary file.
+active_learning_ts/instance_properties/objectives/__pycache__/constant_instance_objective.cpython-39.pyc, it is a binary file.
+active_learning_ts/instance_properties/objectives/constant_instance_objective.py, code is 3, comment is 0, blank is 2.
+active_learning_ts/oracle.py, code is 30, comment is 0, blank is 7.
+active_learning_ts/pipeline_element.py, code is 4, comment is 0, blank is 2.
+active_learning_ts/pool.py, code is 3, comment is 0, blank is 2.
+active_learning_ts/query_selection/__init__.py, code is 0, comment is 0, blank is 0.
+active_learning_ts/query_selection/__pycache__/__init__.cpython-39.pyc, it is a binary file.
+active_learning_ts/query_selection/__pycache__/query_optimizer.cpython-39.pyc, it is a binary file.
+active_learning_ts/query_selection/__pycache__/query_selector.cpython-39.pyc, it is a binary file.
+active_learning_ts/query_selection/__pycache__/selection_criteria.cpython-39.pyc, it is a binary file.
+active_learning_ts/query_selection/query_optimizer.py, code is 8, comment is 0, blank is 2.
+active_learning_ts/query_selection/query_optimizers/__init__.py, code is 0, comment is 0, blank is 0.
+active_learning_ts/query_selection/query_optimizers/__pycache__/__init__.cpython-39.pyc, it is a binary file.
+active_learning_ts/query_selection/query_optimizers/__pycache__/random_query_optimizer.cpython-39.pyc, it is a binary file.
+active_learning_ts/query_selection/query_optimizers/random_query_optimizer.py, code is 9, comment is 1, blank is 2.
+active_learning_ts/query_selection/query_selector.py, code is 21, comment is 0, blank is 3.
+active_learning_ts/query_selection/selection_criteria.py, code is 3, comment is 0, blank is 2.
+active_learning_ts/query_selection/selection_criterias/__init__.py, code is 0, comment is 0, blank is 0.
+active_learning_ts/query_selection/selection_criterias/__pycache__/__init__.cpython-39.pyc, it is a binary file.
+active_learning_ts/query_selection/selection_criterias/__pycache__/greedy_selection.cpython-39.pyc, it is a binary file.
+active_learning_ts/query_selection/selection_criterias/greedy_selection.py, code is 3, comment is 0, blank is 2.
+active_learning_ts/training/__pycache__/trainer.cpython-39.pyc, it is a binary file.
+active_learning_ts/training/trainer.py, code is 5, comment is 0, blank is 1.
+poetry.lock, code is 835, comment is 0, blank is 68.
+pyproject.toml, code is 19, comment is 0, blank is 3.
+README.md, code is 7, comment is 5, blank is 6.
+tests/.mypy_cache/.gitignore, code is 2, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/@plugins_snapshot.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/_ast.data.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/_ast.meta.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/_collections_abc.data.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/_collections_abc.meta.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/_typeshed/__init__.data.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/_typeshed/__init__.meta.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/abc.data.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/abc.meta.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/active_learning_ts/__init__.data.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/active_learning_ts/__init__.meta.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/active_learning_ts/active_learner.data.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/active_learning_ts/active_learner.meta.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/active_learning_ts/data_blackboard.data.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/active_learning_ts/data_blackboard.meta.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/active_learning_ts/data_instance.data.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/active_learning_ts/data_instance.meta.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/active_learning_ts/data_pipeline.data.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/active_learning_ts/data_pipeline.meta.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/active_learning_ts/data_retrievement/__init__.data.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/active_learning_ts/data_retrievement/__init__.meta.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/active_learning_ts/data_retrievement/augmentation/__init__.data.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/active_learning_ts/data_retrievement/augmentation/__init__.meta.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/active_learning_ts/data_retrievement/augmentation/no_augmentation.data.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/active_learning_ts/data_retrievement/augmentation/no_augmentation.meta.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/active_learning_ts/data_retrievement/data_retriever.data.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/active_learning_ts/data_retrievement/data_retriever.meta.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/active_learning_ts/data_retrievement/data_source.data.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/active_learning_ts/data_retrievement/data_source.meta.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/active_learning_ts/data_retrievement/data_sources/__init__.data.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/active_learning_ts/data_retrievement/data_sources/__init__.meta.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/active_learning_ts/data_retrievement/data_sources/test_data_source.data.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/active_learning_ts/data_retrievement/data_sources/test_data_source.meta.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/active_learning_ts/data_retrievement/retrievement_strategies/__init__.data.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/active_learning_ts/data_retrievement/retrievement_strategies/__init__.meta.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/active_learning_ts/data_retrievement/retrievement_strategies/exact_retrievement.data.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/active_learning_ts/data_retrievement/retrievement_strategies/exact_retrievement.meta.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/active_learning_ts/data_retrievement/retrievement_strategy.data.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/active_learning_ts/data_retrievement/retrievement_strategy.meta.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/active_learning_ts/experiments/__init__.data.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/active_learning_ts/experiments/__init__.meta.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/active_learning_ts/experiments/blueprint.data.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/active_learning_ts/experiments/blueprint.meta.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/active_learning_ts/experiments/blueprints/__init__.data.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/active_learning_ts/experiments/blueprints/__init__.meta.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/active_learning_ts/experiments/blueprints/test_blueprint.data.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/active_learning_ts/experiments/blueprints/test_blueprint.meta.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/active_learning_ts/experiments/experiment.data.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/active_learning_ts/experiments/experiment.meta.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/active_learning_ts/experiments/experiment_runner.data.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/active_learning_ts/experiments/experiment_runner.meta.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/active_learning_ts/instance_cost.data.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/active_learning_ts/instance_cost.meta.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/active_learning_ts/instance_level_objective.data.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/active_learning_ts/instance_level_objective.meta.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/active_learning_ts/instance_properties/__init__.data.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/active_learning_ts/instance_properties/__init__.meta.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/active_learning_ts/instance_properties/costs/__init__.data.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/active_learning_ts/instance_properties/costs/__init__.meta.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/active_learning_ts/instance_properties/costs/constant_instance_cost.data.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/active_learning_ts/instance_properties/costs/constant_instance_cost.meta.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/active_learning_ts/instance_properties/instance_cost.data.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/active_learning_ts/instance_properties/instance_cost.meta.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/active_learning_ts/instance_properties/instance_objective.data.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/active_learning_ts/instance_properties/instance_objective.meta.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/active_learning_ts/instance_properties/objectives/__init__.data.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/active_learning_ts/instance_properties/objectives/__init__.meta.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/active_learning_ts/instance_properties/objectives/constant_instance_objective.data.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/active_learning_ts/instance_properties/objectives/constant_instance_objective.meta.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/active_learning_ts/oracle.data.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/active_learning_ts/oracle.meta.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/active_learning_ts/pipeline_element.data.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/active_learning_ts/pipeline_element.meta.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/active_learning_ts/pool.data.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/active_learning_ts/pool.meta.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/active_learning_ts/query_selection/__init__.data.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/active_learning_ts/query_selection/__init__.meta.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/active_learning_ts/query_selection/query_optimizer.data.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/active_learning_ts/query_selection/query_optimizer.meta.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/active_learning_ts/query_selection/query_optimizers/__init__.data.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/active_learning_ts/query_selection/query_optimizers/__init__.meta.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/active_learning_ts/query_selection/query_optimizers/random_query_optimizer.data.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/active_learning_ts/query_selection/query_optimizers/random_query_optimizer.meta.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/active_learning_ts/query_selection/query_selector.data.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/active_learning_ts/query_selection/query_selector.meta.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/active_learning_ts/query_selection/selection_criteria.data.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/active_learning_ts/query_selection/selection_criteria.meta.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/active_learning_ts/query_selection/selection_criterias/__init__.data.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/active_learning_ts/query_selection/selection_criterias/__init__.meta.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/active_learning_ts/query_selection/selection_criterias/greedy_selection.data.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/active_learning_ts/query_selection/selection_criterias/greedy_selection.meta.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/array.data.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/array.meta.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/ast.data.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/ast.meta.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/builtins.data.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/builtins.meta.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/codecs.data.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/codecs.meta.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/collections/__init__.data.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/collections/__init__.meta.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/dataclasses.data.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/dataclasses.meta.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/genericpath.data.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/genericpath.meta.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/importlib/__init__.data.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/importlib/__init__.meta.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/importlib/abc.data.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/importlib/abc.meta.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/importlib/machinery.data.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/importlib/machinery.meta.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/io.data.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/io.meta.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/mmap.data.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/mmap.meta.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/os/__init__.data.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/os/__init__.meta.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/os/path.data.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/os/path.meta.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/posix.data.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/posix.meta.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/posixpath.data.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/posixpath.meta.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/subprocess.data.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/subprocess.meta.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/sys.data.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/sys.meta.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/tests/__init__.data.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/tests/__init__.meta.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/tests/test_active_learning_ts.data.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/tests/test_active_learning_ts.meta.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/types.data.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/types.meta.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/typing.data.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/typing.meta.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/typing_extensions.data.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/3.9/typing_extensions.meta.json, code is 1, comment is 0, blank is 0.
+tests/.mypy_cache/CACHEDIR.TAG, code is 3, comment is 1, blank is 0.
+tests/__init__.py, code is 0, comment is 0, blank is 0.
+tests/__pycache__/__init__.cpython-39.pyc, it is a binary file.
+tests/__pycache__/test_active_learning_ts.cpython-39-pytest-5.4.3.pyc, it is a binary file.
+tests/data_retrievement/__init__.py, code is 0, comment is 0, blank is 0.
+tests/experiments/__init__.py, code is 0, comment is 0, blank is 0.
+tests/experiments/__pycache__/__init__.cpython-39.pyc, it is a binary file.
+tests/experiments/__pycache__/test_experiments.cpython-39-pytest-5.4.3.pyc, it is a binary file.
+tests/experiments/test_experiments.py, code is 6, comment is 0, blank is 2.
+tests/instance_properties/__init__.py, code is 0, comment is 0, blank is 0.
+tests/query_selection/__init__.py, code is 0, comment is 0, blank is 0.
+tests/test_active_learning_ts.py, code is 3, comment is 0, blank is 4.
+tests/training/__init__.py, code is 0, comment is 0, blank is 0.
+===============================================================================

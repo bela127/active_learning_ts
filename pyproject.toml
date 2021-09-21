@@ -6,6 +6,9 @@ authors = ["bela127 <bhb127@outlook.de>"]
 
 [tool.poetry.dependencies]
 python = "^3.9"
+modAL = "^0.4.1"
+PRIM = "^0.4"
+scikit-activeml = "^0.0.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"

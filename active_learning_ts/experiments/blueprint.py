@@ -1,0 +1,25 @@
+from active_learning_ts.instance_properties.instance_objective import InstanceObjective
+from active_learning_ts.instance_properties.instance_cost import InstanceCost
+from active_learning_ts.query_selection.selection_criteria import SelectionCriteria
+from active_learning_ts.query_selection.query_optimizer import QueryOptimizer
+from active_learning_ts.data_pipeline import DataPipeline
+from active_learning_ts.data_retrievement.data_source import DataSource
+from active_learning_ts.data_retrievement.retrievement_strategy import (
+    RetrievementStrategy,
+)
+from typing import Protocol
+
+
+class Blueprint(Protocol):
+    repeat: int
+    learning_steps: int
+
+    data_source: DataSource
+    retrievement_strategy: RetrievementStrategy
+    augmentation_pipeline: DataPipeline
+
+    instance_level_objective: InstanceObjective
+    instance_cost: InstanceCost
+    
+    query_optimizer: QueryOptimizer
+    selection_criteria: SelectionCriteria
