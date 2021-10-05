@@ -5,7 +5,7 @@ description = ""
 authors = ["bela127 <bhb127@outlook.de>"]
 
 [tool.poetry.dependencies]
-python = "^3.9"
+python = ">=3.9,<3.11"
 modAL = "^0.4.1"
 PRIM = "^0.4"
 scikit-activeml = "^0.0.0"
@@ -16,6 +16,7 @@ black = "^21.6b0"
 mypy = "^0.910"
 flake8 = "^3.9.2"
 isort = "^5.9.1"
+distribution_data_generation = {git = "https://github.com/bela127/distribution_data_generation.git"}
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
