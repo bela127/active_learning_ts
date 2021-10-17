@@ -9,7 +9,7 @@ def pool_creation(pool_creation_strategy):
 
 
 def pool_query_select(pool, selection_strategy):
-    best_query = selection_strategy()
+    best_query = selection_strategy(pool)
     return best_query
 
 
