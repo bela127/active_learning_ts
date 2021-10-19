@@ -8,4 +8,6 @@ class Pool(Protocol):
     #  can have many queries. In any other case however, this would be horrible. However one could implement Static
     #  and dynamic retrievement strategies. Static retrievement strategies would make the assumption that the pool does
     #  not change, and gain efficiency. Dynamic RS would be a lot slower.
+
+    # We have different kinds of pools, I think not all of them are changing, we have to discuss
     pass
