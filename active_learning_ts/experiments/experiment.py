@@ -44,7 +44,8 @@ class Experiment:
             experiment_blueprint.selection_criteria,
             sg_oracle
         )
-        trainer = Trainer()
+        trainer = Trainer(self.blackboard,
+                          experiment_blueprint.training_strategy)
         active_learner = ActiveLearner(oracle, query_selector, self.blackboard, trainer)
         self.active_learner: ActiveLearner = active_learner
 

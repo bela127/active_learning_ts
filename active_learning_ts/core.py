@@ -1,5 +1,3 @@
-# TODO: I don't understand what this is supposed to do
-#Obsolete code, just ignore it (it was a first interface design prototype)
 
 def existing_pool(pool):
     def pool_creation_strategy():

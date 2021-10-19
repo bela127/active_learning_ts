@@ -9,6 +9,9 @@ from active_learning_ts.data_retrievement.retrievement_strategy import (
 )
 from typing import Protocol
 
+from active_learning_ts.surrogate_models.surrogate_model import SurrogateModel
+from active_learning_ts.training.training_strategy import TrainingStrategy
+
 
 class Blueprint(Protocol):
     repeat: int
@@ -20,6 +23,9 @@ class Blueprint(Protocol):
 
     instance_level_objective: InstanceObjective
     instance_cost: InstanceCost
-    
+
+    surrogate_model: SurrogateModel
+    training_strategy: TrainingStrategy
+
     query_optimizer: QueryOptimizer
     selection_criteria: SelectionCriteria

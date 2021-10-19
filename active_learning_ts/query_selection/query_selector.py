@@ -18,11 +18,5 @@ class QuerySelector:
         self.query_subject = query_subject
 
     def select(self):
-        query_candidates = self.query_optimizer.optimize_query_candidates(
-            # TODO: the only reason one would pass the selection criteria and the query subject is if they change
-            # midway through the experiment
-            # self.selection_criteria, self.query_subject
-
-            #True, they can be passed in the init
-        )
+        query_candidates = self.query_optimizer.optimize_query_candidates()
         return query_candidates

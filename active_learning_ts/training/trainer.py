@@ -1,6 +1,16 @@
+
+
+from active_learning_ts.data_blackboard import Blackboard
+from active_learning_ts.training.training_strategy import TrainingStrategy
+
+
 class Trainer:
-    def __init__(self) -> None:
-        pass
+    def __init__(self,
+                 blackboard: Blackboard,
+                 training_strategy: TrainingStrategy):
+        self.training_strategy = training_strategy
+        self.blackboard = blackboard
 
     def train(self):
-        pass
+        self.training_strategy.train(self.blackboard.last_instance.actual_queries,
+                                     self.blackboard.last_instance.query_results)
