@@ -1,3 +1,5 @@
+# TODO: i dont understand what this is supposed to do
+
 def existing_pool(pool):
     def pool_creation_strategy():
         return pool

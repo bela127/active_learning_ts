@@ -27,6 +27,7 @@ class Oracle:
         self.blackboard.last_instance.query_candidates = query_candidates
 
         actual_queries, query_results = self.data_retriever.query(query_candidates)
+        # TODO: there's an error here. data needs to be pushed onto the stack. here it is only replaced
         self.blackboard.last_instance.actual_queries = actual_queries
         self.blackboard.last_instance.query_results = query_results
 

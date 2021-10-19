@@ -22,5 +22,5 @@ class GaussianSurrogateModel(SurrogateModel):
         a = self.gpr.predict(points, True)[1]
         return tf.constant(a)
 
-    def get_values(self, points: List[tf.Tensor]) -> List[tf.Tensor]:
+    def query(self, points: List[tf.Tensor]) -> List[tf.Tensor]:
         return self.gpr.predict(points)
