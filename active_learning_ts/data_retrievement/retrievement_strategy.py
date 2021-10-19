@@ -11,7 +11,7 @@ class RetrievementStrategy(Protocol):
 
     def retriev(self, data_source: DataSource, query_candidates):
         actual_queries = self.possible_queries(query_candidates)
-        query_results = data_source.query(actual_queries)
+        actual_queries, query_results = data_source.query(actual_queries)
         return actual_queries, query_results
 
     def possible_queries(self, query_candidates):

@@ -13,7 +13,7 @@ def test_gaussian_experiment():
 
     for i in range(0, 100):
         queries = qo.optimize_query_candidates(1)
-        results = [x for a, x in mgs.query(queries)]
+        results = mgs.query(queries)[1]
         gsm.learn(queries, results)
 
     test = [tf.random.uniform(shape=(1,), minval=-100.0, maxval=100.0) for _ in

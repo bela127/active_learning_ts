@@ -6,7 +6,7 @@ class DataSource(Protocol):
     def __init__(self) -> None:
         pass
 
-    def query(self, actual_queries: List[tf.Tensor]) -> List[Tuple[tf.Tensor, tf.Tensor]]:
+    def query(self, actual_queries: List[tf.Tensor]) -> Tuple[List[tf.Tensor], List[tf.Tensor]]:
         pass
 
     def possible_queries(self):
