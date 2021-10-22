@@ -10,6 +10,16 @@ from active_learning_ts.data_blackboard import Blackboard
 
 
 class Experiment:
+    """
+    Builds an experiment based on the instructions obtained from the blueprint.
+
+    An experiment consists of:
+    A blackboard where data is stored
+    An Oracle in order to query data from the data source
+    Another Oracle in order to query data from the surrogate
+    A trainer in order to train the surrogate
+    An Evaluator in order to evaluate the Experiment, according to the given metrics
+    """
     def __init__(self, experiment_blueprint: Blueprint) -> None:
         self.blackboard: Blackboard = Blackboard()
         self.experiment_blueprint = experiment_blueprint

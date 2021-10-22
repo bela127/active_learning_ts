@@ -15,6 +15,11 @@ from active_learning_ts.training.training_strategy import TrainingStrategy
 
 
 class Blueprint(Protocol):
+    """
+    A blueprint is created in order to set up an experiment.
+
+    Following field MUST be in the blueprint file, with the same names
+    """
     repeat: int
     learning_steps: int
 

@@ -5,6 +5,9 @@ from active_learning_ts.data_blackboard import Blackboard
 
 
 class QuerySelector:
+    """
+    Uses the given query optimizer and selection Criteria in order to generate queries
+    """
     def __init__(
         self,
         blackboard: Blackboard,

@@ -3,6 +3,10 @@ import tensorflow as tf
 
 
 class SurrogateModel(Protocol):
+    """
+    The goal of a SurrogateModel is to as best as possible, emulate the Data Retrievement process. What constitutes a
+    good emulation of the Data Retrievement process may be model/use-case specific
+    """
     def uncertainty(self, point: List[tf.Tensor]) -> tf.Tensor:
         pass
 

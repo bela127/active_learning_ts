@@ -6,6 +6,11 @@ from active_learning_ts.data_blackboard import Blackboard
 
 
 class ActiveLearner:
+    """
+    Responsible for executing each learning step.
+
+    A learning step includes query selection, Data retrievement, model training, and evaluation
+    """
     def __init__(
         self,
         oracle: Oracle,
