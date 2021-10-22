@@ -1,11 +1,10 @@
 from typing import Protocol
 
 from active_learning_ts.data_blackboard import Blackboard
-from active_learning_ts.experiments.blueprint import Blueprint
 
 
 class EvaluationMetric(Protocol):
-    def post_init(self, blackboard: Blackboard, blueprint: Blueprint):
+    def post_init(self, blackboard: Blackboard, blueprint):
         self.blackboard = blackboard
         self.blueprint = blueprint
 

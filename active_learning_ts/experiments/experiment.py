@@ -1,3 +1,4 @@
+from active_learning_ts.evaluation.evaluator import Evaluator
 from active_learning_ts.training.trainer import Trainer
 from active_learning_ts.experiments.blueprint import Blueprint
 from active_learning_ts.data_retrievement.data_retriever import DataRetriever
@@ -49,9 +50,19 @@ class Experiment:
             experiment_blueprint.selection_criteria,
             sg_oracle
         )
-        trainer = Trainer(self.blackboard,
-                          experiment_blueprint.training_strategy)
-        active_learner = ActiveLearner(oracle, query_selector, self.blackboard, trainer)
+
+        trainer = Trainer(
+            self.blackboard,
+            experiment_blueprint.training_strategy
+        )
+
+        evaluator = Evaluator(
+            evaluation_metrics=experiment_blueprint.evaluation_metrics,
+            blackboard=self.blackboard,
+            blueprint=experiment_blueprint
+        )
+
+        active_learner = ActiveLearner(oracle, query_selector, self.blackboard, trainer, evaluator)
         self.active_learner: ActiveLearner = active_learner
 
     def run(self):

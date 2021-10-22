@@ -2,6 +2,8 @@ from distribution_data_generation.data_sources.multi_gausian_data_source import 
 
 from active_learning_ts.data_retrievement.augmentation.no_augmentation import NoAugmentation
 from active_learning_ts.data_retrievement.retrievement_strategies.exact_retrievement import ExactRetrievement
+from active_learning_ts.evaluation.evaluation_metrics.avg_round_time_evaluator import AvgRoundTimeEvaluator
+from active_learning_ts.evaluation.evaluation_metrics.rounder_counter_evaluator import RoundCounterEvaluator
 from active_learning_ts.instance_properties.costs.constant_instance_cost import ConstantInstanceCost
 from active_learning_ts.instance_properties.objectives.constant_instance_objective import ConstantInstanceObjective
 from active_learning_ts.query_selection.query_optimizers.random_query_optimizer import RandomQueryOptimizer
@@ -26,3 +28,5 @@ training_strategy = DirectTrainingStrategy()
 
 selection_criteria = ExploreSelectionCriteria()
 query_optimizer = RandomQueryOptimizer(max_x=5, min_x=-5, num_tries=10, shape=(3,))
+
+evaluation_metrics = [AvgRoundTimeEvaluator(), RoundCounterEvaluator()]
