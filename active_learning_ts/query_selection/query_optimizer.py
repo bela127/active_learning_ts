@@ -1,8 +1,16 @@
 from typing import Protocol, List
 import tensorflow as tf
 
+from active_learning_ts.query_selection.selection_criteria import SelectionCriteria
+from active_learning_ts.surrogate_models.surrogate_model import SurrogateModel
+
 
 class QueryOptimizer(Protocol):
+
+    def post_init(self, surrogate_model: SurrogateModel, selection_criteria: SelectionCriteria):
+        self.surrogate_model = surrogate_model
+        self.selection_criteria = selection_criteria
+
     # TODO, implement possible queries
     # TODO: the retrievement Strategy should not be passed here. That is the responsibility of DataSource. However,
     #  knowing that the exact data point can be queried can be used to implement a more efficient retrievement Strategy

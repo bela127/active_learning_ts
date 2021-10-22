@@ -22,7 +22,7 @@ instance_level_objective = ConstantInstanceObjective()
 instance_cost = ConstantInstanceCost()
 
 surrogate_model = GaussianSurrogateModel()
-training_strategy = DirectTrainingStrategy(surrogate_model)
+training_strategy = DirectTrainingStrategy()
 
-selection_criteria = ExploreSelectionCriteria(surrogate_model=surrogate_model)
-query_optimizer = RandomQueryOptimizer(max_x=5, min_x=-5, selection_criteria=selection_criteria, num_tries=10, dim=3)
+selection_criteria = ExploreSelectionCriteria()
+query_optimizer = RandomQueryOptimizer(max_x=5, min_x=-5, num_tries=10, dim=3)
