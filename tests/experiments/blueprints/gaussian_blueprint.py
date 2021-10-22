@@ -25,4 +25,4 @@ surrogate_model = GaussianSurrogateModel()
 training_strategy = DirectTrainingStrategy()
 
 selection_criteria = ExploreSelectionCriteria()
-query_optimizer = RandomQueryOptimizer(max_x=5, min_x=-5, num_tries=10, dim=3)
+query_optimizer = RandomQueryOptimizer(max_x=5, min_x=-5, num_tries=10, shape=(3,))
