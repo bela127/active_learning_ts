@@ -4,6 +4,9 @@ from active_learning_ts.data_retrievement.data_source import DataSource
 
 
 class RetrievementStrategy(Protocol):
+    """
+    Is responsible for retrieving given queries from the given Data source.
+    """
     query_pool: Union[Pool, None] = None
 
     def __init__(self, query_pool: Union[Pool, None] = None) -> None:
@@ -19,5 +22,6 @@ class RetrievementStrategy(Protocol):
             return query_candidates
         else:
             raise NotImplementedError(
-                "selection of possible_queries from query_pool is not implemendet, use a different retrievement_strategy"
+                "selection of possible_queries from query_pool is not implemendet, use a different "
+                "retrievement_strategy "
             )

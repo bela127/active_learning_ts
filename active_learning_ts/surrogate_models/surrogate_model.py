@@ -7,19 +7,29 @@ class SurrogateModel(Protocol):
     The goal of a SurrogateModel is to as best as possible, emulate the Data Retrievement process. What constitutes a
     good emulation of the Data Retrievement process may be model/use-case specific
     """
-    def uncertainty(self, point: List[tf.Tensor]) -> tf.Tensor:
+
+    def uncertainty(self, points: List[tf.Tensor]) -> tf.Tensor:
+        """
+        Returns the uncertainty of the model at the given points. A higher number means the model is less certain
+        :param points: the points at which the uncertainty should be measured
+        :return: the uncertainties as a tensor.
+        """
         pass
 
-    # TODO: if i understant this correctly, this method should not be here, but in the trainer. That however means that
-    #   that you need specific training_strategies for specific models (obviously). So e.g. gausian_greedy_trainer,
-    #   gaussian_blabla_trainer for the gaussion SM
+    def learn(self, points: List[tf.Tensor], feedback: List[tf.Tensor]):
+        """
+        Trains the model at the given points using the given feedback
 
-    # I think the trainer has a totally different task then you think, it only updates the model with the new training data and possibly a loss function
-    # the collection of the training data is the task of the query selector
-        # still the training process can be model specific, so i guess the trainer needs a strong connection to the model
-        # we talk about this
-    def learn(self, points: List[tf.Tensor], values: List[tf.Tensor]):
+        :param points: the points queried
+        :param feedback: the feedback to be used for training
+        :return: model specific
+        """
         pass
 
     def query(self, points: List[tf.Tensor]) -> List[tf.Tensor]:
+        """
+        Atempts to simulate the data source at the given points
+        :param points:
+        :return:
+        """
         pass

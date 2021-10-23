@@ -11,6 +11,11 @@ class SelectionCriteria(Protocol):
     """
 
     def score_queries(self, queries: List[tf.Tensor]) -> tf.Tensor:
+        """
+        Scores the given queries on how good they are. The higher the number the better
+        :param queries: the points to be scored
+        :return: a tensor of their respective scores
+        """
         pass
 
     def post_init(self, surrogate_model: SurrogateModel):

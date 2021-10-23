@@ -21,5 +21,9 @@ class QuerySelector:
         self.query_subject = query_subject
 
     def select(self):
+        """
+        Generates queries
+        :return: a list of generated queries
+        """
         query_candidates = self.query_optimizer.optimize_query_candidates()
         return query_candidates

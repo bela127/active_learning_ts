@@ -3,6 +3,9 @@ import tensorflow as tf
 
 
 class DataSource(Protocol):
+    """
+    Generates data
+    """
     def __init__(self) -> None:
         pass
 

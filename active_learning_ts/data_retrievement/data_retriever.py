@@ -6,6 +6,9 @@ from active_learning_ts.data_retrievement.retrievement_strategy import (
 
 
 class DataRetriever:
+    """
+    Uses the given retrievement strategy in order to retrieve data from the given data source
+    """
     def __init__(
         self,
         data_source: DataSource,

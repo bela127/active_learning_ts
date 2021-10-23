@@ -1,11 +1,14 @@
 import random
-from typing import List, Tuple
+from typing import List
 
 from active_learning_ts.query_selection.query_optimizer import QueryOptimizer
 import tensorflow as tf
 
 
 class RandomQueryOptimizer(QueryOptimizer):
+    """
+    Selects the best queries from random points
+    """
     def __init__(self, shape, min_x: float = -10.0, max_x: float = 10.0,
                  num_tries: int = 1):
         self.min_x = min_x
