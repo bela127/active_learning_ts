@@ -28,4 +28,10 @@ class RandomQueryOptimizer(QueryOptimizer):
                 best = tf.argmax(b)
                 out.append(a[best])
             return out
-        return possible_queries[random.randint(0, len(possible_queries))]
+
+        for i in range(0, num_queries):
+            a = [possible_queries[random.randint(0, len(possible_queries))] for _ in range(0, self.num_tries)]
+            b = self.selection_criteria.score_queries(a)
+            best = tf.argmax(b)
+            out.append(a[best])
+        return out
