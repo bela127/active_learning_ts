@@ -187,7 +187,7 @@ six = "*"
 
 [[package]]
 name = "distribution-data-generation"
-version = "0.1.0"
+version = "0.1.1"
 description = "A library for procedural generation of data"
 category = "dev"
 optional = false
@@ -198,7 +198,7 @@ develop = false
 type = "git"
 url = "https://github.com/bela127/distribution_data_generation.git"
 reference = "master"
-resolved_reference = "068de393c00b6abb1c416fe4578d5a245034b75e"
+resolved_reference = "4a49f3264a6dfe45eda79dee10543e1405dffa14"
 
 [[package]]
 name = "flake8"
