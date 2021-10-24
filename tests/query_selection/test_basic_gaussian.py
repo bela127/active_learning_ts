@@ -8,8 +8,11 @@ import tensorflow as tf
 def test_gaussian_experiment():
     gsm = GaussianSurrogateModel()
     mgs = MultiGausianDataSource(1, 1, -100.0, 100.0)
-    sc = ExploreSelectionCriteria(gsm)
-    qo = RandomQueryOptimizer(dim=1, max_x=100, min_x=-100, selection_criteria=sc, num_tries=10)
+    sc = ExploreSelectionCriteria()
+    qo = RandomQueryOptimizer(shape=(1, 0), max_x=100, min_x=-100, num_tries=10)
+
+    sc.post_init(surrogate_model=gsm)
+    qo.post_init(GaussianSurrogateModel, sc)
 
     for i in range(0, 100):
         queries = qo.optimize_query_candidates(1)
