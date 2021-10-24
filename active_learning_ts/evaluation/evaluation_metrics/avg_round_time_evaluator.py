@@ -11,12 +11,19 @@ class AvgRoundTimeEvaluator(EvaluationMetric):
     """
     def __init__(self):
         self.round_number = 0
-        self.start_time = time.perf_counter()
+        self.start_time = 0
+        self.total_time = 0
         self.averages = []
 
-    def eval(self):
+    def signal_round_start(self):
+        self.start_time = time.perf_counter()
+
+    def signal_round_stop(self):
         self.round_number += 1
-        self.averages.append((time.perf_counter() - self.start_time) / self.round_number)
+        self.total_time += time.perf_counter() - self.start_time
+
+    def eval(self):
+        self.averages.append(self.total_time / self.round_number)
 
     def get_evaluation(self):
         return self.averages

@@ -26,3 +26,21 @@ class EvaluationMetric(Protocol):
         :return: all evaluations as a number or list
         """
         pass
+
+    def signal_learn_stop(self):
+        pass
+
+    def signal_learn_start(self):
+        pass
+
+    def signal_round_stop(self):
+        pass
+
+    def signal_round_start(self):
+        pass
+
+    def signal_query_stop(self):
+        pass
+
+    def signal_query_start(self):
+        pass

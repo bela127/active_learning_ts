@@ -26,8 +26,17 @@ class ActiveLearner:
         self.evaluator = evaluator
 
     def learning_step(self):
-        query_candidates = self.query_selector.select()
+        self.evaluator.signal_round_start()
 
+        self.evaluator.signal_query_start()
+        query_candidates = self.query_selector.select()
         self.oracle.query(query_candidates)
+        self.evaluator.signal_query_stop()
+
+        self.evaluator.signal_learn_start()
         self.trainer.train()
+        self.evaluator.signal_learn_stop()
+
+        self.evaluator.signal_round_stop()
+
         self.evaluator.evaluate()

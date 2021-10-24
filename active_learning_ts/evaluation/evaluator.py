@@ -17,6 +17,30 @@ class Evaluator:
         for em in evaluation_metrics:
             em.post_init(blackboard, blueprint)
 
+    def signal_learn_stop(self):
+        for em in self.evaluation_metrics:
+            em.signal_learn_stop()
+
+    def signal_learn_start(self):
+        for em in self.evaluation_metrics:
+            em.signal_learn_start()
+
+    def signal_round_stop(self):
+        for em in self.evaluation_metrics:
+            em.signal_round_stop()
+
+    def signal_round_start(self):
+        for em in self.evaluation_metrics:
+            em.signal_round_start()
+
+    def signal_query_stop(self):
+        for em in self.evaluation_metrics:
+            em.signal_query_stop()
+
+    def signal_query_start(self):
+        for em in self.evaluation_metrics:
+            em.signal_query_start()
+
     def evaluate(self) -> None:
         """
         Evaluates all evaluation metrics
