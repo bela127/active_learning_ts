@@ -9,6 +9,8 @@ import tensorflow as tf
 class RandomQueryOptimizer(QueryOptimizer):
     # TODO: should probably take shape instead of dim here, might want to work with matrix functions as well, this goes
     #  for all places where dim is an int, not sure if the gaussian library supports that
+
+    # Post init und shape statt dim
     def __init__(self, dim: int, selection_criteria: SelectionCriteria, min_x: float = -10.0, max_x: float = 10.0,
                  num_tries: int = 1):
         self.min_x = min_x

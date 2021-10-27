@@ -19,8 +19,9 @@ class GaussianSurrogateModel(SurrogateModel):
         self.gpr.fit(self.training_points, self.training_values)
 
     def uncertainty(self, points: List[tf.Tensor]) -> tf.Tensor:
-        a = self.gpr.predict(points, True)[1]
-        return tf.constant(a)
+        y_mean, y_std = self.gpr.predict(points, return_std = True)[1]
+        return tf.constant((y_mean, y_std)) #TODO tf.constant is probably false, as it is constant, and this here changes, a tf_pyfunc is probably the correct way
 
     def query(self, points: List[tf.Tensor]) -> List[tf.Tensor]:
-        return self.gpr.predict(points)
+        y_mean = self.gpr.predict(points)
+        return tf.constant(y_mean)
