@@ -30,5 +30,5 @@ augmentation_pipeline = NoAugmentation()
 instance_level_objective = ConstantInstanceObjective()
 instance_cost = ConstantInstanceCost()
 
-query_optimizer = RandomQueryOptimizer()
+query_optimizer = RandomQueryOptimizer(max_x=5, min_x=-5, num_tries=10, shape=(3,))
 selection_criteria = GreedySelection()
