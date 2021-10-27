@@ -1,7 +1,10 @@
 from active_learning_ts.experiments.experiment import Experiment
 
 
-class ExperimentRunner():
+class ExperimentRunner:
+    """
+    Runs each experiment. In the Case multiple Experiments are to be run
+    """
     def __init__(self, experiment_blueprints) -> None:
         self.experiment_blueprints = experiment_blueprints
 

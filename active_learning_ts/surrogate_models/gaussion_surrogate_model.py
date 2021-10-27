@@ -7,6 +7,9 @@ import tensorflow as tf
 
 
 class GaussianSurrogateModel(SurrogateModel):
+    """
+    implements gaussian process
+    """
 
     def __init__(self):
         self.gpr = GaussianProcessRegressor(kernel=RationalQuadratic())

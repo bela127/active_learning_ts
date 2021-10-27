@@ -1,3 +1,4 @@
+from active_learning_ts.evaluation.evaluator import Evaluator
 from active_learning_ts.training.trainer import Trainer
 from active_learning_ts.experiments.blueprint import Blueprint
 from active_learning_ts.data_retrievement.data_retriever import DataRetriever
@@ -9,6 +10,16 @@ from active_learning_ts.data_blackboard import Blackboard
 
 
 class Experiment:
+    """
+    Builds an experiment based on the instructions obtained from the blueprint.
+
+    An experiment consists of:
+    A blackboard where data is stored
+    An Oracle in order to query data from the data source
+    Another Oracle in order to query data from the surrogate
+    A trainer in order to train the surrogate
+    An Evaluator in order to evaluate the Experiment, according to the given metrics
+    """
     def __init__(self, experiment_blueprint: Blueprint) -> None:
         self.blackboard: Blackboard = Blackboard()
         self.experiment_blueprint = experiment_blueprint
@@ -17,6 +28,11 @@ class Experiment:
     def setup(self, experiment_blueprint: Blueprint):
         self.repeat: int = experiment_blueprint.repeat
         self.learning_steps: int = experiment_blueprint.learning_steps
+
+        experiment_blueprint.training_strategy.post_init(experiment_blueprint.surrogate_model)
+        experiment_blueprint.selection_criteria.post_init(experiment_blueprint.surrogate_model)
+        experiment_blueprint.query_optimizer.post_init(experiment_blueprint.surrogate_model,
+                                                       experiment_blueprint.selection_criteria)
 
         data_retriever = DataRetriever(
             experiment_blueprint.data_source,
@@ -44,9 +60,19 @@ class Experiment:
             experiment_blueprint.selection_criteria,
             sg_oracle
         )
-        trainer = Trainer(self.blackboard,
-                          experiment_blueprint.training_strategy)
-        active_learner = ActiveLearner(oracle, query_selector, self.blackboard, trainer)
+
+        trainer = Trainer(
+            self.blackboard,
+            experiment_blueprint.training_strategy
+        )
+
+        evaluator = Evaluator(
+            evaluation_metrics=experiment_blueprint.evaluation_metrics,
+            blackboard=self.blackboard,
+            blueprint=experiment_blueprint
+        )
+
+        active_learner = ActiveLearner(oracle, query_selector, self.blackboard, trainer, evaluator)
         self.active_learner: ActiveLearner = active_learner
 
     def run(self):

@@ -4,6 +4,11 @@ from active_learning_ts.data_instance import DataInstance
 
 
 class Blackboard:
+    """
+    Blackboard pattern: https://en.wikipedia.org/wiki/Blackboard_(design_pattern)
+
+    Stores all data instances. Function analogous to a Stack
+    """
     def __init__(self) -> None:
         self.instances: List[DataInstance] = []
 
