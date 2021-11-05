@@ -12,7 +12,7 @@ from active_learning_ts.surrogate_models.gaussion_surrogate_model import Gaussia
 from active_learning_ts.training.training_strategies.direct_training_strategy import DirectTrainingStrategy
 
 repeat = 2
-learning_steps = 100
+learning_steps = 10
 
 # TODO, not having 0 between min and max causes a logic error. Investigate
 data_source = MultiGausianDataSource(in_dim=3, out_dim=2, min_x=-5, max_x=5)

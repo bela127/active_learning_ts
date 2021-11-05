@@ -13,5 +13,3 @@ def test_gaussian_experiment():
     print(gaussian_blueprint.surrogate_model.uncertainty(test))
 
     print([x.get_evaluation() for x in gaussian_blueprint.evaluation_metrics])
-
-test_gaussian_experiment()

@@ -14,7 +14,7 @@ def test_gaussian_experiment():
     sc.post_init(surrogate_model=gsm)
     qo.post_init(GaussianSurrogateModel, sc)
 
-    for i in range(0, 100):
+    for i in range(0, 10):
         queries = qo.optimize_query_candidates(1)
         results = mgs.query(queries)[1]
         gsm.learn(queries, results)
