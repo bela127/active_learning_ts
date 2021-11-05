@@ -1,3 +1,4 @@
+from active_learning_ts.evaluation.evaluation_metrics.rounder_counter_evaluator import RoundCounterEvaluator
 from active_learning_ts.query_selection.selection_criterias.greedy_selection import (
     GreedySelection,
 )
@@ -19,9 +20,11 @@ from active_learning_ts.instance_properties.objectives.constant_instance_objecti
 from active_learning_ts.data_retrievement.data_sources.test_data_source import (
     TestDataSource,
 )
+from active_learning_ts.surrogate_models.gaussion_surrogate_model import GaussianSurrogateModel
+from active_learning_ts.training.training_strategies.direct_training_strategy import DirectTrainingStrategy
 
 repeat = 2
-learning_steps = 10
+learning_steps = 0
 
 data_source = TestDataSource()
 retrievement_strategy = ExactRetrievement()
@@ -30,5 +33,11 @@ augmentation_pipeline = NoAugmentation()
 instance_level_objective = ConstantInstanceObjective()
 instance_cost = ConstantInstanceCost()
 
+# TODO: implement test surrogate model that just returns random uncertainty values
+surrogate_model = GaussianSurrogateModel()
+training_strategy = DirectTrainingStrategy()
+
 query_optimizer = RandomQueryOptimizer(max_x=5, min_x=-5, num_tries=10, shape=(3,))
 selection_criteria = GreedySelection()
+
+evaluation_metrics = [RoundCounterEvaluator()]

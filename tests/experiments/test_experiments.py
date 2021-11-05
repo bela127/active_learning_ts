@@ -6,6 +6,3 @@ def test_base_functionality():
     blueprints = [test_blueprint]
     er = ExperimentRunner(blueprints)
     er.run()
-    pass
-
-#evaluators
