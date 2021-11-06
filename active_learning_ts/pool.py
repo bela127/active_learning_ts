@@ -17,3 +17,6 @@ class Pool(Protocol):
 
     def get_size(self):
         return self.size
+
+    def get_elements(self, query_candidates):
+        return [self.get_element(x) for x in query_candidates]

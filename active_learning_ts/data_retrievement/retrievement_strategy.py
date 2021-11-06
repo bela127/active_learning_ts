@@ -12,7 +12,7 @@ class RetrievementStrategy(Protocol):
     def __init__(self, query_pool: Union[Pool, None] = None) -> None:
         self.query_pool = query_pool
 
-    def retriev(self, data_source: DataSource, query_candidates):
+    def retrieve(self, data_source: DataSource, query_candidates):
         actual_queries = self.possible_queries(query_candidates)
         actual_queries, query_results = data_source.query(actual_queries)
         return actual_queries, query_results
@@ -21,7 +21,10 @@ class RetrievementStrategy(Protocol):
         if self.query_pool is None:
             return query_candidates
         else:
-            raise NotImplementedError(
-                "selection of possible_queries from query_pool is not implemendet, use a different "
-                "retrievement_strategy "
-            )
+            self.query_pool.get_elements(query_candidates)
+
+    def post_init(self, data_source_pool):
+        self.data_source_pool = data_source_pool
+
+    def get_query_pool(self):
+        pass

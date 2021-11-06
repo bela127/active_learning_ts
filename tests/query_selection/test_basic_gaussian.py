@@ -1,3 +1,4 @@
+from active_learning_ts.pools.continuous_vector_pool import ContinuousVectorPool
 from active_learning_ts.query_selection.query_optimizers.random_query_optimizer import RandomQueryOptimizer
 from active_learning_ts.query_selection.selection_criterias.explore_selection_criteria import ExploreSelectionCriteria
 from active_learning_ts.surrogate_models.gaussion_surrogate_model import GaussianSurrogateModel
@@ -9,10 +10,10 @@ def test_gaussian_experiment():
     gsm = GaussianSurrogateModel()
     mgs = MultiGausianDataSource(1, 1, -100.0, 100.0)
     sc = ExploreSelectionCriteria()
-    qo = RandomQueryOptimizer(shape=(1,), max_x=100, min_x=-100, num_tries=10)
+    qo = RandomQueryOptimizer(shape=(1,), num_tries=10)
 
     sc.post_init(surrogate_model=gsm)
-    qo.post_init(GaussianSurrogateModel, sc)
+    qo.post_init(GaussianSurrogateModel, sc, ContinuousVectorPool(dim=1, ranges=[[(-100, 100)]]))
 
     for i in range(0, 10):
         queries = qo.optimize_query_candidates(1)

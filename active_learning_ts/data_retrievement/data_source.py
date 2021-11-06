@@ -14,3 +14,6 @@ class DataSource(Protocol):
 
     def possible_queries(self):
         pass
+
+    def get_query_pool(self):
+        pass

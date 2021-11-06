@@ -20,7 +20,7 @@ class DataRetriever:
         self.augmentation_pipeline = augmentation_pipeline
 
     def query(self, query_candidates):
-        actual_queries, query_results = self.retrievement_strategy.retriev(
+        actual_queries, query_results = self.retrievement_strategy.retrieve(
             self.data_source, query_candidates
         )
         augmented_query_results = self.augmentation_pipeline.apply(query_results)

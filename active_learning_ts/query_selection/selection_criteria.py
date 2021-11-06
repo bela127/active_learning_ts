@@ -1,6 +1,7 @@
-from typing import Protocol, List
+from typing import Protocol, List, Union
 import tensorflow as tf
 
+from active_learning_ts.pool import Pool
 from active_learning_ts.surrogate_models.surrogate_model import SurrogateModel
 
 
@@ -20,3 +21,4 @@ class SelectionCriteria(Protocol):
 
     def post_init(self, surrogate_model: SurrogateModel):
         self.surrogate_model = surrogate_model
+

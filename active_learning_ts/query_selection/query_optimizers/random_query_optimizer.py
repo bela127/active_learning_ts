@@ -9,10 +9,9 @@ class RandomQueryOptimizer(QueryOptimizer):
     """
     Selects the best queries from random points
     """
-    def __init__(self, shape, min_x: float = -10.0, max_x: float = 10.0,
+
+    def __init__(self, shape,
                  num_tries: int = 1):
-        self.min_x = min_x
-        self.max_x = max_x
         self.dim = shape
         self.num_tries = num_tries
 
@@ -22,8 +21,9 @@ class RandomQueryOptimizer(QueryOptimizer):
         out = []
         if possible_queries is None:
             for i in range(0, num_queries):
-                a = [tf.random.uniform(shape=self.dim, minval=self.min_x, maxval=self.max_x) for _ in
-                     range(0, self.num_tries)]
+                a = self.query_selection_pool.get_elements([tf.random.uniform(shape=self.dim) for _ in
+                                                            range(0, self.num_tries)])
+
                 b = self.selection_criteria.score_queries(a)
                 best = tf.argmax(b)
                 out.append(a[best])

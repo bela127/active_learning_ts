@@ -20,6 +20,7 @@ class Experiment:
     A trainer in order to train the surrogate
     An Evaluator in order to evaluate the Experiment, according to the given metrics
     """
+
     def __init__(self, experiment_blueprint: Blueprint) -> None:
         self.blackboard: Blackboard = Blackboard()
         self.experiment_blueprint = experiment_blueprint
@@ -29,10 +30,14 @@ class Experiment:
         self.repeat: int = experiment_blueprint.repeat
         self.learning_steps: int = experiment_blueprint.learning_steps
 
+        data_source_pool = experiment_blueprint.data_source.get_query_pool()
+
+        experiment_blueprint.retrievement_strategy.post_init(data_source_pool)
         experiment_blueprint.training_strategy.post_init(experiment_blueprint.surrogate_model)
         experiment_blueprint.selection_criteria.post_init(experiment_blueprint.surrogate_model)
         experiment_blueprint.query_optimizer.post_init(experiment_blueprint.surrogate_model,
-                                                       experiment_blueprint.selection_criteria)
+                                                       experiment_blueprint.selection_criteria,
+                                                       experiment_blueprint.retrievement_strategy.get_query_pool())
 
         data_retriever = DataRetriever(
             experiment_blueprint.data_source,

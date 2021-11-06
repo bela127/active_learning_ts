@@ -37,7 +37,7 @@ instance_cost = ConstantInstanceCost()
 surrogate_model = GaussianSurrogateModel()
 training_strategy = DirectTrainingStrategy()
 
-query_optimizer = RandomQueryOptimizer(max_x=5, min_x=-5, num_tries=10, shape=(3,))
+query_optimizer = RandomQueryOptimizer(num_tries=10, shape=(3,))
 selection_criteria = GreedySelection()
 
 evaluation_metrics = [RoundCounterEvaluator()]
