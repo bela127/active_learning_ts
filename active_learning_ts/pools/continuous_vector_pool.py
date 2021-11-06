@@ -59,7 +59,7 @@ class ContinuousVectorPool(Pool):
                 self.sizes[i].append(float(current_range.size))
                 self.start_values[i].append(float(current_range.lower))
 
-    @tf.function
+    #@tf.function
     def get_element(self, element: tf.Tensor) -> tf.Tensor:
         """
         Gets a value #TODO: this doc
@@ -80,8 +80,6 @@ class ContinuousVectorPool(Pool):
         total_covered = 0.0
         next_total = 0.0
         correct_offset = 0.0
-        start_value_iterator = None
-        size_iterator = None
 
         def loop_body(iterator, body_index, body_total_covered, body_next_total, body_correct_offset, body_size_list,
                       body_start_value):
@@ -104,7 +102,7 @@ class ContinuousVectorPool(Pool):
                 lambda j, i, x, y, z, l1, l2: tf.math.less_equal(y, i),
                 loop_body,
                 [0, index, total_covered, next_total, correct_offset, size_list, start_value_list],
-                parallel_iterations=10)
+                parallel_iterations=1)
 
             # at this point, we have located the correct range, we just need to find the percentage of this range in
             # which the given point lies

@@ -30,7 +30,7 @@ class Experiment:
         self.repeat: int = experiment_blueprint.repeat
         self.learning_steps: int = experiment_blueprint.learning_steps
 
-        data_source_pool = experiment_blueprint.data_source.get_query_pool()
+        data_source_pool = experiment_blueprint.data_source.possible_queries()
 
         experiment_blueprint.retrievement_strategy.post_init(data_source_pool)
         experiment_blueprint.training_strategy.post_init(experiment_blueprint.surrogate_model)

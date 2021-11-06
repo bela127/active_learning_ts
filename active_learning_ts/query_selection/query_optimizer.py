@@ -14,7 +14,7 @@ class QueryOptimizer(Protocol):
     """
 
     def post_init(self, surrogate_model: SurrogateModel, selection_criteria: SelectionCriteria,
-                  query_selection_pool: Union[Pool, None]):
+                  query_selection_pool: Pool):
         self.surrogate_model = surrogate_model
         self.selection_criteria = selection_criteria
         self.query_selection_pool = query_selection_pool
