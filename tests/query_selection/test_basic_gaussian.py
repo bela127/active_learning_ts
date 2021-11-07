@@ -13,9 +13,9 @@ def test_gaussian_experiment():
     qo = RandomQueryOptimizer(shape=(1,), num_tries=10)
 
     sc.post_init(surrogate_model=gsm)
-    qo.post_init(GaussianSurrogateModel, sc, ContinuousVectorPool(dim=1, ranges=[[(-100, 100)]]))
+    qo.post_init(GaussianSurrogateModel, sc, mgs.possible_queries())
 
-    for i in range(0, 10):
+    for i in range(0, 50):
         queries = qo.optimize_query_candidates(1)
         results = mgs.query(queries)[1]
         gsm.learn(queries, results)

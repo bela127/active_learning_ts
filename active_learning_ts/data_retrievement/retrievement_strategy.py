@@ -18,12 +18,15 @@ class RetrievementStrategy(Protocol):
         return actual_queries, query_results
 
     def possible_queries(self, query_candidates):
-        return query_candidates
+        if self.query_pool is None:
+            return query_candidates
+        else: return self.data_source_pool.get_elements(query_candidates)
 
     def post_init(self, data_source_pool: Pool):
         self.data_source_pool = data_source_pool
 
     def get_query_pool(self):
+        # TODO this is temporary because query pool is not yet implemented
         if self.query_pool is None:
             return self.data_source_pool
         else:
