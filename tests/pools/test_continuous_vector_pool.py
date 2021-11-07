@@ -7,5 +7,5 @@ def test_get_element():
     pool = ContinuousVectorPool(dim=1, ranges=[[(0, 2)]])
 
     index = tf.constant([.8])
-    print(pool.get_element(index))
+    print(pool._get_element_normalized(index))
 

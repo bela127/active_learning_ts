@@ -60,7 +60,7 @@ class ContinuousVectorPool(Pool):
                 self.start_values[i].append(float(current_range.lower))
 
     #@tf.function
-    def get_element(self, element: tf.Tensor) -> tf.Tensor:
+    def _get_element_normalized(self, element: tf.Tensor) -> tf.Tensor:
         """
         Gets a value #TODO: this doc
         :param element:

@@ -21,8 +21,8 @@ class RandomQueryOptimizer(QueryOptimizer):
         out = []
 
         for i in range(0, num_queries):
-            a = self.query_selection_pool.get_elements([tf.random.uniform(shape=self.dim) for _ in
-                                                        range(0, self.num_tries)])
+            a = self.query_selection_pool.get_elements_normalized([tf.random.uniform(shape=self.dim) for _ in
+                                                                   range(0, self.num_tries)])
 
             b = self.selection_criteria.score_queries(a)
             best = tf.argmax(b)
