@@ -28,3 +28,9 @@ class Pool(Protocol):
 
     def get_elements(self, query_candidates):
         return [self._get_element(x) for x in query_candidates]
+    
+    def normalize(self, query_candidates):
+        return [self._normalize(x) for x in query_candidates]
+
+    def _normalize(self, query_candidate):
+        pass
