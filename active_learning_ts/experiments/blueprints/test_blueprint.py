@@ -1,3 +1,5 @@
+from active_learning_ts.data_retrievement.interpolation.interpolation_strategies.flat_map_interpolation import \
+    FlatMapInterpolation
 from active_learning_ts.evaluation.evaluation_metrics.rounder_counter_evaluator import RoundCounterEvaluator
 from active_learning_ts.query_selection.selection_criterias.greedy_selection import (
     GreedySelection,
@@ -29,6 +31,7 @@ learning_steps = 0
 data_source = TestDataSource()
 retrievement_strategy = ExactRetrievement()
 augmentation_pipeline = NoAugmentation()
+interpolation_strategy = FlatMapInterpolation()
 
 instance_level_objective = ConstantInstanceObjective()
 instance_cost = ConstantInstanceCost()

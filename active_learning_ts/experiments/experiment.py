@@ -32,7 +32,8 @@ class Experiment:
 
         data_source_pool = experiment_blueprint.data_source.possible_queries()
 
-        experiment_blueprint.retrievement_strategy.post_init(data_source_pool)
+        experiment_blueprint.retrievement_strategy.post_init(data_source_pool,
+                                                             experiment_blueprint.interpolation_strategy)
         experiment_blueprint.training_strategy.post_init(experiment_blueprint.surrogate_model)
         experiment_blueprint.selection_criteria.post_init(experiment_blueprint.surrogate_model)
         experiment_blueprint.query_optimizer.post_init(experiment_blueprint.surrogate_model,

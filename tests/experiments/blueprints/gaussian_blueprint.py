@@ -1,6 +1,8 @@
 from distribution_data_generation.data_sources.multi_gausian_data_source import MultiGausianDataSource
 
 from active_learning_ts.data_retrievement.augmentation.no_augmentation import NoAugmentation
+from active_learning_ts.data_retrievement.interpolation.interpolation_strategies.flat_map_interpolation import \
+    FlatMapInterpolation
 from active_learning_ts.data_retrievement.retrievement_strategies.exact_retrievement import ExactRetrievement
 from active_learning_ts.evaluation.evaluation_metrics.avg_round_time_evaluator import AvgRoundTimeEvaluator
 from active_learning_ts.evaluation.evaluation_metrics.rounder_counter_evaluator import RoundCounterEvaluator
@@ -16,7 +18,8 @@ learning_steps = 10
 
 # TODO, not having 0 between min and max causes a logic error. Investigate
 data_source = MultiGausianDataSource(in_dim=3, out_dim=2, min_x=-5, max_x=5)
-retrievement_strategy = ExactRetrievement(query_pool=None)
+retrievement_strategy = ExactRetrievement()
+interpolation_strategy = FlatMapInterpolation()
 
 augmentation_pipeline = NoAugmentation()
 

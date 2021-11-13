@@ -1,3 +1,4 @@
+from active_learning_ts.data_retrievement.interpolation.interpolation_strategy import InterpolationStrategy
 from active_learning_ts.evaluation.evaluation_metric import EvaluationMetric
 from active_learning_ts.instance_properties.instance_objective import InstanceObjective
 from active_learning_ts.instance_properties.instance_cost import InstanceCost
@@ -26,6 +27,7 @@ class Blueprint(Protocol):
     data_source: DataSource
     retrievement_strategy: RetrievementStrategy
     augmentation_pipeline: DataPipeline
+    interpolation_strategy: InterpolationStrategy
 
     instance_level_objective: InstanceObjective
     instance_cost: InstanceCost
