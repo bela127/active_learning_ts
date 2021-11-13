@@ -21,6 +21,6 @@ class QueryOptimizer(Protocol):
 
     # TODO: selectionCriteria should also consider cost
     def optimize_query_candidates(
-            self, num_queries: int = 1, possible_queries: List[tf.Tensor] = None
+            self, num_queries: int = 1
     ):
         pass

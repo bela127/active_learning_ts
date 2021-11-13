@@ -10,5 +10,5 @@ def test_get_element():
     result = pool._get_element_normalized(index)
     print(result)
 
-    query = pool._normalize(result)
+    query = pool.normalize(result)
     print(query)

@@ -16,22 +16,15 @@ class RandomQueryOptimizer(QueryOptimizer):
         self.num_tries = num_tries
 
     def optimize_query_candidates(
-            self, num_queries: int = 1, possible_queries: List[tf.Tensor] = None
+            self, num_queries: int = 1
     ):
         out = []
 
         for i in range(0, num_queries):
             a = self.query_selection_pool.get_elements_normalized([tf.random.uniform(shape=self.dim) for _ in
                                                                    range(0, self.num_tries)])
-
+            a = [val for sublist in a for val in sublist]
             b = self.selection_criteria.score_queries(a)
             best = tf.argmax(b)
             out.append(a[best])
         return out
-
-        # for i in range(0, num_queries):
-        #    a = [possible_queries[random.randint(0, len(possible_queries))] for _ in range(0, self.num_tries)]
-        #    b = self.selection_criteria.score_queries(a)
-        #    best = tf.argmax(b)
-        #    out.append(a[best])
-        # return out

@@ -69,7 +69,7 @@ class ContinuousVectorPool(Pool):
                 self.start_values[i].append(float(current_range.lower))
 
     @tf.function
-    def _get_element_normalized(self, element: tf.Tensor) -> tf.Tensor:
+    def _get_element_normalized(self, element: tf.Tensor) -> List[tf.Tensor]:
         """
         Gets a value #TODO: this doc
         :param element:
@@ -112,12 +112,12 @@ class ContinuousVectorPool(Pool):
 
             out.append(next_out)
 
-        return tf.stack(out)
+        return [tf.stack(out)]
 
-    def _get_element(self, element: tf.Tensor) -> tf.Tensor:
-        return element
+    def get_elements(self, element: List[tf.Tensor]) -> List[List[tf.Tensor]]:
+        return [element]
 
-    def _normalize(self, query_candidate):
+    def _normalize(self, query_candidate: tf.Tensor) -> tf.Tensor:
         indices = tf.unstack(query_candidate)
 
         out = []
