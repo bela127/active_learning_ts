@@ -117,6 +117,7 @@ class ContinuousVectorPool(Pool):
     def get_elements(self, element: List[tf.Tensor]) -> List[List[tf.Tensor]]:
         return [element]
 
+    @tf.function
     def _normalize(self, query_candidate: tf.Tensor) -> tf.Tensor:
         indices = tf.unstack(query_candidate)
 

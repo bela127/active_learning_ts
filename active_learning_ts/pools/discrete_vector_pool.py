@@ -36,8 +36,10 @@ class DiscreteVectorPool(Pool):
 
             query.append((indices[i] * size) + lower)
 
-        return self.get_elements([tf.stack(query)])[0]
+        query = tf.stack(query)
+        return self.get_elements([query])[0]
 
+    @tf.function
     def _normalize(self, query_candidate):
         indices = tf.unstack(query_candidate)
 
