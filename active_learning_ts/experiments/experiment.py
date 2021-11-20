@@ -31,6 +31,7 @@ class Experiment:
         self.learning_steps: int = experiment_blueprint.learning_steps
 
         experiment_blueprint.retrievement_strategy.post_init(data_source=experiment_blueprint.data_source)
+        experiment_blueprint.data_source.post_init(retrievment_strategy=experiment_blueprint.retrievement_strategy)
 
         data_retriever = DataRetriever(
             data_source=experiment_blueprint.data_source,

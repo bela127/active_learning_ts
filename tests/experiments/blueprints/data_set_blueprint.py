@@ -25,7 +25,7 @@ for i in range(1, 100):
     y.append(tf.random.uniform(shape=(3,), minval=-10, maxval=50, seed=i + 100))
 
 retrievement_strategy = NearestNeighboursFindStrategy(num_neighbours=3)
-data_source = DataSetDataSource(in_dim=3, retreivement_strategy=retrievement_strategy, data_points=x, data_values=y)
+data_source = DataSetDataSource(in_dim=3, data_points=x, data_values=y)
 
 interpolation_strategy = FlatMapInterpolation()
 
@@ -38,6 +38,6 @@ surrogate_model = GaussianSurrogateModel()
 training_strategy = DirectTrainingStrategy()
 
 selection_criteria = ExploreSelectionCriteria()
-query_optimizer = RandomQueryOptimizer(num_tries=10, shape=(3,))
+query_optimizer = RandomQueryOptimizer(num_tries=10)
 
 evaluation_metrics = [AvgRoundTimeEvaluator(), RoundCounterEvaluator()]
