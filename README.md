@@ -82,6 +82,14 @@ so it is imperative that this is chosen to fit the task.
 The Training Strategy is responsible for analysing the Surrogate Model, the queries that have been asked and the knowledge
 discovery task, in order to give feedback to the Surrogate Model on how it should train.
 
+### Evaluation Metrics
+
+There are many metrics that one might want to evaluate.
+The evaluation metrics are given access to all data in the current experiment (even other evaluation metrics).
+Examples of simple evaluation metrics, are round timers, and counters for the number of points queried.
+Some evaluation metrics can take lots of time, signals are therefore used to notify evaluation metrics about what work 
+is currently being done.
+
 ### Instance level Objective
 
 not really implemented. Insert ConstantInstanceObjective()  as placeholder
