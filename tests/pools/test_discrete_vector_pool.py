@@ -10,7 +10,11 @@ def test_get_elements():
     find_strategy = NearestNeighboursFindStrategy(2)
     x = [tf.constant([1.0, 2.0, 3.0]), tf.constant([2.0, 2.0, 3.0]), tf.constant([3.0, 2.0, 1.0]),
          tf.constant([10.0, 2.0, 3.0])]
-    source = DataSetDataSource(in_dim=3, data_values=x, data_points=x, retreivement_strategy=find_strategy)
+    source = DataSetDataSource(in_dim=3, data_values=x, data_points=x)
+    retrievement_strategy = NearestNeighboursFindStrategy(1)
+    source.post_init(retrievement_strategy)
+    retrievement_strategy.post_init(source)
+
     find_strategy.post_init(source)
     pool = DiscreteVectorPool(in_dim=3, queries=x, find_streategy=find_strategy)
 

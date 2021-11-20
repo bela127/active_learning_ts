@@ -2,7 +2,6 @@ from typing import Protocol, List, Tuple
 import tensorflow as tf
 
 from active_learning_ts.pool import Pool
-from active_learning_ts.pools.retrievement_strategy import RetrievementStrategy
 
 
 class DataSource(Protocol):
@@ -18,5 +17,5 @@ class DataSource(Protocol):
     def possible_queries(self) -> Pool:
         pass
 
-    def post_init(self, retrievment_strategy: RetrievementStrategy):
+    def post_init(self, retrievment_strategy):
         self.retrievementStrategy = retrievment_strategy

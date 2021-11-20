@@ -10,7 +10,7 @@ def test_gaussian_experiment():
     gsm = GaussianSurrogateModel()
     mgs = MultiGausianDataSource(1, 1, -100.0, 100.0)
     sc = ExploreSelectionCriteria()
-    qo = RandomQueryOptimizer(shape=(1,), num_tries=10)
+    qo = RandomQueryOptimizer( num_tries=10)
 
     sc.post_init(surrogate_model=gsm)
     qo.post_init(GaussianSurrogateModel, sc, mgs.possible_queries())
