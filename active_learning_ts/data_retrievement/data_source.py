@@ -17,5 +17,5 @@ class DataSource(Protocol):
     def possible_queries(self) -> Pool:
         pass
 
-    def post_init(self, retrievment_strategy):
-        self.retrievementStrategy = retrievment_strategy
+    def post_init(self, retrievement_strategy):
+        self.retrievementStrategy = retrievement_strategy

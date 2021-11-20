@@ -30,7 +30,7 @@ class Experiment:
         self.repeat: int = experiment_blueprint.repeat
         self.learning_steps: int = experiment_blueprint.learning_steps
 
-        experiment_blueprint.data_source.post_init(experiment_blueprint.retrievement_strategy)
+        experiment_blueprint.data_source.post_init(retrievement_strategy=experiment_blueprint.retrievement_strategy)
         experiment_blueprint.retrievement_strategy.post_init(data_source=experiment_blueprint.data_source)
 
         data_retriever = DataRetriever(
