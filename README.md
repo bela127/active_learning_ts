@@ -17,17 +17,17 @@ https://pubsonline.informs.org/doi/pdf/10.1287/opre.41.3.435
 https://www.sciencedirect.com/science/article/pii/S0925231214008145
 
 ## Defining a test
-In order to define a test, a blueprint file need to be created.
+In order to define a test, a blueprint file must be created.
 This must contain the following variables ([Blueprint](./active_learning_ts/experiments/blueprint.py)):
 
 ### Repeat
 
-Currently does nothing
+Currently, does nothing
 
 ### Learning Steps
 
 A learning step consists of a batch of queries that are queried from the data source.
-A learning step is subdivided into four section: 'Query Selection', 'Data Retreivement', 'Model Training', 
+A learning step is subdivided into four section: 'Query Selection', 'Data Retrievement', 'Model Training', 
 'Knowledge Discovery' and 'Evaluation', in that order.
 
 This specifies how many learning steps should be taken

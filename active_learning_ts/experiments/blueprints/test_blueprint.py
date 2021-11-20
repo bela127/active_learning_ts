@@ -1,7 +1,7 @@
 from active_learning_ts.data_retrievement.interpolation.interpolation_strategies.flat_map_interpolation import \
     FlatMapInterpolation
 from active_learning_ts.evaluation.evaluation_metrics.rounder_counter_evaluator import RoundCounterEvaluator
-from active_learning_ts.pools.find_strategies.exact_retrievement import ExactRetrievement
+from active_learning_ts.pools.retrievement_strategies.exact_retrievement import ExactRetrievement
 from active_learning_ts.query_selection.selection_criterias.greedy_selection import (
     GreedySelection,
 )
