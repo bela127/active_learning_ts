@@ -34,3 +34,6 @@ class Pool(Protocol):
 
     def _normalize(self, query_candidate: tf.Tensor) -> tf.Tensor:
         pass
+
+    def is_discrete(self) -> bool:
+        return False

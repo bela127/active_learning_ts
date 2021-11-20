@@ -7,7 +7,7 @@ from active_learning_ts.pools.find_strategy import FindStrategy
 
 
 class DiscreteVectorPool(Pool):
-    # TODO: implement a data Loader, that will replace the first two parameters
+    # TODO: implement a data Loader
     def __init__(self, in_dim: int, queries: [tf.Tensor], find_streategy: FindStrategy):
         self.queries = queries
         self.shape = (in_dim,)
@@ -51,3 +51,9 @@ class DiscreteVectorPool(Pool):
             query.append((indices[i] - lower) / size)
 
         return tf.stack(query)
+
+    def get_all_elements(self):
+        return self.queries[:]
+
+    def is_discrete(self) -> bool:
+        return True
