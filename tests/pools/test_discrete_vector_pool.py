@@ -1,14 +1,17 @@
 import tensorflow as tf
+from distribution_data_generation.data_sources.data_set_data_source import DataSetDataSource
 
 from active_learning_ts.pools.discrete_vector_pool import DiscreteVectorPool
-from active_learning_ts.pools.find_strategies.nearest_neighbours_find_strategy import NearestNeighboursFindStrategy
+from active_learning_ts.pools.find_strategies.nearest_neighbours_retreivement_strategy import \
+    NearestNeighboursFindStrategy
 
 
 def test_get_elements():
     find_strategy = NearestNeighboursFindStrategy(2)
     x = [tf.constant([1.0, 2.0, 3.0]), tf.constant([2.0, 2.0, 3.0]), tf.constant([3.0, 2.0, 1.0]),
          tf.constant([10.0, 2.0, 3.0])]
-    find_strategy.post_init(x)
+    source = DataSetDataSource(in_dim=3, data_values=x, data_points=x, retreivement_strategy=find_strategy)
+    find_strategy.post_init(source)
     pool = DiscreteVectorPool(in_dim=3, queries=x, find_streategy=find_strategy)
 
     query = [tf.constant([1.0, 2.0, 2.0])]

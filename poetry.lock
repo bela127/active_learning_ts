@@ -125,7 +125,7 @@ develop = false
 type = "git"
 url = "https://github.com/bela127/distribution_data_generation.git"
 reference = "master"
-resolved_reference = "bbb4b8cf29450b57addb139848c2b1f1493fd132"
+resolved_reference = "1b6a22bc9653d573ec7d11d6fa628e2f14ef5e00"
 
 [[package]]
 name = "flake8"

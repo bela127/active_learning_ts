@@ -3,12 +3,12 @@ from typing import List
 import tensorflow as tf
 
 from active_learning_ts.pool import Pool
-from active_learning_ts.pools.find_strategy import FindStrategy
+from active_learning_ts.pools.retrievement_strategy import RetrievementStrategy
 
 
 class DiscreteVectorPool(Pool):
     # TODO: implement a data Loader
-    def __init__(self, in_dim: int, queries: [tf.Tensor], find_streategy: FindStrategy):
+    def __init__(self, in_dim: int, queries: [tf.Tensor], find_streategy: RetrievementStrategy):
         self.queries = queries
         self.shape = (in_dim,)
         self.ranges = []
@@ -52,7 +52,7 @@ class DiscreteVectorPool(Pool):
 
         return tf.stack(query)
 
-    def get_all_elements(self):
+    def get_all_elements(self) -> List[tf.Tensor]:
         return self.queries[:]
 
     def is_discrete(self) -> bool:

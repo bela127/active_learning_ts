@@ -30,20 +30,12 @@ class Experiment:
         self.repeat: int = experiment_blueprint.repeat
         self.learning_steps: int = experiment_blueprint.learning_steps
 
-        data_source_pool = experiment_blueprint.data_source.possible_queries()
-
-        experiment_blueprint.retrievement_strategy.post_init(data_source_pool,
-                                                             experiment_blueprint.interpolation_strategy)
-        experiment_blueprint.training_strategy.post_init(experiment_blueprint.surrogate_model)
-        experiment_blueprint.selection_criteria.post_init(experiment_blueprint.surrogate_model)
-        experiment_blueprint.query_optimizer.post_init(experiment_blueprint.surrogate_model,
-                                                       experiment_blueprint.selection_criteria,
-                                                       experiment_blueprint.retrievement_strategy.get_query_pool())
+        experiment_blueprint.retrievement_strategy.post_init(data_source=experiment_blueprint.data_source)
 
         data_retriever = DataRetriever(
-            experiment_blueprint.data_source,
-            experiment_blueprint.retrievement_strategy,
-            experiment_blueprint.augmentation_pipeline,
+            data_source=experiment_blueprint.data_source,
+            augmentation_pipeline=experiment_blueprint.augmentation_pipeline,
+            interpolation_strategy=experiment_blueprint.interpolation_strategy
         )
         oracle = Oracle(
             DataInstance,
@@ -52,6 +44,12 @@ class Experiment:
             experiment_blueprint.instance_cost,
             experiment_blueprint.instance_level_objective,
         )
+
+        experiment_blueprint.training_strategy.post_init(experiment_blueprint.surrogate_model)
+        experiment_blueprint.selection_criteria.post_init(experiment_blueprint.surrogate_model)
+        experiment_blueprint.query_optimizer.post_init(experiment_blueprint.surrogate_model,
+                                                       experiment_blueprint.selection_criteria,
+                                                       data_retriever.get_query_pool())
 
         sg_oracle = Oracle(
             DataInstance,
