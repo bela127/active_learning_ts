@@ -4,13 +4,14 @@ import tensorflow as tf
 
 
 def test_gaussian_experiment():
+    """
+    technically a random test. but that high of an uncertainty is impossible, unless something is wrong
+    """
     er = ExperimentRunner([gaussian_blueprint])
     er.run()
 
-    test = [tf.random.uniform(shape=(3,), minval=-5.0, maxval=5.0) for _ in
+    test = [tf.random.uniform(shape=(3,), minval=-5.0, maxval=5.0, seed=2) for _ in
             range(0, 10)]
 
-    print(test)
-    print(gaussian_blueprint.surrogate_model.uncertainty(test))
-
-    print([x.get_evaluation() for x in gaussian_blueprint.evaluation_metrics])
+    for i in gaussian_blueprint.surrogate_model.uncertainty(test):
+        assert i < 1.0

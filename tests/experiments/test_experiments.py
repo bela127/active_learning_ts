@@ -3,6 +3,7 @@ import active_learning_ts.experiments.blueprints.test_blueprint as test_blueprin
 
 
 def test_base_functionality():
+    """compilation test"""
     blueprints = [test_blueprint]
     er = ExperimentRunner(blueprints)
     er.run()

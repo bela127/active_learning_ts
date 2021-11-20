@@ -50,7 +50,7 @@ class Experiment:
         experiment_blueprint.selection_criteria.post_init(experiment_blueprint.surrogate_model)
         experiment_blueprint.query_optimizer.post_init(experiment_blueprint.surrogate_model,
                                                        experiment_blueprint.selection_criteria,
-                                                       data_retriever.get_query_pool())
+                                                       experiment_blueprint.retrievement_strategy.get_query_pool())
 
         sg_oracle = Oracle(
             DataInstance,

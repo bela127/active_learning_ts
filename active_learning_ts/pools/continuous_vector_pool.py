@@ -36,6 +36,18 @@ class ContinuousVectorPool(Pool):
             return self.lower + (self.size * interval)
 
     def __init__(self, dim, ranges: List[List[Tuple[float, float]]]):
+        """
+        Constructor takes a list of multiple ranges in each dimension.
+        The ranges are independent in each dimension, meaning the validity of a value in one dimension cannot
+        depend on the value of one of the other elements.
+
+        :param dim: The number of dimensions
+        :param ranges: a list of tuples. These define the ranges within which valid queries can be made. An input of the
+            form (a,b), translates to the range [a.b). The range does not include the second element.
+            If b > a, both (b,a) and (a,b) will translate to the range [a,b). If there are multiple valid ranges per
+            dimension, then the ranges need not be ordered.
+
+        """
         self.shape = (dim,)
         self.ranges = []
         self.sizes = []
@@ -58,7 +70,7 @@ class ContinuousVectorPool(Pool):
                 self.total_sizes[j] += float(dim[i].size)
             self.total_sizes[j] += float(dim[len(dim) - 1].size)
 
-        # data from range objects allowed to sort and check the data. We now need to convert it back to ints, so we
+        # data from range objects is used to sort and check the data. We now need to convert it back to ints, so we
         # can work with tf
         for i in range(len(ranges)):
             self.sizes.append([])
@@ -71,9 +83,12 @@ class ContinuousVectorPool(Pool):
     @tf.function
     def _get_element_normalized(self, element: tf.Tensor) -> List[tf.Tensor]:
         """
-        Gets a value #TODO: this doc
-        :param element:
-        :return:
+        The ranges are normalised by removing any gaps between ranges and then mapping the values onto the interval
+        [0,1).
+        This function un-normalizes a given vector.
+
+        :param element: a tensor with entries in the range [0,1)
+        :return: The un-normalized vector
         """
         # please do not try to read this code
 
@@ -115,10 +130,24 @@ class ContinuousVectorPool(Pool):
         return [tf.stack(out)]
 
     def get_elements(self, element: List[tf.Tensor]) -> List[List[tf.Tensor]]:
+        """
+        For efficiency reasons, and due to current use-cases, it is assumed that the input is valid.
+        The output batch is then just this one element
+
+        :param element: the element that should be checked
+        :return: A batch of queries that consists solely of the input element
+        """
         return [element]
 
     @tf.function
     def _normalize(self, query_candidate: tf.Tensor) -> tf.Tensor:
+        """
+        The ranges are normalised by removing any gaps between ranges and then mapping the values onto the interval
+        [0,1).
+
+        :param query_candidate: The element to be normalised
+        :return: The normalised vector
+        """
         indices = tf.unstack(query_candidate)
 
         out = []

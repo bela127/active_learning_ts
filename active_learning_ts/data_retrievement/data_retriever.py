@@ -45,9 +45,3 @@ class DataRetriever:
 
     def possible_queries(self, query_candidates):
         return self.data_source.possible_queries().get_elements(query_candidates)
-
-    def get_query_pool(self):
-        if self.query_pool is None:
-            return self.data_source.possible_queries()
-        else:
-            return self.query_pool
