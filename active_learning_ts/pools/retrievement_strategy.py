@@ -18,6 +18,3 @@ class RetrievementStrategy(Protocol):
 
     def find(self, points: List[tf.Tensor]) -> List[List[tf.Tensor]]:
         return [self._find(x) for x in points]
-
-    def post_init(self, data_set):
-        pass
