@@ -31,10 +31,11 @@ class PrimScenarioDiscoveryKnowledgeDiscoveryTask(KnowledgeDiscoveryTask):
     def _uncertainty(self, point: tf.Tensor) -> float:
         in_boxes = 0.
         for a, b in self.boxes:
-            in_boxes += tf.case([(tf.reduce_any(tf.math.less(point, a)), lambda: 0),
-                                 (tf.reduce_any(tf.math.greater(point, b)), lambda: 0)], default=lambda: 1)
+            in_boxes += tf.case([(tf.reduce_any(tf.math.less(point, a)), lambda: 0.0),
+                                 (tf.reduce_any(tf.math.greater(point, b)), lambda: 0.0)], default=lambda: 1.0)
         not_in_boxes = self.num_boxes - in_boxes
         return tf.math.abs(tf.math.abs(in_boxes - not_in_boxes) - self.num_boxes) / self.num_boxes
 
+    @tf.function
     def uncertainty(self, points: List[tf.Tensor]) -> tf.Tensor:
         return tf.map_fn(lambda t: self._uncertainty(t), points, parallel_iterations=10)
