@@ -16,6 +16,7 @@ class GaussianSurrogateModel(SurrogateModel):
         self.training_points = []
         self.training_values = []
 
+    # TODO: convert everywhere where there is list, to tensor
     def learn(self, points: List[tf.Tensor], values: List[tf.Tensor]):
         self.training_points = self.training_points + points
         self.training_values = self.training_values + values
