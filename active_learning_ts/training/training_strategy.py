@@ -1,6 +1,6 @@
-from typing import Protocol, List
-import tensorflow as tf
+from typing import Protocol
 
+from active_learning_ts.data_blackboard import Blackboard
 from active_learning_ts.surrogate_models.surrogate_model import SurrogateModel
 
 
@@ -13,7 +13,7 @@ class TrainingStrategy(Protocol):
     train, or it may train the surrogate model itself.
     """
 
-    def train(self, query: List[tf.Tensor], feedback: List[tf.Tensor]):
+    def train(self, blackboard: Blackboard):
         pass
 
     def post_init(self, surrogate_model: SurrogateModel):

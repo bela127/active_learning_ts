@@ -12,13 +12,14 @@ class Oracle:
     Queries passed to the oracle are queried from the Data retriever.
     Cost, Object, the actual points queried, and the results are the then posted on the Blackboard
     """
+
     def __init__(
-        self,
-        data_instance_factory: DataInstanceFactory,
-        blackboard: Blackboard,
-        data_retriever: DataRetriever,
-        instance_cost: InstanceCost,
-        instance_level_objective: InstanceObjective,
+            self,
+            data_instance_factory: DataInstanceFactory,
+            blackboard: Blackboard,
+            data_retriever: DataRetriever,
+            instance_cost: InstanceCost,
+            instance_level_objective: InstanceObjective,
     ) -> None:
         self.blackboard: Blackboard = blackboard
         self.data_instance_factory: DataInstanceFactory = data_instance_factory
@@ -27,6 +28,9 @@ class Oracle:
         self.instance_cost: InstanceCost = instance_cost
 
     def query(self, query_candidates):
+        if len(query_candidates) == 0:
+            return
+
         new_instance = self.data_instance_factory()
         self.blackboard.add_instance(new_instance)
 

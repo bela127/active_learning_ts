@@ -1,4 +1,5 @@
 from active_learning_ts.evaluation.evaluator import Evaluator
+from active_learning_ts.surrogate_models.no_surrogate_model import NoSurrogateModel
 from active_learning_ts.training.trainer import Trainer
 from active_learning_ts.experiments.blueprint import Blueprint
 from active_learning_ts.data_retrievement.data_retriever import DataRetriever
@@ -52,7 +53,8 @@ class Experiment:
                                                        experiment_blueprint.selection_criteria,
                                                        experiment_blueprint.surrogate_sampler)
         experiment_blueprint.surrogate_sampler.post_init(experiment_blueprint.data_source.possible_queries())
-        experiment_blueprint.knowledge_discovery_sampler.post_init(experiment_blueprint.retrievement_strategy.get_query_pool())
+        experiment_blueprint.knowledge_discovery_sampler.post_init(
+            experiment_blueprint.retrievement_strategy.get_query_pool())
 
         sg_oracle = Oracle(
             DataInstance,

@@ -1,5 +1,3 @@
-
-
 from active_learning_ts.data_blackboard import Blackboard
 from active_learning_ts.training.training_strategy import TrainingStrategy
 
@@ -17,5 +15,4 @@ class Trainer:
         self.blackboard = blackboard
 
     def train(self):
-        self.training_strategy.train(self.blackboard.last_instance.actual_queries,
-                                     self.blackboard.last_instance.query_results)
+        self.training_strategy.train(self.blackboard)
