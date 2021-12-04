@@ -81,7 +81,7 @@ class ContinuousVectorPool(Pool):
                 self.start_values[i].append(float(current_range.lower))
 
     @tf.function
-    def _get_element_normalized(self, element: tf.Tensor) -> List[tf.Tensor]:
+    def _get_element_normalized(self, element: tf.Tensor) -> tf.Tensor:
         """
         The ranges are normalised by removing any gaps between ranges and then mapping the values onto the interval
         [0,1).
@@ -127,9 +127,9 @@ class ContinuousVectorPool(Pool):
 
             out.append(next_out)
 
-        return [tf.stack(out)]
+        return tf.reshape(tf.stack(out), (1, len(out)))
 
-    def get_elements(self, element: List[tf.Tensor]) -> List[List[tf.Tensor]]:
+    def get_elements(self, element: tf.Tensor) -> tf.Tensor:
         """
         For efficiency reasons, and due to current use-cases, it is assumed that the input is valid.
         The output batch is then just this one element
@@ -137,7 +137,7 @@ class ContinuousVectorPool(Pool):
         :param element: the element that should be checked
         :return: A batch of queries that consists solely of the input element
         """
-        return [element]
+        return tf.reshape(element, (1, element.shape[0], element.shape[1]))
 
     @tf.function
     def _normalize(self, query_candidate: tf.Tensor) -> tf.Tensor:

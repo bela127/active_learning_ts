@@ -1,10 +1,6 @@
 from typing import Protocol, List
 import tensorflow as tf
 
-from active_learning_ts.pool import Pool
-from active_learning_ts.query_selection.query_sampler import QuerySampler
-from active_learning_ts.surrogate_models.surrogate_model import SurrogateModel
-
 
 class KnowledgeDiscoveryTask(Protocol):
     """
@@ -12,15 +8,7 @@ class KnowledgeDiscoveryTask(Protocol):
     It uses the Surrogate Model to emulate the data, and learns from the data provided by the SurrogateModel.
     """
 
-    def __init__(self):
-        self.surrogate_model: SurrogateModel = None
-        self.sampler: QuerySampler = None
-
-    def post_init(self, surrogate_model: SurrogateModel, surrogate_sampler: QuerySampler):
-        self.surrogate_model = surrogate_model
-        self.sampler = surrogate_sampler
-
-    def uncertainty(self, points: List[tf.Tensor]) -> tf.Tensor:
+    def uncertainty(self, points: tf.Tensor) -> tf.Tensor:
         """
         Returns the uncertainty of the model at the given points. A higher number means the model is less certain
         :param points: the points at which the uncertainty should be measured
@@ -28,7 +16,7 @@ class KnowledgeDiscoveryTask(Protocol):
         """
         pass
 
-    def learn(self):
+    def learn(self, data_set: tf.Tensor, data_values: tf.Tensor):
         """
         When this method is called, the knowledge discovery task will use the Surrogate Model to generate data and learn
         from it.

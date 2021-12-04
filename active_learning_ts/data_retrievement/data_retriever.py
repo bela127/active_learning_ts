@@ -31,7 +31,7 @@ class DataRetriever:
         return actual_queries, augmented_query_results
 
     def retrieve(self,
-                 query_candidates: List[tf.Tensor]) -> Tuple[List[tf.Tensor], List[tf.Tensor]]:
+                 query_candidates: tf.Tensor) -> Tuple[tf.Tensor, tf.Tensor]:
         actual_queries = self.possible_queries(query_candidates)
 
         out_queries = []
@@ -41,6 +41,9 @@ class DataRetriever:
             out_queries.append(sent_queries)
             out_query_results.append(query_results)
 
+        query_candidates = tf.convert_to_tensor(query_candidates)
+        out_queries = tf.convert_to_tensor(out_queries)
+        out_query_results = tf.convert_to_tensor(out_query_results)
         return self.interpolation_strategy.interpolate(query_candidates, out_queries, out_query_results)
 
     def possible_queries(self, query_candidates):

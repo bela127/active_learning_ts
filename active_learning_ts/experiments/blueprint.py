@@ -25,6 +25,8 @@ class Blueprint(Protocol):
     repeat: int
     learning_steps: int
 
+    num_knowledge_discovery_queries: int
+
     data_source: DataSource
     retrievement_strategy: RetrievementStrategy
     augmentation_pipeline: DataPipeline

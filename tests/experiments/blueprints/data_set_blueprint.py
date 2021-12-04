@@ -7,6 +7,7 @@ from active_learning_ts.evaluation.evaluation_metrics.avg_round_time_evaluator i
 from active_learning_ts.evaluation.evaluation_metrics.rounder_counter_evaluator import RoundCounterEvaluator
 from active_learning_ts.instance_properties.costs.constant_instance_cost import ConstantInstanceCost
 from active_learning_ts.instance_properties.objectives.constant_instance_objective import ConstantInstanceObjective
+from active_learning_ts.knowledge_discovery.no_knowledge_discovery_task import NoKnowledgeDiscoveryTask
 from active_learning_ts.pools.retrievement_strategies.exact_retrievement import ExactRetrievement
 from active_learning_ts.pools.retrievement_strategies.nearest_neighbours_retreivement_strategy import \
     NearestNeighboursFindStrategy
@@ -19,6 +20,7 @@ import tensorflow as tf
 
 repeat = 2
 learning_steps = 10
+num_knowledge_discovery_queries = 0
 
 x = []
 y = []
@@ -44,6 +46,6 @@ surrogate_sampler = RandomQuerySampler()
 query_optimizer = MaximumQueryOptimizer(num_tries=10)
 
 knowledge_discovery_sampler = RandomQuerySampler()
-
+knowledge_discovery_task = NoKnowledgeDiscoveryTask()
 
 evaluation_metrics = [AvgRoundTimeEvaluator(), RoundCounterEvaluator()]

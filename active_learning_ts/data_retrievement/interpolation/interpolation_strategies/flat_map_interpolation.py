@@ -7,9 +7,20 @@ from active_learning_ts.data_retrievement.interpolation.interpolation_strategy i
 
 class FlatMapInterpolation(InterpolationStrategy):
 
-    def interpolate(self, queries: List[tf.Tensor], queried_points: List[List[tf.Tensor]],
-                    query_results: List[List[tf.Tensor]]) -> Tuple[List[tf.Tensor], List[tf.Tensor]]:
-        out_queries = [x for sublist in queried_points for x in sublist]
-        out_results = [x for sublist in query_results for x in sublist]
+    def interpolate(self, queries: tf.Tensor, queried_points: tf.Tensor,
+                    query_results: tf.Tensor) -> Tuple[tf.Tensor, tf.Tensor]:
+        """
+
+        :param queries: 2D tensor
+        :param queried_points: 3D Tensor
+        :param query_results: 3D Tensor
+        :return: Tuple of 2D Tensor
+        """
+
+        queries_shape = queried_points.shape
+        out_queries = tf.reshape(queried_points, (queries_shape[1] * queries_shape[0], queries_shape[2]))
+
+        results_shape = query_results.shape
+        out_results = tf.reshape(query_results, (results_shape[1] * results_shape[0], results_shape[2]))
 
         return out_queries, out_results

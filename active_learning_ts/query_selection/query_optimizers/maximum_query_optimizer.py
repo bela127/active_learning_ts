@@ -24,4 +24,4 @@ class MaximumQueryOptimizer(QueryOptimizer):
             b = self.selection_criteria.score_queries(a)
             best = tf.argmax(b)
             out.append(a[best])
-        return out
+        return tf.convert_to_tensor(out)

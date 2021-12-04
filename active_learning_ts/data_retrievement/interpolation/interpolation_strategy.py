@@ -4,6 +4,6 @@ import tensorflow as tf
 
 
 class InterpolationStrategy(Protocol):
-    def interpolate(self, queries: List[tf.Tensor], queried_points: List[List[tf.Tensor]],
-                    query_results: List[List[tf.Tensor]]) -> Tuple[List[tf.Tensor], List[tf.Tensor]]:
+    def interpolate(self, queries: tf.Tensor, queried_points: tf.Tensor,
+                    query_results: tf.Tensor) -> Tuple[tf.Tensor, tf.Tensor]:
         pass

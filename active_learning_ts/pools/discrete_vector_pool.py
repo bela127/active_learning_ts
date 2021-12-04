@@ -23,7 +23,7 @@ class DiscreteVectorPool(Pool):
 
             self.ranges.append((minimum, maximum))
 
-    def get_elements(self, element: List[tf.Tensor]) -> List[List[tf.Tensor]]:
+    def get_elements(self, element: tf.Tensor) -> tf.Tensor:
         return self.find_strategy.find(element)
 
     def _get_element_normalized(self, element: tf.Tensor) -> List[tf.Tensor]:
@@ -39,7 +39,7 @@ class DiscreteVectorPool(Pool):
         query = tf.stack(query)
         return self.get_elements([query])[0]
 
-    @tf.function
+    #@tf.function
     def _normalize(self, query_candidate):
         indices = tf.unstack(query_candidate)
 

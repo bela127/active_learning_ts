@@ -12,11 +12,12 @@ class NearestNeighboursFindStrategy(RetrievementStrategy):
     """
     Allows discrete Pool to be referenced as a continuous pool
     """
+
     def __init__(self, num_neighbours: int):
         self.num_neighbours = num_neighbours
         self.kd_tree = None
         self.data_set = None
-        self.continuous_pool:ContinuousVectorPool
+        self.continuous_pool: ContinuousVectorPool
 
     def post_init(self, data_source: DataSource):
         if not data_source.possible_queries().is_discrete():

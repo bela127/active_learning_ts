@@ -11,14 +11,14 @@ from active_learning_ts.knowledge_discovery.prim.prim import PRIM
 class PrimScenarioDiscoveryKnowledgeDiscoveryTask(KnowledgeDiscoveryTask):
     def __init__(self, num_queries: int = 1000, y_max: float = 1.0):
         self.num_queries = num_queries
-        self.y_max = y_max
+        self.y_max = tf.convert_to_tensor(y_max)
         self.prim = PRIM()
         self.boxes = []
         self.num_boxes = 0.
 
-    def learn(self):
-        x = tf.convert_to_tensor(self.sampler.sample(num_queries=self.num_queries))
-        y = tf.convert_to_tensor(self.surrogate_model.query(x)) / self.y_max
+    def learn(self, data_set: tf.Tensor, data_values: tf.Tensor):
+        x = data_set
+        y = data_values / self.y_max
 
         self.prim.fit(x, y)
 
@@ -35,5 +35,5 @@ class PrimScenarioDiscoveryKnowledgeDiscoveryTask(KnowledgeDiscoveryTask):
         return tf.math.abs(tf.math.abs(in_boxes - not_in_boxes) - self.num_boxes) / self.num_boxes
 
     @tf.function
-    def uncertainty(self, points: List[tf.Tensor]) -> tf.Tensor:
+    def uncertainty(self, points: tf.Tensor) -> tf.Tensor:
         return tf.map_fn(lambda t: self._uncertainty(t), points, parallel_iterations=10)

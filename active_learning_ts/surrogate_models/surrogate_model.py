@@ -1,4 +1,4 @@
-from typing import Protocol, List
+from typing import Protocol
 import tensorflow as tf
 
 
@@ -8,7 +8,7 @@ class SurrogateModel(Protocol):
     good emulation of the Data Retrievement process may be model/use-case specific
     """
 
-    def uncertainty(self, points: List[tf.Tensor]) -> tf.Tensor:
+    def uncertainty(self, points: tf.Tensor) -> tf.Tensor:
         """
         Returns the uncertainty of the model at the given points. A higher number means the model is less certain
         :param points: the points at which the uncertainty should be measured
@@ -16,7 +16,7 @@ class SurrogateModel(Protocol):
         """
         pass
 
-    def learn(self, points: List[tf.Tensor], feedback: List[tf.Tensor]):
+    def learn(self, points: tf.Tensor, feedback: tf.Tensor):
         """
         Trains the model at the given points using the given feedback
 
@@ -26,10 +26,10 @@ class SurrogateModel(Protocol):
         """
         pass
 
-    def query(self, points: List[tf.Tensor]) -> List[tf.Tensor]:
+    def query(self, points: tf.Tensor) -> tf.Tensor:
         """
         Atempts to simulate the data source at the given points
-        :param points:
-        :return:
+        :param points: 2D
+        :return: 2D
         """
         pass

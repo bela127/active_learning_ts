@@ -1,37 +1,33 @@
+import tensorflow as tf
+from distribution_data_generation.data_sources.data_set_data_source import DataSetDataSource
+
+from active_learning_ts.data_retrievement.augmentation.no_augmentation import NoAugmentation
 from active_learning_ts.data_retrievement.interpolation.interpolation_strategies.flat_map_interpolation import \
     FlatMapInterpolation
 from active_learning_ts.evaluation.evaluation_metrics.rounder_counter_evaluator import RoundCounterEvaluator
-from active_learning_ts.knowledge_discovery.no_knowledge_discovery_task import NoKnowledgeDiscoveryTask
+from active_learning_ts.instance_properties.costs.constant_instance_cost import ConstantInstanceCost
+from active_learning_ts.instance_properties.objectives.constant_instance_objective import ConstantInstanceObjective
+from active_learning_ts.knowledge_discovery.prim.prim_scenario_discovery_knowledge_discovery_task import \
+    PrimScenarioDiscoveryKnowledgeDiscoveryTask
 from active_learning_ts.pools.retrievement_strategies.exact_retrievement import ExactRetrievement
 from active_learning_ts.query_selection.query_optimizers.no_query_optimizer import NoQueryOptimizer
 from active_learning_ts.query_selection.query_samplers.random_query_sampler import RandomQuerySampler
-from active_learning_ts.query_selection.selection_criterias.no_selection_criteria import (
-    NoSelectionCriteria,
-)
-from active_learning_ts.data_retrievement.augmentation.no_augmentation import (
-    NoAugmentation,
-)
-
-from active_learning_ts.instance_properties.costs.constant_instance_cost import (
-    ConstantInstanceCost,
-)
-from active_learning_ts.instance_properties.objectives.constant_instance_objective import (
-    ConstantInstanceObjective,
-)
-from active_learning_ts.data_retrievement.data_sources.test_data_source import (
-    TestDataSource,
-)
+from active_learning_ts.query_selection.selection_criterias.no_selection_criteria import NoSelectionCriteria
 from active_learning_ts.surrogate_models.no_surrogate_model import NoSurrogateModel
 from active_learning_ts.training.training_strategies.no_training_strategy import NoTrainingStrategy
 
-repeat = 2
-learning_steps = 10
-num_knowledge_discovery_queries = 0
+x = tf.unstack(tf.random.uniform(shape=(1000, 2)) * 100)
+y = [tf.constant([0.9]) if 50 <= a[0] <= 60 and 10 <= a[1] <= 20 else tf.constant([0.0]) for a in x]
 
-data_source = TestDataSource()
+repeat = 2
+learning_steps = 1
+num_knowledge_discovery_queries = 100
+
+data_source = DataSetDataSource(in_dim=2, data_points=x, data_values=y)
 retrievement_strategy = ExactRetrievement()
-augmentation_pipeline = NoAugmentation()
 interpolation_strategy = FlatMapInterpolation()
+
+augmentation_pipeline = NoAugmentation()
 
 instance_level_objective = ConstantInstanceObjective()
 instance_cost = ConstantInstanceCost()
@@ -39,11 +35,11 @@ instance_cost = ConstantInstanceCost()
 surrogate_model = NoSurrogateModel()
 training_strategy = NoTrainingStrategy()
 
+selection_criteria = NoSelectionCriteria()
 surrogate_sampler = RandomQuerySampler()
 query_optimizer = NoQueryOptimizer()
-selection_criteria = NoSelectionCriteria()
 
 knowledge_discovery_sampler = RandomQuerySampler()
-knowledge_discovery_task = NoKnowledgeDiscoveryTask()
+knowledge_discovery_task = PrimScenarioDiscoveryKnowledgeDiscoveryTask(1000)
 
 evaluation_metrics = [RoundCounterEvaluator()]

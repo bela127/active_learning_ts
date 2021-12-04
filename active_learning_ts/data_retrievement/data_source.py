@@ -8,6 +8,7 @@ class DataSource(Protocol):
     """
     Generates data
     """
+
     def __init__(self) -> None:
         self.retrievementStrategy = None
 

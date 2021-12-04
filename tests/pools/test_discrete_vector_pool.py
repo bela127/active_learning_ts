@@ -18,7 +18,7 @@ def test_get_elements():
     find_strategy.post_init(source)
     pool = DiscreteVectorPool(in_dim=3, queries=x, find_streategy=find_strategy)
 
-    query = [tf.constant([1.0, 2.0, 2.0])]
+    query = tf.constant([[1.0, 2.0, 2.0]])
     normalized = pool.normalize(query)
 
     tf.assert_equal(pool.get_elements_normalized(normalized), pool.get_elements(query))
