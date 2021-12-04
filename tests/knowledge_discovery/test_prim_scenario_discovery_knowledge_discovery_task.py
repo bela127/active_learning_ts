@@ -3,6 +3,7 @@ import tensorflow as tf
 from active_learning_ts.knowledge_discovery.prim.prim_scenario_discovery_knowledge_discovery_task import \
     PrimScenarioDiscoveryKnowledgeDiscoveryTask
 from active_learning_ts.pools.continuous_vector_pool import ContinuousVectorPool
+from active_learning_ts.query_selection.query_samplers.random_query_sampler import RandomQuerySampler
 from active_learning_ts.surrogate_models.gaussion_surrogate_model import GaussianSurrogateModel
 
 
@@ -15,7 +16,9 @@ def test_prim():
     sm.learn(x, y)
 
     pkd = PrimScenarioDiscoveryKnowledgeDiscoveryTask()
-    pkd.post_init(surrogate_model=sm, surrogate_pool=ContinuousVectorPool(dim=2, ranges=[[(0, 100)], [(0, 100)]]))
+    sampler = RandomQuerySampler()
+    sampler.post_init(ContinuousVectorPool(dim=2, ranges=[[(0, 100)], [(0, 100)]]))
+    pkd.post_init(surrogate_model=sm, surrogate_sampler=sampler)
 
     pkd.learn()
     pkd.learn()

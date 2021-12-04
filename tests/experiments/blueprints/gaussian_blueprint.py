@@ -8,7 +8,8 @@ from active_learning_ts.evaluation.evaluation_metrics.rounder_counter_evaluator 
 from active_learning_ts.instance_properties.costs.constant_instance_cost import ConstantInstanceCost
 from active_learning_ts.instance_properties.objectives.constant_instance_objective import ConstantInstanceObjective
 from active_learning_ts.pools.retrievement_strategies.exact_retrievement import ExactRetrievement
-from active_learning_ts.query_selection.query_optimizers.random_query_optimizer import RandomQueryOptimizer
+from active_learning_ts.query_selection.query_optimizers.maximum_query_optimizer import MaximumQueryOptimizer
+from active_learning_ts.query_selection.query_samplers.random_query_sampler import RandomQuerySampler
 from active_learning_ts.query_selection.selection_criterias.explore_selection_criteria import ExploreSelectionCriteria
 from active_learning_ts.surrogate_models.gaussion_surrogate_model import GaussianSurrogateModel
 from active_learning_ts.training.training_strategies.direct_training_strategy import DirectTrainingStrategy
@@ -30,6 +31,9 @@ surrogate_model = GaussianSurrogateModel()
 training_strategy = DirectTrainingStrategy()
 
 selection_criteria = ExploreSelectionCriteria()
-query_optimizer = RandomQueryOptimizer(num_tries=10)
+surrogate_sampler = RandomQuerySampler()
+query_optimizer = MaximumQueryOptimizer(num_tries=10)
+
+knowledge_discovery_sampler = RandomQuerySampler()
 
 evaluation_metrics = [AvgRoundTimeEvaluator(), RoundCounterEvaluator()]

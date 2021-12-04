@@ -2,6 +2,7 @@ from typing import Protocol, List
 import tensorflow as tf
 
 from active_learning_ts.pool import Pool
+from active_learning_ts.query_selection.query_sampler import QuerySampler
 from active_learning_ts.surrogate_models.surrogate_model import SurrogateModel
 
 
@@ -13,11 +14,11 @@ class KnowledgeDiscoveryTask(Protocol):
 
     def __init__(self):
         self.surrogate_model: SurrogateModel = None
-        self.surrogate_pool: Pool = None
+        self.sampler: QuerySampler = None
 
-    def post_init(self, surrogate_model: SurrogateModel, surrogate_pool: Pool):
+    def post_init(self, surrogate_model: SurrogateModel, surrogate_sampler: QuerySampler):
         self.surrogate_model = surrogate_model
-        self.surrogate_pool = surrogate_pool
+        self.sampler = surrogate_sampler
 
     def uncertainty(self, points: List[tf.Tensor]) -> tf.Tensor:
         """

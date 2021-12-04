@@ -17,9 +17,7 @@ class PrimScenarioDiscoveryKnowledgeDiscoveryTask(KnowledgeDiscoveryTask):
         self.num_boxes = 0.
 
     def learn(self):
-        x = tf.random.uniform(shape=(self.num_queries, 2))
-        x = tf.convert_to_tensor(self.surrogate_pool.get_elements_normalized(x))
-        x = tf.reshape(x, [self.num_queries, x.shape[1] * x.shape[2]])
+        x = tf.convert_to_tensor(self.sampler.sample(num_queries=self.num_queries))
         y = tf.convert_to_tensor(self.surrogate_model.query(x)) / self.y_max
 
         self.prim.fit(x, y)

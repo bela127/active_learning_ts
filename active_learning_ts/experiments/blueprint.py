@@ -2,7 +2,9 @@ from active_learning_ts.data_retrievement.interpolation.interpolation_strategy i
 from active_learning_ts.evaluation.evaluation_metric import EvaluationMetric
 from active_learning_ts.instance_properties.instance_objective import InstanceObjective
 from active_learning_ts.instance_properties.instance_cost import InstanceCost
+from active_learning_ts.knowledge_discovery.knowledge_discovery_task import KnowledgeDiscoveryTask
 from active_learning_ts.pools.retrievement_strategy import RetrievementStrategy
+from active_learning_ts.query_selection.query_sampler import QuerySampler
 from active_learning_ts.query_selection.selection_criteria import SelectionCriteria
 from active_learning_ts.query_selection.query_optimizer import QueryOptimizer
 from active_learning_ts.data_pipeline import DataPipeline
@@ -34,7 +36,11 @@ class Blueprint(Protocol):
     surrogate_model: SurrogateModel
     training_strategy: TrainingStrategy
 
+    surrogate_sampler: QuerySampler
     query_optimizer: QueryOptimizer
     selection_criteria: SelectionCriteria
 
     evaluation_metrics: List[EvaluationMetric]
+
+    knowledge_discovery_sampler: QuerySampler
+    knowledge_discovery_task: KnowledgeDiscoveryTask

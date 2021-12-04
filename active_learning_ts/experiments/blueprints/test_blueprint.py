@@ -2,11 +2,12 @@ from active_learning_ts.data_retrievement.interpolation.interpolation_strategies
     FlatMapInterpolation
 from active_learning_ts.evaluation.evaluation_metrics.rounder_counter_evaluator import RoundCounterEvaluator
 from active_learning_ts.pools.retrievement_strategies.exact_retrievement import ExactRetrievement
+from active_learning_ts.query_selection.query_samplers.random_query_sampler import RandomQuerySampler
 from active_learning_ts.query_selection.selection_criterias.greedy_selection import (
     GreedySelection,
 )
-from active_learning_ts.query_selection.query_optimizers.random_query_optimizer import (
-    RandomQueryOptimizer,
+from active_learning_ts.query_selection.query_optimizers.maximum_query_optimizer import (
+    MaximumQueryOptimizer,
 )
 from active_learning_ts.data_retrievement.augmentation.no_augmentation import (
     NoAugmentation,
@@ -39,7 +40,10 @@ instance_cost = ConstantInstanceCost()
 surrogate_model = GaussianSurrogateModel()
 training_strategy = DirectTrainingStrategy()
 
-query_optimizer = RandomQueryOptimizer(num_tries=10)
+surrogate_sampler = RandomQuerySampler()
+query_optimizer = MaximumQueryOptimizer(num_tries=10)
 selection_criteria = GreedySelection()
+
+knowledge_discovery_sampler = RandomQuerySampler()
 
 evaluation_metrics = [RoundCounterEvaluator()]
