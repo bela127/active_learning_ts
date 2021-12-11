@@ -11,5 +11,6 @@ class ExploreSelectionCriteria(SelectionCriteria):
     uncertainty is high
     """
 
-    def score_queries(self, queries: List[tf.Tensor]) -> tf.Tensor:
-        return self.surrogate_model.uncertainty(queries)
+    def score_queries(self, queries: tf.Tensor) -> tf.Tensor:
+        out = self.surrogate_model.uncertainty(queries)
+        return tf.reshape(out, (out.shape[0], 1))

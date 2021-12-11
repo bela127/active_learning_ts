@@ -22,8 +22,8 @@ class GaussianSurrogateModel(SurrogateModel):
             self.training_points = points
             self.training_values = values
         else:
-            tf.concat([self.training_points, points], 0)
-            tf.concat([self.training_values, values], 0)
+            self.training_points = tf.concat([self.training_points, points], 0)
+            self.training_values = tf.concat([self.training_values, values], 0)
 
         self.gpr.fit(self.training_points, self.training_values)
 

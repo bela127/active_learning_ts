@@ -11,11 +11,11 @@ class SelectionCriteria(Protocol):
     the specific task in mind, be able to select the best query of a bunch of different queries
     """
 
-    def score_queries(self, queries: List[tf.Tensor]) -> tf.Tensor:
+    def score_queries(self, queries: tf.Tensor) -> tf.Tensor:
         """
         Scores the given queries on how good they are. The higher the number the better
         :param queries: the points to be scored
-        :return: a tensor of their respective scores
+        :return: a 2D tensor of their respective scores
         """
         pass
 
