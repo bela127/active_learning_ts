@@ -12,6 +12,12 @@ class QueryOptimizer(Protocol):
     queries are then scored by the selection Criteria, and then some of them are returned.
     """
 
+    def __init__(self):
+        self.surrogate_model: SurrogateModel = None
+        self.selection_criteria: SelectionCriteria = None
+        self.query_sampler: QuerySampler = None
+        self.generic_query_optimizer: QueryOptimizer = None
+
     def post_init(self, surrogate_model: SurrogateModel,
                   selection_criteria: SelectionCriteria,
                   query_sampler: QuerySampler
@@ -20,7 +26,9 @@ class QueryOptimizer(Protocol):
         self.selection_criteria = selection_criteria
         self.query_sampler = query_sampler
 
-    # TODO: selectionCriteria should also consider cost
+        if hasattr(self, 'generic_query_optimizer') and self.generic_query_optimizer is not None:
+            self.generic_query_optimizer.post_init(surrogate_model, selection_criteria, query_sampler)
+
     def optimize_query_candidates(
             self, num_queries: int = 1
     ):

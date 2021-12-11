@@ -27,10 +27,10 @@ class GaussianSurrogateModel(SurrogateModel):
 
         self.gpr.fit(self.training_points, self.training_values)
 
-    def uncertainty(self, points: List[tf.Tensor]) -> tf.Tensor:
+    def uncertainty(self, points: tf.Tensor) -> tf.Tensor:
         y_std = self.gpr.predict(points, return_std=True)[1]
-        return tf.convert_to_tensor(y_std)
+        return tf.convert_to_tensor(y_std, dtype=tf.dtypes.float32)
 
     def query(self, points: tf.Tensor) -> tf.Tensor:
         y_mean = self.gpr.predict(points)
-        return tf.constant(y_mean)
+        return tf.convert_to_tensor(y_mean, dtype=tf.dtypes.float32)

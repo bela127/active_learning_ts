@@ -6,4 +6,4 @@ import tensorflow as tf
 
 class NoKnowledgeDiscoveryTask(KnowledgeDiscoveryTask):
     def uncertainty(self, points: tf.Tensor) -> tf.Tensor:
-        return tf.convert_to_tensor([.0] * len(points))
+        return tf.convert_to_tensor([.0] * len(points), dtype=tf.dtypes.float32)

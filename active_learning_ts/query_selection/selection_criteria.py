@@ -1,7 +1,7 @@
 from typing import Protocol, List, Union
 import tensorflow as tf
 
-from active_learning_ts.pool import Pool
+from active_learning_ts.knowledge_discovery.knowledge_discovery_task import KnowledgeDiscoveryTask
 from active_learning_ts.surrogate_models.surrogate_model import SurrogateModel
 
 
@@ -11,6 +11,11 @@ class SelectionCriteria(Protocol):
     the specific task in mind, be able to select the best query of a bunch of different queries
     """
 
+    def __init__(self):
+        self.surrogate_model: SurrogateModel = None
+        self.knowledge_discovery: KnowledgeDiscoveryTask = None
+        self.selection_criteria: List[SelectionCriteria] = None
+
     def score_queries(self, queries: tf.Tensor) -> tf.Tensor:
         """
         Scores the given queries on how good they are. The higher the number the better
@@ -19,6 +24,10 @@ class SelectionCriteria(Protocol):
         """
         pass
 
-    def post_init(self, surrogate_model: SurrogateModel):
+    def post_init(self, surrogate_model: SurrogateModel, knowledge_discovery: KnowledgeDiscoveryTask):
         self.surrogate_model = surrogate_model
+        self.knowledge_discovery = knowledge_discovery
 
+        if hasattr(self, 'selection_criteria') and self.selection_criteria is not None:
+            for x in self.selection_criteria:
+                x.post_init(surrogate_model, knowledge_discovery)

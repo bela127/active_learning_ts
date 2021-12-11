@@ -49,7 +49,8 @@ class Experiment:
         )
 
         experiment_blueprint.training_strategy.post_init(experiment_blueprint.surrogate_model)
-        experiment_blueprint.selection_criteria.post_init(experiment_blueprint.surrogate_model)
+        experiment_blueprint.selection_criteria.post_init(experiment_blueprint.surrogate_model,
+                                                          experiment_blueprint.knowledge_discovery_task)
         experiment_blueprint.query_optimizer.post_init(experiment_blueprint.surrogate_model,
                                                        experiment_blueprint.selection_criteria,
                                                        experiment_blueprint.surrogate_sampler)
