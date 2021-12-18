@@ -12,7 +12,12 @@ class DataSource(Protocol):
     def __init__(self) -> None:
         self.retrievementStrategy = None
 
-    def query(self, actual_queries: List[tf.Tensor]) -> Tuple[List[tf.Tensor], List[tf.Tensor]]:
+    def query(self, actual_queries: tf.Tensor) -> Tuple[tf.Tensor, tf.Tensor]:
+        """
+
+        :param actual_queries: 2D Tensor
+        :return: 2 2D Tensors
+        """
         pass
 
     def possible_queries(self) -> Pool:

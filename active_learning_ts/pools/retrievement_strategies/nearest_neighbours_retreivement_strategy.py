@@ -38,13 +38,14 @@ class NearestNeighboursFindStrategy(RetrievementStrategy):
             ranges.append([(minimum, maximum)])
         self.continuous_pool = ContinuousVectorPool(dim=self.data_source.possible_queries().shape[0], ranges=ranges)
 
-    def _find(self, point: tf.Tensor) -> List[tf.Tensor]:
-        distances, nn = self.kd_tree.query(point, k=self.num_neighbours)
+    def _find(self, point: tf.Tensor) -> tf.Tensor:
+        """
 
-        out = []
-        for i in nn:
-            out.append(self.data_set[i])
-        return out
+        :param point: 1D Tensor (vector)
+        :return: 1D Indices to query
+        """
+        distances, nn = self.kd_tree.query(point, k=self.num_neighbours)
+        return tf.convert_to_tensor(nn, dtype=tf.dtypes.int32)
 
     def get_query_pool(self):
         return self.continuous_pool
