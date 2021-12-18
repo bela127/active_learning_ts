@@ -54,7 +54,7 @@ class Experiment:
         experiment_blueprint.query_optimizer.post_init(experiment_blueprint.surrogate_model,
                                                        experiment_blueprint.selection_criteria,
                                                        experiment_blueprint.surrogate_sampler)
-        experiment_blueprint.surrogate_sampler.post_init(experiment_blueprint.data_source.possible_queries())
+        experiment_blueprint.surrogate_sampler.post_init(experiment_blueprint.retrievement_strategy.get_query_pool())
         experiment_blueprint.knowledge_discovery_sampler.post_init(
             experiment_blueprint.retrievement_strategy.get_query_pool())
 

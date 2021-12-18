@@ -6,6 +6,8 @@ from active_learning_ts.data_retrievement.interpolation.interpolation_strategy i
 
 import tensorflow as tf
 
+from active_learning_ts.pool import Pool
+
 
 class DataRetriever:
     """
@@ -21,7 +23,7 @@ class DataRetriever:
         self.data_source = data_source
         self.augmentation_pipeline = augmentation_pipeline
         self.interpolation_strategy = interpolation_strategy
-        self.query_pool = None
+        self.query_pool: Pool = None
 
     def query(self, query_candidates):
         actual_queries, query_results = self.retrieve(

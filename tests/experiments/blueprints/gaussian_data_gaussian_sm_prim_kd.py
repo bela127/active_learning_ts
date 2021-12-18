@@ -10,7 +10,7 @@ from active_learning_ts.knowledge_discovery.prim.prim_scenario_discovery_knowled
     PrimScenarioDiscoveryKnowledgeDiscoveryTask
 from active_learning_ts.pools.retrievement_strategies.exact_retrievement import ExactRetrievement
 from active_learning_ts.query_selection.query_optimizers.max_entropy_query_optimizer import MaximumEntropyQueryOptimizer
-from active_learning_ts.query_selection.query_samplers.random_query_sampler import RandomQuerySampler
+from active_learning_ts.query_selection.query_samplers.random_query_sampler import RandomContinuousQuerySampler
 from active_learning_ts.query_selection.selection_criterias.composite_selection_criteria import \
     CompositeSelectionCriteria
 from active_learning_ts.query_selection.selection_criterias.explore_selection_criteria import ExploreSelectionCriteria
@@ -36,10 +36,10 @@ surrogate_model = GaussianSurrogateModel()
 training_strategy = DirectTrainingStrategy()
 
 selection_criteria = CompositeSelectionCriteria([KnowledgeUncertaintySelectionCriteria(), ExploreSelectionCriteria()])
-surrogate_sampler = RandomQuerySampler()
+surrogate_sampler = RandomContinuousQuerySampler()
 query_optimizer = MaximumEntropyQueryOptimizer(num_tries=10)
 
-knowledge_discovery_sampler = RandomQuerySampler()
+knowledge_discovery_sampler = RandomContinuousQuerySampler()
 knowledge_discovery_task = PrimScenarioDiscoveryKnowledgeDiscoveryTask(1000)
 
 evaluation_metrics = [AvgRoundTimeEvaluator()]

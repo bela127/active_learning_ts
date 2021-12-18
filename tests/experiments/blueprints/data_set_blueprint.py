@@ -12,7 +12,7 @@ from active_learning_ts.pools.retrievement_strategies.exact_retrievement import 
 from active_learning_ts.pools.retrievement_strategies.nearest_neighbours_retreivement_strategy import \
     NearestNeighboursFindStrategy
 from active_learning_ts.query_selection.query_optimizers.maximum_query_optimizer import MaximumQueryOptimizer
-from active_learning_ts.query_selection.query_samplers.random_query_sampler import RandomQuerySampler
+from active_learning_ts.query_selection.query_samplers.random_query_sampler import RandomContinuousQuerySampler
 from active_learning_ts.query_selection.selection_criterias.explore_selection_criteria import ExploreSelectionCriteria
 from active_learning_ts.surrogate_models.gaussion_surrogate_model import GaussianSurrogateModel
 from active_learning_ts.training.training_strategies.direct_training_strategy import DirectTrainingStrategy
@@ -42,10 +42,10 @@ surrogate_model = GaussianSurrogateModel()
 training_strategy = DirectTrainingStrategy()
 
 selection_criteria = ExploreSelectionCriteria()
-surrogate_sampler = RandomQuerySampler()
+surrogate_sampler = RandomContinuousQuerySampler()
 query_optimizer = MaximumQueryOptimizer(num_tries=10)
 
-knowledge_discovery_sampler = RandomQuerySampler()
+knowledge_discovery_sampler = RandomContinuousQuerySampler()
 knowledge_discovery_task = NoKnowledgeDiscoveryTask()
 
 evaluation_metrics = [AvgRoundTimeEvaluator(), RoundCounterEvaluator()]

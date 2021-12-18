@@ -23,8 +23,11 @@ class DiscreteVectorPool(Pool):
 
             self.ranges.append((minimum, maximum))
 
-    def get_elements(self, element: tf.Tensor) -> tf.Tensor:
-        return self.find_strategy.find(element)
+    def get_elements(self, elements: tf.Tensor) -> tf.Tensor:
+        if elements.shape.rank == 2:
+            return self.find_strategy.find(elements)
+        else:
+            return tf.reshape(elements, (1, elements.shape[0]))
 
     def _get_element_normalized(self, element: tf.Tensor) -> List[tf.Tensor]:
         indices = tf.unstack(element)
@@ -36,10 +39,10 @@ class DiscreteVectorPool(Pool):
 
             query.append((indices[i] * size) + lower)
 
-        query = tf.stack(query)
-        return self.get_elements([query])[0]
+        query = tf.convert_to_tensor([tf.stack(query)])
+        return self.get_elements(query)[0]
 
-    #@tf.function
+    @tf.function
     def _normalize(self, query_candidate):
         indices = tf.unstack(query_candidate)
 
@@ -57,3 +60,9 @@ class DiscreteVectorPool(Pool):
 
     def is_discrete(self) -> bool:
         return True
+
+    def get_elements_with_index(self, indices: tf.Tensor):
+        if indices.dtype == tf.dtypes.int32:
+            return tf.gather(self.queries, indices)
+        else:
+            return indices

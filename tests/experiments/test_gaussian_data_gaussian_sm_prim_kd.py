@@ -10,7 +10,7 @@ def test_gaussian_data_gaussian_sm_prim_kd():
     er = ExperimentRunner([blueprint])
     er.run()
 
-    test = tf.random.uniform(shape=(10,2), minval=-5.0, maxval=5.0, seed=2)
+    test = tf.random.uniform(shape=(10, 2), minval=-5.0, maxval=5.0, seed=2)
 
     for i in blueprint.surrogate_model.uncertainty(test):
         assert i < 1.0

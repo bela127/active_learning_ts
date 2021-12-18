@@ -1,4 +1,4 @@
-from typing import Protocol
+from typing import Protocol, Tuple
 import tensorflow as tf
 
 
@@ -26,7 +26,7 @@ class SurrogateModel(Protocol):
         """
         pass
 
-    def query(self, points: tf.Tensor) -> tf.Tensor:
+    def query(self, points: tf.Tensor) -> Tuple[tf.Tensor, tf.Tensor]:
         """
         Atempts to simulate the data source at the given points
         :param points: 2D

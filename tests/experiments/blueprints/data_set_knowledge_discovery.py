@@ -11,7 +11,7 @@ from active_learning_ts.knowledge_discovery.prim.prim_scenario_discovery_knowled
     PrimScenarioDiscoveryKnowledgeDiscoveryTask
 from active_learning_ts.pools.retrievement_strategies.exact_retrievement import ExactRetrievement
 from active_learning_ts.query_selection.query_optimizers.no_query_optimizer import NoQueryOptimizer
-from active_learning_ts.query_selection.query_samplers.random_query_sampler import RandomQuerySampler
+from active_learning_ts.query_selection.query_samplers.random_query_sampler import RandomContinuousQuerySampler
 from active_learning_ts.query_selection.selection_criterias.no_selection_criteria import NoSelectionCriteria
 from active_learning_ts.surrogate_models.no_surrogate_model import NoSurrogateModel
 from active_learning_ts.training.training_strategies.no_training_strategy import NoTrainingStrategy
@@ -36,10 +36,10 @@ surrogate_model = NoSurrogateModel()
 training_strategy = NoTrainingStrategy()
 
 selection_criteria = NoSelectionCriteria()
-surrogate_sampler = RandomQuerySampler()
+surrogate_sampler = RandomContinuousQuerySampler()
 query_optimizer = NoQueryOptimizer()
 
-knowledge_discovery_sampler = RandomQuerySampler()
+knowledge_discovery_sampler = RandomContinuousQuerySampler()
 knowledge_discovery_task = PrimScenarioDiscoveryKnowledgeDiscoveryTask(1000)
 
 evaluation_metrics = [RoundCounterEvaluator()]

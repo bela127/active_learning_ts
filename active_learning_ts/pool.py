@@ -36,3 +36,6 @@ class Pool(Protocol):
 
     def get_all_elements(self) -> List[tf.Tensor]:
         pass
+
+    def get_elements_with_index(self, indices: tf.Tensor):
+        return indices

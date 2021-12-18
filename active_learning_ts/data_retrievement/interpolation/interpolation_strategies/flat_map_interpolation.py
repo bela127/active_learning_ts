@@ -18,7 +18,7 @@ class FlatMapInterpolation(InterpolationStrategy):
         """
 
         queries_shape = queried_points.shape
-        out_queries = tf.reshape(queried_points, (queries_shape[1] * queries_shape[0], queries_shape[2]))
+        out_queries = tf.reshape(queried_points, (-1, queries_shape[2]))
 
         results_shape = query_results.shape
         out_results = tf.reshape(query_results, (results_shape[1] * results_shape[0], results_shape[2]))

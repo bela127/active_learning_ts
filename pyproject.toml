@@ -14,7 +14,7 @@ scipy = "^1.7.0"
 pytest = "^6.2.5"
 mypy = "^0.910"
 black = "^21.6b0"
-distribution_data_generation = {git = "https://github.com/bela127/distribution_data_generation.git"}
+distribution_data_generation = {git = "https://github.com/bela127/distribution_data_generation.git", branch = "experimental"}
 flake8 = "^4.0.1"
 
 

@@ -19,9 +19,10 @@ class GenericMaximumQueryOptimizer(QueryOptimizer):
         out = []
 
         for i in range(0, num_queries):
-            a = self.query_sampler.sample(self.num_tries)
-            b = self.selection_criteria.score_queries(a)
+            queries = self.query_sampler.sample(self.num_tries)
+            query_values = self.query_sampler.pool.get_elements_with_index(queries)
+            b = self.selection_criteria.score_queries(query_values)
             b = tf.map_fn(self.function, b)
             best = tf.argmax(b)
-            out.append(a[best])
-        return tf.convert_to_tensor(out, dtype=tf.dtypes.float32)
+            out.append(queries[best])
+        return tf.convert_to_tensor(out)

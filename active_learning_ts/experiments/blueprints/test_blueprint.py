@@ -4,7 +4,7 @@ from active_learning_ts.evaluation.evaluation_metrics.rounder_counter_evaluator 
 from active_learning_ts.knowledge_discovery.no_knowledge_discovery_task import NoKnowledgeDiscoveryTask
 from active_learning_ts.pools.retrievement_strategies.exact_retrievement import ExactRetrievement
 from active_learning_ts.query_selection.query_optimizers.no_query_optimizer import NoQueryOptimizer
-from active_learning_ts.query_selection.query_samplers.random_query_sampler import RandomQuerySampler
+from active_learning_ts.query_selection.query_samplers.random_query_sampler import RandomContinuousQuerySampler
 from active_learning_ts.query_selection.selection_criterias.no_selection_criteria import (
     NoSelectionCriteria,
 )
@@ -39,11 +39,11 @@ instance_cost = ConstantInstanceCost()
 surrogate_model = NoSurrogateModel()
 training_strategy = NoTrainingStrategy()
 
-surrogate_sampler = RandomQuerySampler()
+surrogate_sampler = RandomContinuousQuerySampler()
 query_optimizer = NoQueryOptimizer()
 selection_criteria = NoSelectionCriteria()
 
-knowledge_discovery_sampler = RandomQuerySampler()
+knowledge_discovery_sampler = RandomContinuousQuerySampler()
 knowledge_discovery_task = NoKnowledgeDiscoveryTask()
 
 evaluation_metrics = [RoundCounterEvaluator()]

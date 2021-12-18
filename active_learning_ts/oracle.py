@@ -27,16 +27,16 @@ class Oracle:
         self.instance_level_objective: InstanceObjective = instance_level_objective
         self.instance_cost: InstanceCost = instance_cost
 
-    def query(self, query_candidates):
-        if len(query_candidates) == 0:
+    def query(self, query_candidate_indices):
+        if len(query_candidate_indices) == 0:
             return
 
         new_instance = self.data_instance_factory()
         self.blackboard.add_instance(new_instance)
 
-        self.blackboard.last_instance.query_candidates = query_candidates
+        self.blackboard.last_instance.query_candidates = query_candidate_indices
 
-        actual_queries, query_results = self.data_retriever.query(query_candidates)
+        actual_queries, query_results = self.data_retriever.query(query_candidate_indices)
 
         self.blackboard.last_instance.actual_queries = actual_queries
         self.blackboard.last_instance.query_results = query_results
