@@ -12,9 +12,9 @@ def test_get_elements():
     source = DataSetDataSource(in_dim=3, data_values=x, data_points=x)
     retrievement_strategy = NearestNeighboursFindStrategy(1)
     source.post_init(retrievement_strategy)
-    retrievement_strategy.post_init(source)
+    retrievement_strategy.post_init(source.possible_queries())
 
-    find_strategy.post_init(source)
+    find_strategy.post_init(source.possible_queries())
     pool = DiscreteVectorPool(in_dim=3, queries=x, find_streategy=find_strategy)
 
     query = tf.constant([[1.0, 2.0, 2.0]])

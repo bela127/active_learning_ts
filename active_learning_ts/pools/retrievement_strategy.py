@@ -1,17 +1,16 @@
-from typing import List, Protocol
+from typing import List, Protocol, Tuple, Any
 
 import tensorflow as tf
 
-from active_learning_ts.data_retrievement.data_source import DataSource
+from active_learning_ts.pool import Pool
 
 
 class RetrievementStrategy(Protocol):
-    # TODO: for discrete find strategies. it would be a lot more efficient, if they returned the index
     def __init__(self):
-        self.data_source: DataSource = None
+        self.pool: Pool = None
 
-    def post_init(self, data_source: DataSource):
-        self.data_source = data_source
+    def post_init(self, pool: Pool):
+        self.pool = pool
 
     def find(self, points: tf.Tensor) -> tf.Tensor:
         """
@@ -25,4 +24,4 @@ class RetrievementStrategy(Protocol):
             return tf.reshape(points, (1, points.shape[0]))
 
     def get_query_pool(self):
-        return self.data_source.possible_queries()
+        return self.pool
