@@ -1,5 +1,6 @@
-from active_learning_ts.query_selection.query_optimizer import QueryOptimizer
 import tensorflow as tf
+
+from active_learning_ts.query_selection.query_optimizer import QueryOptimizer
 
 
 class GenericMaximumQueryOptimizer(QueryOptimizer):
@@ -9,20 +10,19 @@ class GenericMaximumQueryOptimizer(QueryOptimizer):
 
     def __init__(self,
                  function,
-                 num_tries: int = 1):
+                 num_tries: int = 1,
+                 num_queries: int = 1):
         self.num_tries = num_tries
         self.function = function
+        self.num_queries = num_queries
 
     def optimize_query_candidates(
-            self, num_queries: int = 1
+            self
     ):
-        out = []
+        total_queries = self.num_tries * self.num_queries
+        queries = self.query_sampler.sample(total_queries)
+        query_values = self.query_sampler.pool.get_elements_with_index(queries)
+        b = self.selection_criteria.score_queries(query_values)
+        b = tf.map_fn(self.function, b)
+        return tf.gather(queries, tf.math.top_k(b, self.num_queries).indices)
 
-        for i in range(0, num_queries):
-            queries = self.query_sampler.sample(self.num_tries)
-            query_values = self.query_sampler.pool.get_elements_with_index(queries)
-            b = self.selection_criteria.score_queries(query_values)
-            b = tf.map_fn(self.function, b)
-            best = tf.argmax(b)
-            out.append(queries[best])
-        return tf.convert_to_tensor(out)

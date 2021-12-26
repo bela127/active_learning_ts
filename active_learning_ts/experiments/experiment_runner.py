@@ -18,4 +18,5 @@ class ExperimentRunner:
             try:
                 experiment.run()
             except Exception as e:
-                print(e)
+                # todo: this
+                raise e

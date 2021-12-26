@@ -9,7 +9,7 @@ from active_learning_ts.instance_properties.costs.constant_instance_cost import 
 from active_learning_ts.instance_properties.objectives.constant_instance_objective import ConstantInstanceObjective
 from active_learning_ts.knowledge_discovery.no_knowledge_discovery_task import NoKnowledgeDiscoveryTask
 from active_learning_ts.pools.retrievement_strategies.exact_retrievement import ExactRetrievement
-from active_learning_ts.query_selection.query_optimizers.maximum_query_optimizer import MaximumQueryOptimizer
+from active_learning_ts.query_selection.query_optimizers.fixed_value_optimizer import FixedValueOptimizer
 from active_learning_ts.query_selection.query_samplers.random_query_sampler import RandomContinuousQuerySampler
 from active_learning_ts.query_selection.selection_criterias.explore_selection_criteria import ExploreSelectionCriteria
 from active_learning_ts.surrogate_models.gaussion_surrogate_model import GaussianSurrogateModel
@@ -34,7 +34,7 @@ training_strategy = DirectTrainingStrategy()
 
 selection_criteria = ExploreSelectionCriteria()
 surrogate_sampler = RandomContinuousQuerySampler()
-query_optimizer = MaximumQueryOptimizer(num_tries=10)
+query_optimizer = FixedValueOptimizer()
 
 knowledge_discovery_sampler = RandomContinuousQuerySampler()
 knowledge_discovery_task = NoKnowledgeDiscoveryTask()

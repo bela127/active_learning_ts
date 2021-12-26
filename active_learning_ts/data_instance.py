@@ -1,15 +1,16 @@
 from dataclasses import dataclass
-from typing import Any
+
+import tensorflow as tf
 from typing_extensions import Protocol
 
 
 @dataclass()
 class DataInstance:
-    query_candidates: Any = None
-    actual_queries: Any = None
-    query_results: Any = None
-    quality: Any = None
-    cost: Any = None
+    query_candidates = tf.convert_to_tensor([])
+    actual_queries = tf.convert_to_tensor([])
+    query_results = tf.convert_to_tensor([])
+    quality = tf.convert_to_tensor([])
+    cost = tf.convert_to_tensor([])
 
 
 class DataInstanceFactory(Protocol):

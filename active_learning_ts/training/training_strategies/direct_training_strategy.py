@@ -1,7 +1,3 @@
-from typing import List
-
-import tensorflow as tf
-
 from active_learning_ts.data_blackboard import Blackboard
 from active_learning_ts.training.training_strategy import TrainingStrategy
 
@@ -9,4 +5,5 @@ from active_learning_ts.training.training_strategy import TrainingStrategy
 class DirectTrainingStrategy(TrainingStrategy):
 
     def train(self, blackboard: Blackboard):
-        self.surrogate_model.learn(blackboard.last_instance.actual_queries, blackboard.last_instance.query_results)
+        if not len(blackboard.last_instance.actual_queries) == 0:
+            self.surrogate_model.learn(blackboard.last_instance.actual_queries, blackboard.last_instance.query_results)

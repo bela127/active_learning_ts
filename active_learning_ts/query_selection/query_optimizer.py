@@ -1,5 +1,4 @@
-from typing import Protocol, List, Union
-import tensorflow as tf
+from typing import Protocol
 
 from active_learning_ts.query_selection.query_sampler import QuerySampler
 from active_learning_ts.query_selection.selection_criteria import SelectionCriteria
@@ -29,7 +28,5 @@ class QueryOptimizer(Protocol):
         if hasattr(self, 'generic_query_optimizer') and self.generic_query_optimizer is not None:
             self.generic_query_optimizer.post_init(surrogate_model, selection_criteria, query_sampler)
 
-    def optimize_query_candidates(
-            self, num_queries: int = 1
-    ):
+    def optimize_query_candidates(self):
         pass

@@ -1,8 +1,8 @@
-from active_learning_ts.instance_properties.instance_objective import InstanceObjective
-from active_learning_ts.instance_properties.instance_cost import InstanceCost
-from active_learning_ts.data_retrievement.data_retriever import DataRetriever
-from active_learning_ts.data_instance import DataInstanceFactory
 from active_learning_ts.data_blackboard import Blackboard
+from active_learning_ts.data_instance import DataInstanceFactory
+from active_learning_ts.data_retrievement.data_retriever import DataRetriever
+from active_learning_ts.instance_properties.instance_cost import InstanceCost
+from active_learning_ts.instance_properties.instance_objective import InstanceObjective
 
 
 class Oracle:
@@ -28,13 +28,13 @@ class Oracle:
         self.instance_cost: InstanceCost = instance_cost
 
     def query(self, query_candidate_indices):
-        if len(query_candidate_indices) == 0:
-            return
-
         new_instance = self.data_instance_factory()
         self.blackboard.add_instance(new_instance)
 
         self.blackboard.last_instance.query_candidates = query_candidate_indices
+
+        if len(query_candidate_indices) == 0:
+            return
 
         actual_queries, query_results = self.data_retriever.query(query_candidate_indices)
 
