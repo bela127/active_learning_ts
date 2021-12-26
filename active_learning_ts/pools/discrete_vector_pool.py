@@ -24,10 +24,7 @@ class DiscreteVectorPool(Pool):
             self.ranges.append((minimum, maximum))
 
     def get_elements(self, elements: tf.Tensor) -> tf.Tensor:
-        if elements.shape.rank == 2:
-            return self.find_strategy.find(elements)
-        else:
-            return tf.reshape(elements, (1, elements.shape[0]))
+        return self.find_strategy.find(elements)
 
     def _get_element_normalized(self, element: tf.Tensor) -> List[tf.Tensor]:
         indices = tf.unstack(element)

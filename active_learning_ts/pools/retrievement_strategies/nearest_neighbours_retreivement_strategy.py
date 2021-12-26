@@ -1,4 +1,3 @@
-from typing import List
 
 from active_learning_ts.data_retrievement.data_source import DataSource
 from active_learning_ts.pools.continuous_vector_pool import ContinuousVectorPool
@@ -38,14 +37,13 @@ class NearestNeighboursFindStrategy(RetrievementStrategy):
             ranges.append([(minimum, maximum)])
         self.continuous_pool = ContinuousVectorPool(dim=self.data_source.possible_queries().shape[0], ranges=ranges)
 
-    def _find(self, point: tf.Tensor) -> tf.Tensor:
+    def find(self, points: tf.Tensor) -> tf.Tensor:
         """
 
         :param point: 1D Tensor (vector)
         :return: 1D Indices to query
         """
-        distances, nn = self.kd_tree.query(point, k=self.num_neighbours)
-        return tf.convert_to_tensor(nn, dtype=tf.dtypes.int32)
+        return tf.convert_to_tensor([self.kd_tree.query(point, k=self.num_neighbours)[1] for point in points], dtype=tf.dtypes.int32)
 
     def get_query_pool(self):
         return self.continuous_pool

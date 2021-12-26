@@ -13,17 +13,16 @@ class RetrievementStrategy(Protocol):
     def post_init(self, data_source: DataSource):
         self.data_source = data_source
 
-    def _find(self, point: tf.Tensor) -> tf.Tensor:
-        return point
-
     def find(self, points: tf.Tensor) -> tf.Tensor:
         """
 
         :param points: a 2D tensor
         :return: a 3D tensor
         """
-        # TODO: use map here instead
-        return tf.convert_to_tensor([self._find(x) for x in points])
+        if points.shape.rank == 2:
+            return points
+        else:
+            return tf.reshape(points, (1, points.shape[0]))
 
     def get_query_pool(self):
         return self.data_source.possible_queries()

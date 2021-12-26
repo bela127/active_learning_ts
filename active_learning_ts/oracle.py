@@ -7,7 +7,7 @@ from active_learning_ts.data_blackboard import Blackboard
 
 class Oracle:
     """
-    The Oracle is a wrapper for the Data retrievment process.
+    The Oracle is a wrapper for the Data retrievement process.
 
     Queries passed to the oracle are queried from the Data retriever.
     Cost, Object, the actual points queried, and the results are the then posted on the Blackboard
