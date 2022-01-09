@@ -15,8 +15,8 @@ class Pool(Protocol):
     def get_shape(self):
         return self.shape
 
-    def get_elements_normalized(self, query_candidates) -> List[List[tf.Tensor]]:
-        return [self._get_element_normalized(x) for x in query_candidates]
+    def get_elements_normalized(self, query_candidates) -> tf.Tensor:
+        return tf.convert_to_tensor([self._get_element_normalized(x) for x in query_candidates])
 
     def get_elements(self, query_candidates: tf.Tensor) -> tf.Tensor:
         pass
