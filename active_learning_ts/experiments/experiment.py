@@ -1,14 +1,14 @@
-from active_learning_ts.evaluation.evaluator import Evaluator
-from active_learning_ts.knowledge_discovery.knowledge_discovery import KnowledgeDiscovery
-from active_learning_ts.surrogate_models.no_surrogate_model import NoSurrogateModel
-from active_learning_ts.training.trainer import Trainer
-from active_learning_ts.experiments.blueprint import Blueprint
-from active_learning_ts.data_retrievement.data_retriever import DataRetriever
-from active_learning_ts.data_instance import DataInstance
-from active_learning_ts.query_selection.query_selector import QuerySelector
-from active_learning_ts.oracle import Oracle
 from active_learning_ts.active_learner import ActiveLearner
 from active_learning_ts.data_blackboard import Blackboard
+from active_learning_ts.data_instance import DataInstance
+from active_learning_ts.data_retrievement.data_retriever import DataRetriever
+from active_learning_ts.evaluation.evaluator import Evaluator
+from active_learning_ts.experiments.blueprint import Blueprint
+from active_learning_ts.knowledge_discovery.knowledge_discovery import KnowledgeDiscovery
+from active_learning_ts.oracle import Oracle
+from active_learning_ts.query_selection.query_selector import QuerySelector
+from active_learning_ts.surrogate_models.no_surrogate_model import NoSurrogateModel
+from active_learning_ts.training.trainer import Trainer
 
 
 class Experiment:
@@ -87,7 +87,7 @@ class Experiment:
             knowledge_discovery_task=experiment_blueprint.knowledge_discovery_task,
             surrogate_model=experiment_blueprint.surrogate_model,
             num_queries=experiment_blueprint.num_knowledge_discovery_queries,
-            surrogate_sampler=experiment_blueprint.surrogate_sampler
+            surrogate_sampler=experiment_blueprint.knowledge_discovery_sampler
         )
 
         if isinstance(experiment_blueprint.surrogate_model, NoSurrogateModel):

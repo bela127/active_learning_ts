@@ -1,8 +1,10 @@
-from typing import List, Tuple
+from typing import Tuple
+
+import tensorflow as tf
 
 from active_learning_ts.data_retrievement.data_retriever import DataRetriever
+from active_learning_ts.pool import Pool
 from active_learning_ts.surrogate_models.surrogate_model import SurrogateModel
-import tensorflow as tf
 
 
 class NoSurrogateModel(SurrogateModel):
@@ -17,3 +19,6 @@ class NoSurrogateModel(SurrogateModel):
 
     def post_init(self, data_retriever):
         self.data_retriever = data_retriever
+
+    def get_query_pool(self) -> Pool:
+        return self.data_retriever.get_query_pool()

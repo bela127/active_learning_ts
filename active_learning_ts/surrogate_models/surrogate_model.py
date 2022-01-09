@@ -1,5 +1,8 @@
 from typing import Protocol, Tuple
+
 import tensorflow as tf
+
+from active_learning_ts.pool import Pool
 
 
 class SurrogateModel(Protocol):
@@ -32,4 +35,7 @@ class SurrogateModel(Protocol):
         :param points: 2D
         :return: 2D
         """
+        pass
+
+    def get_query_pool(self) -> Pool:
         pass

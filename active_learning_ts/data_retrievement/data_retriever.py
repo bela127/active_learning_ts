@@ -1,11 +1,10 @@
-from typing import List, Tuple
+from typing import Tuple
+
+import tensorflow as tf
 
 from active_learning_ts.data_pipeline import DataPipeline
 from active_learning_ts.data_retrievement.data_source import DataSource
 from active_learning_ts.data_retrievement.interpolation.interpolation_strategy import InterpolationStrategy
-
-import tensorflow as tf
-
 from active_learning_ts.pool import Pool
 
 
@@ -50,3 +49,6 @@ class DataRetriever:
 
     def possible_queries(self, query_candidates):
         return self.data_source.possible_queries().get_elements(query_candidates)
+
+    def get_query_pool(self) -> Pool:
+        return self.data_source.possible_queries()
