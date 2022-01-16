@@ -35,3 +35,11 @@ class Pool(Protocol):
 
     def get_elements_with_index(self, indices: tf.Tensor):
         return indices
+
+    def get_ranges(self):
+        """
+        Overwrite if the ranges are not stored in a variable called 'ranges'
+
+        :return:
+        """
+        return self.ranges

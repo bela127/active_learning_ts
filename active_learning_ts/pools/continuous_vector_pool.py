@@ -1,8 +1,8 @@
 from typing import List, Tuple
 
-from active_learning_ts.pool import Pool
-
 import tensorflow as tf
+
+from active_learning_ts.pool import Pool
 
 try:
     import operator
@@ -49,20 +49,21 @@ class ContinuousVectorPool(Pool):
 
         """
         self.shape = (dim,)
-        self.ranges = []
+        self.ranges = ranges
+        self.con_ranges = []
         self.sizes = []
         self.start_values = []
 
         for dimension in ranges:
-            self.ranges.append([ContinuousVectorPool.Range(a, b) for a, b in dimension])
+            self.con_ranges.append([ContinuousVectorPool.Range(a, b) for a, b in dimension])
 
         # very fast in place sort
-        [dim.sort(key=key_fun) for dim in self.ranges]
+        [dim.sort(key=key_fun) for dim in self.con_ranges]
 
         self.total_sizes = []
         # sanity check
-        for j in range(len(self.ranges)):
-            dim = self.ranges[j]
+        for j in range(len(self.con_ranges)):
+            dim = self.con_ranges[j]
             self.total_sizes.append(.0)
             for i in range(len(dim) - 1):
                 if dim[i].intersects(dim[i + 1]):
@@ -76,7 +77,7 @@ class ContinuousVectorPool(Pool):
             self.sizes.append([])
             self.start_values.append([])
             for j in range(len(ranges[i])):
-                current_range = self.ranges[i][j]
+                current_range = self.con_ranges[i][j]
                 self.sizes[i].append(float(current_range.size))
                 self.start_values[i].append(float(current_range.lower))
 

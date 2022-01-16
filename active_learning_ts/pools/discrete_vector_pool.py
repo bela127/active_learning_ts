@@ -21,7 +21,7 @@ class DiscreteVectorPool(Pool):
                 minimum = min(minimum, queries[j][i])
                 maximum = max(maximum, queries[j][i])
 
-            self.ranges.append((minimum, maximum))
+            self.ranges.append([(minimum, maximum)])
 
     def get_elements(self, elements: tf.Tensor) -> tf.Tensor:
         return self.find_strategy.find(elements)
@@ -31,7 +31,7 @@ class DiscreteVectorPool(Pool):
 
         query = []
         for i in range(len(indices)):
-            lower, upper = self.ranges[i]
+            lower, upper = self.ranges[i][0]
             size = upper - lower
 
             query.append((indices[i] * size) + lower)
@@ -45,7 +45,7 @@ class DiscreteVectorPool(Pool):
 
         query = []
         for i in range(len(indices)):
-            lower, upper = self.ranges[i]
+            lower, upper = self.ranges[i][0]
             size = tf.cond(lower == upper, lambda: 1.0, lambda: upper - lower)
 
             query.append((indices[i] - lower) / size)

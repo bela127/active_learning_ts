@@ -2,7 +2,9 @@ from typing import Protocol, Tuple
 
 import tensorflow as tf
 
+from active_learning_ts.data_retrievement.data_retriever import DataRetriever
 from active_learning_ts.pool import Pool
+from active_learning_ts.pools.continuous_vector_pool import ContinuousVectorPool
 
 
 class SurrogateModel(Protocol):
@@ -10,6 +12,9 @@ class SurrogateModel(Protocol):
     The goal of a SurrogateModel is to as best as possible, emulate the Data Retrievement process. What constitutes a
     good emulation of the Data Retrievement process may be model/use-case specific
     """
+
+    def post_init(self, data_retriever: DataRetriever):
+        self.query_pool = data_retriever.get_query_pool()
 
     def uncertainty(self, points: tf.Tensor) -> tf.Tensor:
         """
@@ -38,4 +43,8 @@ class SurrogateModel(Protocol):
         pass
 
     def get_query_pool(self) -> Pool:
-        pass
+        if not self.query_pool.is_discrete():
+            return self.query_pool
+        else:
+            self.query_pool = ContinuousVectorPool(self.query_pool.shape[0], ranges=self.query_pool.get_ranges())
+            return self.query_pool

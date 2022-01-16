@@ -7,7 +7,6 @@ from active_learning_ts.experiments.blueprint import Blueprint
 from active_learning_ts.knowledge_discovery.knowledge_discovery import KnowledgeDiscovery
 from active_learning_ts.oracle import Oracle
 from active_learning_ts.query_selection.query_selector import QuerySelector
-from active_learning_ts.surrogate_models.no_surrogate_model import NoSurrogateModel
 from active_learning_ts.training.trainer import Trainer
 
 
@@ -83,15 +82,14 @@ class Experiment:
             blueprint=experiment_blueprint
         )
 
+        experiment_blueprint.surrogate_model.post_init(data_retriever)
+
         knowledge_discovery = KnowledgeDiscovery(
             knowledge_discovery_task=experiment_blueprint.knowledge_discovery_task,
             surrogate_model=experiment_blueprint.surrogate_model,
             num_queries=experiment_blueprint.num_knowledge_discovery_queries,
             surrogate_sampler=experiment_blueprint.knowledge_discovery_sampler
         )
-
-        if isinstance(experiment_blueprint.surrogate_model, NoSurrogateModel):
-            experiment_blueprint.surrogate_model.post_init(data_retriever)
 
         active_learner = ActiveLearner(oracle, query_selector, self.blackboard, trainer, knowledge_discovery, evaluator)
         self.active_learner: ActiveLearner = active_learner
