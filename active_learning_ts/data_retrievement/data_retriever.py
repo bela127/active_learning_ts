@@ -19,6 +19,8 @@ class DataRetriever:
             augmentation_pipeline: DataPipeline,
             interpolation_strategy: InterpolationStrategy
     ) -> None:
+        self.point_shape = data_source.point_shape
+        self.value_shape = data_source.value_shape
         self.data_source = data_source
         self.augmentation_pipeline = augmentation_pipeline
         self.interpolation_strategy = interpolation_strategy

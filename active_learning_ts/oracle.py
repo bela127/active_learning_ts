@@ -21,6 +21,8 @@ class Oracle:
             instance_cost: InstanceCost,
             instance_level_objective: InstanceObjective,
     ) -> None:
+        self.point_shape = data_retriever.point_shape
+        self.value_shape = data_retriever.value_shape
         self.blackboard: Blackboard = blackboard
         self.data_instance_factory: DataInstanceFactory = data_instance_factory
         self.data_retriever: DataRetriever = data_retriever

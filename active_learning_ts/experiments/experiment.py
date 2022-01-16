@@ -39,6 +39,8 @@ class Experiment:
             augmentation_pipeline=experiment_blueprint.augmentation_pipeline,
             interpolation_strategy=experiment_blueprint.interpolation_strategy
         )
+        experiment_blueprint.surrogate_model.post_init(data_retriever)
+
         oracle = Oracle(
             DataInstance,
             self.blackboard,
@@ -81,8 +83,6 @@ class Experiment:
             blackboard=self.blackboard,
             blueprint=experiment_blueprint
         )
-
-        experiment_blueprint.surrogate_model.post_init(data_retriever)
 
         knowledge_discovery = KnowledgeDiscovery(
             knowledge_discovery_task=experiment_blueprint.knowledge_discovery_task,

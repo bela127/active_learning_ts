@@ -1,4 +1,5 @@
-from typing import Protocol, List, Tuple
+from typing import Protocol, Tuple
+
 import tensorflow as tf
 
 from active_learning_ts.pool import Pool
@@ -11,6 +12,8 @@ class DataSource(Protocol):
 
     def __init__(self) -> None:
         self.retrievementStrategy = None
+        self.point_shape = None
+        self.value_shape = None
 
     def query(self, actual_queries: tf.Tensor) -> Tuple[tf.Tensor, tf.Tensor]:
         """

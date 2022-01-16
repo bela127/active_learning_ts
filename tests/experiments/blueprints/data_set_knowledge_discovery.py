@@ -16,14 +16,14 @@ from active_learning_ts.query_selection.selection_criterias.no_selection_criteri
 from active_learning_ts.surrogate_models.no_surrogate_model import NoSurrogateModel
 from active_learning_ts.training.training_strategies.no_training_strategy import NoTrainingStrategy
 
-x = tf.unstack(tf.random.uniform(shape=(1000, 2)) * 100)
+x = tf.random.uniform(shape=(1000, 2)) * 100
 y = [tf.constant([0.9]) if 50 <= a[0] <= 60 and 10 <= a[1] <= 20 else tf.constant([0.0]) for a in x]
 
 repeat = 2
 learning_steps = 1
 num_knowledge_discovery_queries = 100
 
-data_source = DataSetDataSource(in_dim=2, data_points=x, data_values=y)
+data_source = DataSetDataSource(data_points=x, data_values=tf.convert_to_tensor(y))
 retrievement_strategy = ExactRetrievement()
 interpolation_strategy = FlatMapInterpolation()
 
