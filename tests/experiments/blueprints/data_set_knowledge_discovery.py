@@ -40,6 +40,6 @@ surrogate_sampler = RandomContinuousQuerySampler()
 query_optimizer = NoQueryOptimizer()
 
 knowledge_discovery_sampler = RandomContinuousQuerySampler()
-knowledge_discovery_task = PrimScenarioDiscoveryKnowledgeDiscoveryTask(1000)
+knowledge_discovery_task = PrimScenarioDiscoveryKnowledgeDiscoveryTask()
 
 evaluation_metrics = [RoundCounterEvaluator()]

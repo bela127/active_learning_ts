@@ -9,14 +9,14 @@ class Pool(Protocol):
     def __init__(self):
         self.shape = None
 
-    def _get_element_normalized(self, element: tf.Tensor) -> List[tf.Tensor]:
+    def get_element_normalized(self, element: tf.Tensor) -> tf.Tensor:
         pass
 
     def get_shape(self):
         return self.shape
 
     def get_elements_normalized(self, query_candidates) -> tf.Tensor:
-        return tf.convert_to_tensor([self._get_element_normalized(x) for x in query_candidates])
+        return tf.convert_to_tensor([self.get_element_normalized(x) for x in query_candidates])
 
     def get_elements(self, query_candidates: tf.Tensor) -> tf.Tensor:
         pass
@@ -43,3 +43,6 @@ class Pool(Protocol):
         :return:
         """
         return self.ranges
+
+    def is_valid(self, point) -> bool:
+        return True

@@ -11,10 +11,7 @@ class KnowledgeDiscovery:
         self.sampler = surrogate_sampler
         self.num_queries = num_queries
         self.sampler.post_init(self.surrogate_model.get_query_pool())
+        self.knowledge_discovery_task.post_init(surrogate_model, self.sampler)
 
     def discover(self):
-        if self.num_queries == 0:
-            return
-        x = self.sampler.sample(num_queries=self.num_queries)
-        x, y = self.surrogate_model.query(x)
-        self.knowledge_discovery_task.learn(x, y)
+        self.knowledge_discovery_task.learn(self.num_queries)

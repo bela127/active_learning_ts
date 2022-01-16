@@ -1,14 +1,9 @@
-from typing import Tuple, Any
+import tensorflow as tf
+from scipy.spatial import KDTree
 
-from mypy.api import List
-
-from active_learning_ts.data_retrievement.data_source import DataSource
 from active_learning_ts.pool import Pool
 from active_learning_ts.pools.continuous_vector_pool import ContinuousVectorPool
 from active_learning_ts.pools.retrievement_strategy import RetrievementStrategy
-
-import tensorflow as tf
-from scipy.spatial import KDTree
 
 
 class NearestNeighboursFindStrategy(RetrievementStrategy):

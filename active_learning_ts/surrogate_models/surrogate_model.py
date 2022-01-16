@@ -15,6 +15,8 @@ class SurrogateModel(Protocol):
 
     def post_init(self, data_retriever: DataRetriever):
         self.query_pool = data_retriever.get_query_pool()
+        self.point_shape = data_retriever.point_shape
+        self.value_shape = data_retriever.value_shape
 
     def uncertainty(self, points: tf.Tensor) -> tf.Tensor:
         """

@@ -26,7 +26,7 @@ class DiscreteVectorPool(Pool):
     def get_elements(self, elements: tf.Tensor) -> tf.Tensor:
         return self.find_strategy.find(elements)
 
-    def _get_element_normalized(self, element: tf.Tensor) -> List[tf.Tensor]:
+    def get_element_normalized(self, element: tf.Tensor) -> List[tf.Tensor]:
         indices = tf.unstack(element)
 
         query = []

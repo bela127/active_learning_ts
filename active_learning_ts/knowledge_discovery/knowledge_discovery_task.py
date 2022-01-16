@@ -1,5 +1,9 @@
-from typing import Protocol, List
+from typing import Protocol
+
 import tensorflow as tf
+
+from active_learning_ts.query_selection.query_sampler import QuerySampler
+from active_learning_ts.surrogate_models.surrogate_model import SurrogateModel
 
 
 class KnowledgeDiscoveryTask(Protocol):
@@ -7,6 +11,10 @@ class KnowledgeDiscoveryTask(Protocol):
     The goal of a KnowledgeDiscoveryTask is to as best as possible, is to learn something about the given data.
     It uses the Surrogate Model to emulate the data, and learns from the data provided by the SurrogateModel.
     """
+
+    def post_init(self, surrogate_model: SurrogateModel, sampler: QuerySampler):
+        self.surrogate_model = surrogate_model
+        self.sampler = sampler
 
     def uncertainty(self, points: tf.Tensor) -> tf.Tensor:
         """
@@ -16,7 +24,7 @@ class KnowledgeDiscoveryTask(Protocol):
         """
         pass
 
-    def learn(self, data_set: tf.Tensor, data_values: tf.Tensor):
+    def learn(self, num_queries):
         """
         When this method is called, the knowledge discovery task will use the Surrogate Model to generate data and learn
         from it.

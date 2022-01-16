@@ -18,6 +18,7 @@ class NoSurrogateModel(SurrogateModel):
         return self.data_retriever.retrieve(points)
 
     def post_init(self, data_retriever):
+        super(NoSurrogateModel, self).post_init(data_retriever)
         self.data_retriever = data_retriever
 
     def get_query_pool(self) -> Pool:

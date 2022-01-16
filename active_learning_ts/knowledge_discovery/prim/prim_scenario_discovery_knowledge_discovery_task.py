@@ -1,16 +1,12 @@
-from typing import List
-
 import numpy as np
-
-from active_learning_ts.knowledge_discovery.knowledge_discovery_task import KnowledgeDiscoveryTask
 import tensorflow as tf
 
+from active_learning_ts.knowledge_discovery.knowledge_discovery_task import KnowledgeDiscoveryTask
 from active_learning_ts.knowledge_discovery.prim.prim import PRIM
 
 
 class PrimScenarioDiscoveryKnowledgeDiscoveryTask(KnowledgeDiscoveryTask):
-    def __init__(self, num_queries: int = 1000, y_max: float = 1.0, y_min: float = 0.):
-        self.num_queries = num_queries
+    def __init__(self, y_max: float = 1.0, y_min: float = 0.):
         self.y_max = tf.convert_to_tensor(y_max)
         self.y_min = tf.convert_to_tensor(y_min)
         self.range = self.y_max - self.y_min
@@ -18,7 +14,11 @@ class PrimScenarioDiscoveryKnowledgeDiscoveryTask(KnowledgeDiscoveryTask):
         self.boxes = []
         self.num_boxes = 0.
 
-    def learn(self, data_set: tf.Tensor, data_values: tf.Tensor):
+    def learn(self, num_queries):
+        if num_queries == 0:
+            return
+        x = self.sampler.sample(num_queries=num_queries)
+        data_set, data_values = self.surrogate_model.query(x)
         x = data_set
         y = (data_values - self.y_min) / self.range
 

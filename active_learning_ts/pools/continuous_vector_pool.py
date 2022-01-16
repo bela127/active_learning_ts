@@ -1,5 +1,6 @@
 from typing import List, Tuple
 
+import numpy as np
 import tensorflow as tf
 
 from active_learning_ts.pool import Pool
@@ -82,7 +83,7 @@ class ContinuousVectorPool(Pool):
                 self.start_values[i].append(float(current_range.lower))
 
     @tf.function
-    def _get_element_normalized(self, element: tf.Tensor) -> tf.Tensor:
+    def get_element_normalized(self, element: tf.Tensor) -> tf.Tensor:
         """
         The ranges are normalised by removing any gaps between ranges and then mapping the values onto the interval
         [0,1).
@@ -178,3 +179,26 @@ class ContinuousVectorPool(Pool):
 
             out.append(next_out)
         return tf.stack(out)
+
+    # tf.function
+    def is_valid(self, point) -> bool:
+        start_value_list_iterator = iter(self.start_values)
+        size_list_iterator = iter(self.sizes)
+        indices = tf.unstack(point)
+        size_tensor = []
+        start_tensor = []
+
+        for index in indices:
+            size_iterator = reversed(next(size_list_iterator))
+            start_value_list = reversed(next(start_value_list_iterator))
+
+            i, st, si = tf.while_loop(lambda i, st, si: tf.reduce_all(tf.less_equal(i, st)),
+                                      lambda i, st, si: (
+                                          i, next(start_value_list, i - 1.0), next(size_iterator, -np.Inf)),
+                                      [index, next(start_value_list), next(size_iterator)])
+            start_tensor.append(st)
+            size_tensor.append(si)
+        start_tensor = tf.stack(start_tensor)
+        size_tensor = tf.stack(size_tensor)
+
+        return tf.reduce_all(point < (start_tensor + size_tensor))
