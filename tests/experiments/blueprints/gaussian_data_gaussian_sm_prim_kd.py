@@ -21,7 +21,6 @@ from active_learning_ts.training.training_strategies.direct_training_strategy im
 
 repeat = 2
 learning_steps = 10
-num_knowledge_discovery_queries = 100
 
 data_source = MultiGausianDataSource(in_dim=2, out_dim=1, min_x=-5, max_x=5)
 retrievement_strategy = ExactRetrievement()
@@ -39,6 +38,7 @@ selection_criteria = CompositeSelectionCriteria([KnowledgeUncertaintySelectionCr
 surrogate_sampler = RandomContinuousQuerySampler()
 query_optimizer = MaximumEntropyQueryOptimizer(num_tries=10)
 
+num_knowledge_discovery_queries = 100
 knowledge_discovery_sampler = RandomContinuousQuerySampler()
 knowledge_discovery_task = PrimScenarioDiscoveryKnowledgeDiscoveryTask()
 
