@@ -44,3 +44,15 @@ class EvaluationMetric(Protocol):
 
     def signal_query_start(self):
         pass
+
+    def signal_evaluation_start(self):
+        pass
+
+    def signal_evaluation_stop(self):
+        pass
+
+    def signal_knowledge_discovery_start(self):
+        pass
+
+    def signal_knowledge_discovery_stop(self):
+        pass

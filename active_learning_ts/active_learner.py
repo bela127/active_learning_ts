@@ -1,9 +1,9 @@
+from active_learning_ts.data_blackboard import Blackboard
 from active_learning_ts.evaluation.evaluator import Evaluator
 from active_learning_ts.knowledge_discovery.knowledge_discovery import KnowledgeDiscovery
-from active_learning_ts.training.trainer import Trainer
 from active_learning_ts.oracle import Oracle
 from active_learning_ts.query_selection.query_selector import QuerySelector
-from active_learning_ts.data_blackboard import Blackboard
+from active_learning_ts.training.trainer import Trainer
 
 
 class ActiveLearner:
@@ -40,8 +40,12 @@ class ActiveLearner:
         self.trainer.train()
         self.evaluator.signal_learn_stop()
 
+        self.evaluator.signal_knowledge_discovery_start()
         self.knowledge_discovery.discover()
+        self.evaluator.signal_knowledge_discovery_stop()
 
         self.evaluator.signal_round_stop()
 
+        self.evaluator.signal_evaluation_start()
         self.evaluator.evaluate()
+        self.evaluator.signal_evaluation_stop()

@@ -3,16 +3,28 @@ import tensorflow as tf
 
 from active_learning_ts.knowledge_discovery.knowledge_discovery_task import KnowledgeDiscoveryTask
 from active_learning_ts.knowledge_discovery.prim.prim import PRIM
+from active_learning_ts.query_selection.query_sampler import QuerySampler
+from active_learning_ts.surrogate_models.surrogate_model import SurrogateModel
 
 
 class PrimScenarioDiscoveryKnowledgeDiscoveryTask(KnowledgeDiscoveryTask):
     def __init__(self, y_max: float = 1.0, y_min: float = 0.):
-        self.y_max = tf.convert_to_tensor(y_max)
-        self.y_min = tf.convert_to_tensor(y_min)
+        if y_max <= y_min:
+            raise ValueError('The minimum value cannot be greater or equal to the maximum value.')
+        y_max = float(y_max)
+        y_min = float(y_min)
+        self.y_max = tf.convert_to_tensor(y_max, dtype=tf.dtypes.float32)
+        self.y_min = tf.convert_to_tensor(y_min, dtype=tf.dtypes.float32)
         self.range = self.y_max - self.y_min
         self.prim = PRIM()
         self.boxes = []
         self.num_boxes = 0.
+
+    def post_init(self, surrogate_model: SurrogateModel, sampler: QuerySampler):
+        super(PrimScenarioDiscoveryKnowledgeDiscoveryTask, self).post_init(surrogate_model, sampler)
+        if not (surrogate_model.point_shape == (2,) and surrogate_model.value_shape == (1,)):
+            raise ValueError('PrimScenarioDiscoveryKnowledgeDiscoveryTask requires a vector Surrogate input dimension '
+                             '2 and output dimension 1')
 
     def learn(self, num_queries):
         if num_queries == 0:
@@ -23,12 +35,13 @@ class PrimScenarioDiscoveryKnowledgeDiscoveryTask(KnowledgeDiscoveryTask):
         y = (data_values - self.y_min) / self.range
 
         self.prim.fit(x, y)
-
         self.boxes.append((tf.convert_to_tensor(self.prim.box_[0], dtype=np.float32),
                            tf.convert_to_tensor(self.prim.box_[1], dtype=np.float32)))
         self.num_boxes += 1.
 
     def _uncertainty(self, point: tf.Tensor) -> float:
+        if len(self.boxes) == 0:
+            return tf.convert_to_tensor(.0, dtype=tf.dtypes.float32)
         in_boxes = 0.
         for a, b in self.boxes:
             in_boxes += tf.case([(tf.reduce_any(tf.math.less(point, a)), lambda: 0.0),

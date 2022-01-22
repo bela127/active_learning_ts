@@ -28,7 +28,7 @@ class MaximaKnowledgeDiscoveryTask(KnowledgeDiscoveryTask):
 
     def learn(self, num_queries):
         return tf.convert_to_tensor(
-            optimize.fmin(lambda x: self.f(x), tf.fill(self.surrogate_model.point_shape, .5))[0])
+            optimize.fmin(lambda x: self.f(x), tf.fill(self.surrogate_model.point_shape, .5), maxfun=num_queries)[0])
 
     def uncertainty(self, points: tf.Tensor) -> tf.Tensor:
         return tf.fill(points[0].shape, .0)

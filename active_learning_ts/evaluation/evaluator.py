@@ -41,6 +41,22 @@ class Evaluator:
         for em in self.evaluation_metrics:
             em.signal_query_start()
 
+    def signal_evaluation_start(self):
+        for em in self.evaluation_metrics:
+            em.signal_evaluation_start()
+
+    def signal_evaluation_stop(self):
+        for em in self.evaluation_metrics:
+            em.signal_evaluation_stop()
+
+    def signal_knowledge_discovery_start(self):
+        for em in self.evaluation_metrics:
+            em.signal_knowledge_discovery_start()
+
+    def signal_knowledge_discovery_stop(self):
+        for em in self.evaluation_metrics:
+            em.signal_knowledge_discovery_stop()
+
     def evaluate(self) -> None:
         """
         Evaluates all evaluation metrics
