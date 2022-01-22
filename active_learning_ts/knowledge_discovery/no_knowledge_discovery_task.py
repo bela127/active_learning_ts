@@ -1,7 +1,6 @@
-from typing import List
+import tensorflow as tf
 
 from active_learning_ts.knowledge_discovery.knowledge_discovery_task import KnowledgeDiscoveryTask
-import tensorflow as tf
 
 
 class NoKnowledgeDiscoveryTask(KnowledgeDiscoveryTask):

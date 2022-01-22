@@ -1,3 +1,5 @@
+import traceback
+
 from active_learning_ts.experiments.experiment import Experiment
 
 
@@ -18,5 +20,5 @@ class ExperimentRunner:
             try:
                 experiment.run()
             except Exception as e:
-                # todo: this
-                raise e
+                print(traceback.format_exc())
+                print(e)

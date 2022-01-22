@@ -7,7 +7,6 @@ from active_learning_ts.pools.retrievement_strategy import RetrievementStrategy
 
 
 class DiscreteVectorPool(Pool):
-    # TODO: implement a data Loader
     def __init__(self, in_dim: int, queries: [tf.Tensor], find_streategy: RetrievementStrategy):
         self.queries = queries
         self.shape = (in_dim,)
@@ -26,7 +25,7 @@ class DiscreteVectorPool(Pool):
     def get_elements(self, elements: tf.Tensor) -> tf.Tensor:
         return self.find_strategy.find(elements)
 
-    def get_element_normalized(self, element: tf.Tensor) -> List[tf.Tensor]:
+    def get_element_normalized(self, element: tf.Tensor) -> tf.Tensor:
         indices = tf.unstack(element)
 
         query = []

@@ -41,14 +41,6 @@ class Experiment:
         )
         experiment_blueprint.surrogate_model.post_init(data_retriever)
 
-        oracle = Oracle(
-            DataInstance,
-            self.blackboard,
-            data_retriever,
-            experiment_blueprint.instance_cost,
-            experiment_blueprint.instance_level_objective,
-        )
-
         experiment_blueprint.training_strategy.post_init(experiment_blueprint.surrogate_model)
         experiment_blueprint.selection_criteria.post_init(experiment_blueprint.surrogate_model,
                                                           experiment_blueprint.knowledge_discovery_task)
@@ -59,6 +51,15 @@ class Experiment:
         experiment_blueprint.knowledge_discovery_sampler.post_init(
             experiment_blueprint.retrievement_strategy.get_query_pool())
 
+        oracle = Oracle(
+            DataInstance,
+            self.blackboard,
+            data_retriever,
+            experiment_blueprint.instance_cost,
+            experiment_blueprint.instance_level_objective,
+        )
+
+        # TODO: what is the purpose of this, cos its definitely not right like this
         sg_oracle = Oracle(
             DataInstance,
             self.blackboard,

@@ -10,8 +10,6 @@ class Evaluator:
     Holds a list of the evaluation metrics, calls them to evaluate after every round
     """
 
-    # TODO: add some sort of signal method for time sensitive metrics. This will tell them when the model is learning,
-    #   and when evaluations are taking place
     def __init__(self, evaluation_metrics: List[EvaluationMetric], blackboard: Blackboard, blueprint: Blueprint):
         self.evaluation_metrics = evaluation_metrics
         for em in evaluation_metrics:

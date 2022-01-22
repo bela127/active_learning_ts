@@ -1,4 +1,4 @@
-from typing import List, Protocol, Tuple
+from typing import Protocol, Tuple
 
 import tensorflow as tf
 
