@@ -68,4 +68,7 @@ class Evaluator:
         returns a list of the evaluations of all evaluation metrics
         :return: list of the evaluations of all evaluation metrics
         """
-        return [x.get_evaluation() for x in self.evaluation_metrics]
+        out = []
+        f = lambda x: '[' + ', '.join([str(a) for a in x]) + ']' if isinstance(x, list) else str(x)
+        [out.append('"' + type(x).__name__ + '" : ' + f(x.get_evaluation())) for x in self.evaluation_metrics]
+        return '{\n' + ',\n'.join(out) + '\n}\n'

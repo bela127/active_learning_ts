@@ -22,8 +22,8 @@ class EvaluationMetric(Protocol):
 
     def get_evaluation(self):
         """
-        Returns all evaluations as a list, or number when using aggregate metrics
-        :return: all evaluations as a number or list
+        Returns all evaluations as a dictionary, or object when using aggregate metrics
+        :return: all evaluations as an object or dictionary
         """
         pass
 
