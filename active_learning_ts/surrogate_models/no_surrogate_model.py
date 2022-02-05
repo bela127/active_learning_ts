@@ -15,7 +15,7 @@ class NoSurrogateModel(SurrogateModel):
         return tf.convert_to_tensor([.0] * len(points))
 
     def query(self, points: tf.Tensor) -> Tuple[tf.Tensor, tf.Tensor]:
-        return self.data_retriever.retrieve(points)
+        return self.data_retriever.query(points)
 
     def post_init(self, data_retriever):
         super(NoSurrogateModel, self).post_init(data_retriever)

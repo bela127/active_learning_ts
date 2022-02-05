@@ -1,11 +1,16 @@
+from typing import Tuple
+
+import tensorflow as tf
+
 from active_learning_ts.data_blackboard import Blackboard
 from active_learning_ts.data_instance import DataInstanceFactory
-from active_learning_ts.data_retrievement.data_retriever import DataRetriever
 from active_learning_ts.instance_properties.instance_cost import InstanceCost
 from active_learning_ts.instance_properties.instance_objective import InstanceObjective
+from active_learning_ts.pool import Pool
+from active_learning_ts.queryable import Queryable
 
 
-class Oracle:
+class Oracle(Queryable):
     """
     The Oracle is a wrapper for the Data retrievement process.
 
@@ -17,7 +22,7 @@ class Oracle:
             self,
             data_instance_factory: DataInstanceFactory,
             blackboard: Blackboard,
-            data_retriever: DataRetriever,
+            data_retriever: Queryable,
             instance_cost: InstanceCost,
             instance_level_objective: InstanceObjective,
     ) -> None:
@@ -25,18 +30,20 @@ class Oracle:
         self.value_shape = data_retriever.value_shape
         self.blackboard: Blackboard = blackboard
         self.data_instance_factory: DataInstanceFactory = data_instance_factory
-        self.data_retriever: DataRetriever = data_retriever
+        self.data_retriever: Queryable = data_retriever
         self.instance_level_objective: InstanceObjective = instance_level_objective
         self.instance_cost: InstanceCost = instance_cost
+        self.point_shape = data_retriever.point_shape
+        self.value_shape = data_retriever.value_shape
 
-    def query(self, query_candidate_indices):
+    def query(self, query_candidate_indices) -> Tuple[tf.Tensor, tf.Tensor]:
         new_instance = self.data_instance_factory()
         self.blackboard.add_instance(new_instance)
 
         self.blackboard.last_instance.query_candidates = query_candidate_indices
 
         if len(query_candidate_indices) == 0:
-            return
+            return query_candidate_indices, query_candidate_indices
 
         actual_queries, query_results = self.data_retriever.query(query_candidate_indices)
 
@@ -48,3 +55,8 @@ class Oracle:
 
         cost = self.instance_cost.apply(actual_queries)
         self.blackboard.last_instance.cost = cost
+
+        return actual_queries, query_results
+
+    def get_query_pool(self) -> Pool:
+        return self.data_retriever.get_query_pool()

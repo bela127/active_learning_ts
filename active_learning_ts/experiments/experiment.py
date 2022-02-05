@@ -24,6 +24,7 @@ class Experiment:
 
     def __init__(self, experiment_blueprint: Blueprint) -> None:
         self.blackboard: Blackboard = Blackboard()
+        self.surrogate_blackboard: Blackboard = Blackboard()
         self.experiment_blueprint = experiment_blueprint
         self.setup(self.experiment_blueprint)
 
@@ -62,8 +63,8 @@ class Experiment:
         # TODO: what is the purpose of this, cos its definitely not right like this
         sg_oracle = Oracle(
             DataInstance,
-            self.blackboard,
-            data_retriever,
+            self.surrogate_blackboard,
+            experiment_blueprint.surrogate_model,
             experiment_blueprint.instance_cost,
             experiment_blueprint.instance_level_objective,
         )
@@ -74,6 +75,7 @@ class Experiment:
             sg_oracle
         )
 
+        # TODO also need surrogate blackboard?
         trainer = Trainer(
             self.blackboard,
             experiment_blueprint.training_strategy
@@ -87,7 +89,7 @@ class Experiment:
 
         knowledge_discovery = KnowledgeDiscovery(
             knowledge_discovery_task=experiment_blueprint.knowledge_discovery_task,
-            surrogate_model=experiment_blueprint.surrogate_model,
+            surrogate_model=sg_oracle,
             num_queries=experiment_blueprint.num_knowledge_discovery_queries,
             surrogate_sampler=experiment_blueprint.knowledge_discovery_sampler
         )

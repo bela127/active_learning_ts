@@ -3,7 +3,7 @@ from typing import Protocol
 import tensorflow as tf
 
 from active_learning_ts.query_selection.query_sampler import QuerySampler
-from active_learning_ts.surrogate_models.surrogate_model import SurrogateModel
+from active_learning_ts.queryable import Queryable
 
 
 class KnowledgeDiscoveryTask(Protocol):
@@ -12,7 +12,7 @@ class KnowledgeDiscoveryTask(Protocol):
     It uses the Surrogate Model to emulate the data, and learns from the data provided by the SurrogateModel.
     """
 
-    def post_init(self, surrogate_model: SurrogateModel, sampler: QuerySampler):
+    def post_init(self, surrogate_model: Queryable, sampler: QuerySampler):
         self.surrogate_model = surrogate_model
         self.sampler = sampler
 

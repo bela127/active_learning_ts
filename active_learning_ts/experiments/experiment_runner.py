@@ -35,8 +35,9 @@ class ExperimentRunner:
 
     def log(self, experiment, index: int = 0):
         # TODO: add the other stuff
-        ex = '{\n' + '"data_blackboard" : ' \
+        ex = '{\n"data_blackboard" : ' \
              + experiment.active_learner.blackboard.get_blackboard() \
+             + ',\n"surrogate_blackboard" : ' + experiment.surrogate_blackboard.get_blackboard() \
              + ',\n"evaluations" : ' + experiment.active_learner.evaluator.get_evaluations().__str__() \
              + '}\n'
         p = '"' + experiment.experiment_blueprint.__name__ + str(index) + '" : ' + ex

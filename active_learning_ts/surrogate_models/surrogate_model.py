@@ -5,9 +5,10 @@ import tensorflow as tf
 from active_learning_ts.data_retrievement.data_retriever import DataRetriever
 from active_learning_ts.pool import Pool
 from active_learning_ts.pools.continuous_vector_pool import ContinuousVectorPool
+from active_learning_ts.queryable import Queryable
 
 
-class SurrogateModel(Protocol):
+class SurrogateModel(Queryable, Protocol):
     """
     The goal of a SurrogateModel is to as best as possible, emulate the Data Retrievement process. What constitutes a
     good emulation of the Data Retrievement process may be model/use-case specific

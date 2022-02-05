@@ -4,7 +4,7 @@ import tensorflow as tf
 from active_learning_ts.knowledge_discovery.knowledge_discovery_task import KnowledgeDiscoveryTask
 from active_learning_ts.knowledge_discovery.prim.prim import PRIM
 from active_learning_ts.query_selection.query_sampler import QuerySampler
-from active_learning_ts.surrogate_models.surrogate_model import SurrogateModel
+from active_learning_ts.queryable import Queryable
 
 
 class PrimScenarioDiscoveryKnowledgeDiscoveryTask(KnowledgeDiscoveryTask):
@@ -20,7 +20,7 @@ class PrimScenarioDiscoveryKnowledgeDiscoveryTask(KnowledgeDiscoveryTask):
         self.boxes = []
         self.num_boxes = 0.
 
-    def post_init(self, surrogate_model: SurrogateModel, sampler: QuerySampler):
+    def post_init(self, surrogate_model: Queryable, sampler: QuerySampler):
         super(PrimScenarioDiscoveryKnowledgeDiscoveryTask, self).post_init(surrogate_model, sampler)
         if not (surrogate_model.point_shape == (2,) and surrogate_model.value_shape == (1,)):
             raise ValueError('PrimScenarioDiscoveryKnowledgeDiscoveryTask requires a vector Surrogate input dimension '

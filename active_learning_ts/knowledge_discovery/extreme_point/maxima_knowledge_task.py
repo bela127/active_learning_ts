@@ -4,11 +4,11 @@ from scipy import optimize
 
 from active_learning_ts.knowledge_discovery.knowledge_discovery_task import KnowledgeDiscoveryTask
 from active_learning_ts.query_selection.query_sampler import QuerySampler
-from active_learning_ts.surrogate_models.surrogate_model import SurrogateModel
+from active_learning_ts.queryable import Queryable
 
 
 class MaximaKnowledgeDiscoveryTask(KnowledgeDiscoveryTask):
-    def post_init(self, surrogate_model: SurrogateModel, sampler: QuerySampler):
+    def post_init(self, surrogate_model: Queryable, sampler: QuerySampler):
         super(MaximaKnowledgeDiscoveryTask, self).post_init(surrogate_model, sampler)
         if not (len(surrogate_model.point_shape) == 1 and len(surrogate_model.value_shape) == 1 and
                 surrogate_model.value_shape[0] == 1):
