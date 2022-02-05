@@ -5,6 +5,7 @@ from active_learning_ts.data_retrievement.interpolation.interpolation_strategies
     FlatMapInterpolation
 from active_learning_ts.evaluation.evaluation_metrics.avg_round_time_evaluator import AvgRoundTimeEvaluator
 from active_learning_ts.evaluation.evaluation_metrics.rounder_counter_evaluator import RoundCounterEvaluator
+from active_learning_ts.experiments.blueprint import Blueprint
 from active_learning_ts.instance_properties.costs.constant_instance_cost import ConstantInstanceCost
 from active_learning_ts.instance_properties.objectives.constant_instance_objective import ConstantInstanceObjective
 from active_learning_ts.knowledge_discovery.no_knowledge_discovery_task import NoKnowledgeDiscoveryTask
@@ -15,28 +16,32 @@ from active_learning_ts.query_selection.selection_criterias.explore_selection_cr
 from active_learning_ts.surrogate_models.gaussion_surrogate_model import GaussianSurrogateModel
 from active_learning_ts.training.training_strategies.direct_training_strategy import DirectTrainingStrategy
 
-repeat = 2
-learning_steps = 20
-num_knowledge_discovery_queries = 0
 
-# TODO, not having 0 between min and max causes a logic error. Investigate
-data_source = MultiGausianDataSource(in_dim=3, out_dim=2, min_x=-5, max_x=5)
-retrievement_strategy = ExactRetrievement()
-interpolation_strategy = FlatMapInterpolation()
+class GaussianBlueprint(Blueprint):
+    repeat = 1
 
-augmentation_pipeline = NoAugmentation()
+    def __init__(self):
+        self.learning_steps = 20
+        self.num_knowledge_discovery_queries = 0
 
-instance_level_objective = ConstantInstanceObjective()
-instance_cost = ConstantInstanceCost()
+        # TODO, not having 0 between min and max causes a logic error. Investigate
+        self.data_source = MultiGausianDataSource(in_dim=3, out_dim=2, min_x=-5, max_x=5)
+        self.retrievement_strategy = ExactRetrievement()
+        self.interpolation_strategy = FlatMapInterpolation()
 
-surrogate_model = GaussianSurrogateModel()
-training_strategy = DirectTrainingStrategy()
+        self.augmentation_pipeline = NoAugmentation()
 
-selection_criteria = ExploreSelectionCriteria()
-surrogate_sampler = RandomContinuousQuerySampler()
-query_optimizer = FixedValueOptimizer()
+        self.instance_level_objective = ConstantInstanceObjective()
+        self.instance_cost = ConstantInstanceCost()
 
-knowledge_discovery_sampler = RandomContinuousQuerySampler()
-knowledge_discovery_task = NoKnowledgeDiscoveryTask()
+        self.surrogate_model = GaussianSurrogateModel()
+        self.training_strategy = DirectTrainingStrategy()
 
-evaluation_metrics = [AvgRoundTimeEvaluator(), RoundCounterEvaluator()]
+        self.selection_criteria = ExploreSelectionCriteria()
+        self.surrogate_sampler = RandomContinuousQuerySampler()
+        self.query_optimizer = FixedValueOptimizer()
+
+        self.knowledge_discovery_sampler = RandomContinuousQuerySampler()
+        self.knowledge_discovery_task = NoKnowledgeDiscoveryTask()
+
+        self.evaluation_metrics = [AvgRoundTimeEvaluator(), RoundCounterEvaluator()]

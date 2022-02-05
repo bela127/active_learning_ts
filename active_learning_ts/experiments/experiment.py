@@ -22,7 +22,8 @@ class Experiment:
     An Evaluator in order to evaluate the Experiment, according to the given metrics
     """
 
-    def __init__(self, experiment_blueprint: Blueprint) -> None:
+    def __init__(self, experiment_blueprint: Blueprint, experiment_number: int = 0) -> None:
+        self.experiment_number = experiment_number
         self.blackboard: Blackboard = Blackboard()
         self.surrogate_blackboard: Blackboard = Blackboard()
         self.experiment_blueprint = experiment_blueprint

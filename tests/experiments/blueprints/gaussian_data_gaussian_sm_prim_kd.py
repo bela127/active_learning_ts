@@ -4,6 +4,7 @@ from active_learning_ts.data_retrievement.augmentation.no_augmentation import No
 from active_learning_ts.data_retrievement.interpolation.interpolation_strategies.flat_map_interpolation import \
     FlatMapInterpolation
 from active_learning_ts.evaluation.evaluation_metrics.avg_round_time_evaluator import AvgRoundTimeEvaluator
+from active_learning_ts.experiments.blueprint import Blueprint
 from active_learning_ts.instance_properties.costs.constant_instance_cost import ConstantInstanceCost
 from active_learning_ts.instance_properties.objectives.constant_instance_objective import ConstantInstanceObjective
 from active_learning_ts.knowledge_discovery.prim.prim_scenario_discovery_knowledge_discovery_task import \
@@ -19,27 +20,32 @@ from active_learning_ts.query_selection.selection_criterias.knowledge_uncertaint
 from active_learning_ts.surrogate_models.gaussion_surrogate_model import GaussianSurrogateModel
 from active_learning_ts.training.training_strategies.direct_training_strategy import DirectTrainingStrategy
 
-repeat = 2
-learning_steps = 10
 
-data_source = MultiGausianDataSource(in_dim=2, out_dim=1, min_x=-5, max_x=5)
-retrievement_strategy = ExactRetrievement()
-interpolation_strategy = FlatMapInterpolation()
+class GaussianDataGaussianSMPrim(Blueprint):
+    repeat = 1
 
-augmentation_pipeline = NoAugmentation()
+    def __init__(self):
+        self.learning_steps = 10
 
-instance_level_objective = ConstantInstanceObjective()
-instance_cost = ConstantInstanceCost()
+        self.data_source = MultiGausianDataSource(in_dim=2, out_dim=1, min_x=-5, max_x=5)
+        self.retrievement_strategy = ExactRetrievement()
+        self.interpolation_strategy = FlatMapInterpolation()
 
-surrogate_model = GaussianSurrogateModel()
-training_strategy = DirectTrainingStrategy()
+        self.augmentation_pipeline = NoAugmentation()
 
-selection_criteria = CompositeSelectionCriteria([KnowledgeUncertaintySelectionCriteria(), ExploreSelectionCriteria()])
-surrogate_sampler = RandomContinuousQuerySampler()
-query_optimizer = MaximumEntropyQueryOptimizer(num_tries=10)
+        self.instance_level_objective = ConstantInstanceObjective()
+        self.instance_cost = ConstantInstanceCost()
 
-num_knowledge_discovery_queries = 100
-knowledge_discovery_sampler = RandomContinuousQuerySampler()
-knowledge_discovery_task = PrimScenarioDiscoveryKnowledgeDiscoveryTask()
+        self.surrogate_model = GaussianSurrogateModel()
+        self.training_strategy = DirectTrainingStrategy()
 
-evaluation_metrics = [AvgRoundTimeEvaluator()]
+        self.selection_criteria = CompositeSelectionCriteria(
+            [KnowledgeUncertaintySelectionCriteria(), ExploreSelectionCriteria()])
+        self.surrogate_sampler = RandomContinuousQuerySampler()
+        self.query_optimizer = MaximumEntropyQueryOptimizer(num_tries=10)
+
+        self.num_knowledge_discovery_queries = 100
+        self.knowledge_discovery_sampler = RandomContinuousQuerySampler()
+        self.knowledge_discovery_task = PrimScenarioDiscoveryKnowledgeDiscoveryTask()
+
+        self.evaluation_metrics = [AvgRoundTimeEvaluator()]

@@ -36,7 +36,7 @@ This must contain the following variables ([Blueprint](./active_learning_ts/expe
 
 ### Repeat
 
-Currently, does nothing
+The number of times that this experiment should be run.
 
 ### Learning Steps
 
