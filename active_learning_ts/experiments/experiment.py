@@ -61,7 +61,6 @@ class Experiment:
             experiment_blueprint.instance_level_objective,
         )
 
-        # TODO: what is the purpose of this, cos its definitely not right like this
         sg_oracle = Oracle(
             DataInstance,
             self.surrogate_blackboard,

@@ -24,26 +24,27 @@ class Blueprint(Protocol):
     repeat: int
 
     def __init__(self):
-        self.learning_steps: int
+        self.learning_steps = None
+        self.learning_steps: int = None
 
-        self.num_knowledge_discovery_queries: int
+        self.num_knowledge_discovery_queries: int = None
 
-        self.data_source: DataSource
-        self.retrievement_strategy: RetrievementStrategy
-        self.augmentation_pipeline: DataPipeline
-        self.interpolation_strategy: InterpolationStrategy
+        self.data_source: DataSource = None
+        self.retrievement_strategy: RetrievementStrategy = None
+        self.augmentation_pipeline: DataPipeline = None
+        self.interpolation_strategy: InterpolationStrategy = None
 
-        self.instance_level_objective: InstanceObjective
-        self.instance_cost: InstanceCost
+        self.instance_level_objective: InstanceObjective = None
+        self.instance_cost: InstanceCost = None
 
-        self.surrogate_model: SurrogateModel
-        self.training_strategy: TrainingStrategy
+        self.surrogate_model: SurrogateModel = None
+        self.training_strategy: TrainingStrategy = None
 
-        self.surrogate_sampler: QuerySampler
-        self.query_optimizer: QueryOptimizer
-        self.selection_criteria: SelectionCriteria
+        self.surrogate_sampler: QuerySampler = None
+        self.query_optimizer: QueryOptimizer = None
+        self.selection_criteria: SelectionCriteria = None
 
-        self.evaluation_metrics: List[EvaluationMetric]
+        self.evaluation_metrics: List[EvaluationMetric] = None
 
-        self.knowledge_discovery_sampler: QuerySampler
-        self.knowledge_discovery_task: KnowledgeDiscoveryTask
+        self.knowledge_discovery_sampler: QuerySampler = None
+        self.knowledge_discovery_task: KnowledgeDiscoveryTask = None
