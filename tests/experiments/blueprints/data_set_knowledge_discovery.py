@@ -12,6 +12,7 @@ from active_learning_ts.knowledge_discovery.prim.prim_scenario_discovery_knowled
     PrimScenarioDiscoveryKnowledgeDiscoveryTask
 from active_learning_ts.pools.retrievement_strategies.exact_retrievement import ExactRetrievement
 from active_learning_ts.query_selection.query_optimizers.no_query_optimizer import NoQueryOptimizer
+from active_learning_ts.query_selection.query_samplers.no_query_sampler import NoQuerySampler
 from active_learning_ts.query_selection.query_samplers.random_query_sampler import RandomContinuousQuerySampler
 from active_learning_ts.query_selection.selection_criterias.no_selection_criteria import NoSelectionCriteria
 from active_learning_ts.surrogate_models.no_surrogate_model import NoSurrogateModel
@@ -41,7 +42,7 @@ class DataSetKnowledgeDiscovery(Blueprint):
         self.training_strategy = NoTrainingStrategy()
 
         self.selection_criteria = NoSelectionCriteria()
-        self.surrogate_sampler = RandomContinuousQuerySampler()
+        self.surrogate_sampler = NoQuerySampler()
         self.query_optimizer = NoQueryOptimizer()
 
         self.knowledge_discovery_sampler = RandomContinuousQuerySampler()
