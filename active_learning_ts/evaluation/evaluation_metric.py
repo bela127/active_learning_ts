@@ -16,6 +16,7 @@ class EvaluationMetric(Protocol):
     def post_init(self, blackboard: Blackboard, blueprint: Blueprint):
         self.blackboard = blackboard
         self.blueprint = blueprint
+        self.end_experiment = None
 
     def eval(self) -> None:
         """
@@ -59,4 +60,7 @@ class EvaluationMetric(Protocol):
         pass
 
     def signal_knowledge_discovery_stop(self):
+        pass
+
+    def signal_end_of_experiment(self):
         pass

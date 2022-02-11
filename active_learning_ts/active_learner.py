@@ -31,21 +31,25 @@ class ActiveLearner:
     def learning_step(self):
         self.evaluator.signal_round_start()
 
-        self.evaluator.signal_query_start()
-        query_candidates = self.query_selector.select()
-        self.oracle.query(query_candidates)
-        self.evaluator.signal_query_stop()
+        if self.evaluator.get_do_query():
+            self.evaluator.signal_query_start()
+            query_candidates = self.query_selector.select()
+            self.oracle.query(query_candidates)
+            self.evaluator.signal_query_stop()
 
-        self.evaluator.signal_learn_start()
-        self.trainer.train()
-        self.evaluator.signal_learn_stop()
+        if self.evaluator.get_do_learn():
+            self.evaluator.signal_learn_start()
+            self.trainer.train()
+            self.evaluator.signal_learn_stop()
 
-        self.evaluator.signal_knowledge_discovery_start()
-        self.knowledge_discovery.discover()
-        self.evaluator.signal_knowledge_discovery_stop()
+        if self.evaluator.get_do_discover_knowledge():
+            self.evaluator.signal_knowledge_discovery_start()
+            self.knowledge_discovery.discover()
+            self.evaluator.signal_knowledge_discovery_stop()
 
         self.evaluator.signal_round_stop()
 
-        self.evaluator.signal_evaluation_start()
-        self.evaluator.evaluate()
-        self.evaluator.signal_evaluation_stop()
+        if self.evaluator.get_do_evaluate():
+            self.evaluator.signal_evaluation_start()
+            self.evaluator.evaluate()
+            self.evaluator.signal_evaluation_stop()
