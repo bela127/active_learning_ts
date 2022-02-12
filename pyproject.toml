@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "active_learning_ts"
-version = "0.2.1.0"
+version = "0.2.2.0"
 description = ""
 authors = ["bela127 <bhb127@outlook.de>"]
 
