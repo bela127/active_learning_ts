@@ -7,7 +7,7 @@ from active_learning_ts.pools.retrievement_strategy import RetrievementStrategy
 
 
 class DiscreteVectorPool(Pool):
-    def __init__(self, in_dim: int, queries: [tf.Tensor], find_streategy: RetrievementStrategy):
+    def __init__(self, in_dim: int, queries: List[tf.Tensor], find_streategy: RetrievementStrategy):
         self.queries = queries
         self.shape = (in_dim,)
         self.ranges = []
