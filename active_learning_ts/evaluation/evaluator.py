@@ -2,7 +2,7 @@ from typing import List
 
 from active_learning_ts.data_blackboard import Blackboard
 from active_learning_ts.evaluation.evaluation_metric import EvaluationMetric
-from active_learning_ts.experiments.blueprint import Blueprint
+from active_learning_ts.experiments.blueprint_instance import BlueprintInstance
 
 
 class Evaluator:
@@ -10,7 +10,7 @@ class Evaluator:
     Holds a list of the evaluation metrics, calls them to evaluate after every round
     """
 
-    def __init__(self, evaluation_metrics: List[EvaluationMetric], blackboard: Blackboard, blueprint: Blueprint):
+    def __init__(self, evaluation_metrics: List[EvaluationMetric], blackboard: Blackboard, blueprint: BlueprintInstance):
         self.evaluation_metrics = evaluation_metrics
         self.__do_learn = True
         self.__do_query = True

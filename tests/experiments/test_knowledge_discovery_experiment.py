@@ -5,7 +5,7 @@ from tests.experiments.blueprints import data_set_knowledge_discovery
 
 
 def test_data_set_knowledge_discovery():
-    er = ExperimentRunner([data_set_knowledge_discovery.DataSetKnowledgeDiscovery])
+    er = ExperimentRunner([data_set_knowledge_discovery])
     er.run()
 
     test = tf.constant([[51., 15.0], [90., 90.]])

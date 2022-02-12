@@ -32,7 +32,7 @@ The Knowledge Discovery samples many queries from the Surrogate Model, in order 
 
 ## Defining a Test
 In order to define a test, a blueprint file must be created.
-This must contain the following variables ([Blueprint](./active_learning_ts/experiments/blueprint.py)):
+This must contain the following variables ([Blueprint](./active_learning_ts/experiments/blueprint_instance.py)):
 
 ### Repeat
 

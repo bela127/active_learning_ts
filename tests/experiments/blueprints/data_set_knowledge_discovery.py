@@ -5,7 +5,7 @@ from active_learning_ts.data_retrievement.augmentation.no_augmentation import No
 from active_learning_ts.data_retrievement.interpolation.interpolation_strategies.flat_map_interpolation import \
     FlatMapInterpolation
 from active_learning_ts.evaluation.evaluation_metrics.rounder_counter_evaluator import RoundCounterEvaluator
-from active_learning_ts.experiments.blueprint import Blueprint
+from active_learning_ts.experiments.blueprint_element import BlueprintElement
 from active_learning_ts.instance_properties.costs.constant_instance_cost import ConstantInstanceCost
 from active_learning_ts.instance_properties.objectives.constant_instance_objective import ConstantInstanceObjective
 from active_learning_ts.knowledge_discovery.prim.prim_scenario_discovery_knowledge_discovery_task import \
@@ -21,31 +21,28 @@ from active_learning_ts.training.training_strategies.no_training_strategy import
 x = tf.random.uniform(shape=(1000, 2)) * 100
 y = [tf.constant([0.9]) if 50 <= a[0] <= 60 and 10 <= a[1] <= 20 else tf.constant([0.0]) for a in x]
 
+repeat = 1
 
-class DataSetKnowledgeDiscovery(Blueprint):
-    repeat = 1
+learning_steps = 1
+num_knowledge_discovery_queries = 100
 
-    def __init__(self):
-        self.learning_steps = 1
-        self.num_knowledge_discovery_queries = 100
+data_source = BlueprintElement[DataSetDataSource]({'data_points': x, 'data_values': tf.convert_to_tensor(y)})
+retrievement_strategy = BlueprintElement[ExactRetrievement]()
+interpolation_strategy = BlueprintElement[FlatMapInterpolation]()
 
-        self.data_source = DataSetDataSource(data_points=x, data_values=tf.convert_to_tensor(y))
-        self.retrievement_strategy = ExactRetrievement()
-        self.interpolation_strategy = FlatMapInterpolation()
+augmentation_pipeline = BlueprintElement[NoAugmentation]()
 
-        self.augmentation_pipeline = NoAugmentation()
+instance_level_objective = BlueprintElement[ConstantInstanceObjective]()
+instance_cost = BlueprintElement[ConstantInstanceCost]()
 
-        self.instance_level_objective = ConstantInstanceObjective()
-        self.instance_cost = ConstantInstanceCost()
+surrogate_model = BlueprintElement[NoSurrogateModel]()
+training_strategy = BlueprintElement[NoTrainingStrategy]()
 
-        self.surrogate_model = NoSurrogateModel()
-        self.training_strategy = NoTrainingStrategy()
+selection_criteria = BlueprintElement[NoSelectionCriteria]()
+surrogate_sampler = BlueprintElement[NoQuerySampler]()
+query_optimizer = BlueprintElement[NoQueryOptimizer]()
 
-        self.selection_criteria = NoSelectionCriteria()
-        self.surrogate_sampler = NoQuerySampler()
-        self.query_optimizer = NoQueryOptimizer()
+knowledge_discovery_sampler = BlueprintElement[RandomContinuousQuerySampler]()
+knowledge_discovery_task = BlueprintElement[PrimScenarioDiscoveryKnowledgeDiscoveryTask]()
 
-        self.knowledge_discovery_sampler = RandomContinuousQuerySampler()
-        self.knowledge_discovery_task = PrimScenarioDiscoveryKnowledgeDiscoveryTask()
-
-        self.evaluation_metrics = [RoundCounterEvaluator()]
+evaluation_metrics = [BlueprintElement[RoundCounterEvaluator]()]

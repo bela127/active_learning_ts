@@ -8,7 +8,7 @@ from active_learning_ts.evaluation.evaluation_metrics.total_knowledge_discovery_
     TotalKnowledgeDiscoveryTimeEvaluator
 from active_learning_ts.evaluation.evaluation_metrics.total_query_time_evaluator import TotalQueryTimeEvaluator
 from active_learning_ts.evaluation.evaluation_metrics.total_training_time_evaluator import TotalTrainingTimeEvaluator
-from active_learning_ts.experiments.blueprint import Blueprint
+from active_learning_ts.experiments.blueprint_element import BlueprintElement
 from active_learning_ts.instance_properties.costs.constant_instance_cost import ConstantInstanceCost
 from active_learning_ts.instance_properties.objectives.constant_instance_objective import ConstantInstanceObjective
 from active_learning_ts.knowledge_discovery.extreme_point.maxima_knowledge_task import MaximaKnowledgeDiscoveryTask
@@ -20,36 +20,33 @@ from active_learning_ts.query_selection.selection_criterias.explore_selection_cr
 from active_learning_ts.surrogate_models.gaussion_surrogate_model import GaussianSurrogateModel
 from active_learning_ts.training.training_strategies.direct_training_strategy import DirectTrainingStrategy
 
+repeat = 1
 
-class MaximaKnowledgeDiscovery(Blueprint):
-    repeat = 1
+learning_steps = 10
+num_knowledge_discovery_queries = 1000
 
-    def __init__(self):
-        self.learning_steps = 10
-        self.num_knowledge_discovery_queries = 1000
+x = tf.random.uniform((1000, 3), -10.0, 10.0)
+y = tf.reshape(tf.convert_to_tensor(tf.reduce_min(x, 1)), (1000, 1))
+y = 10 - (y * y)
 
-        x = tf.random.uniform((1000, 3), -10.0, 10.0)
-        y = tf.reshape(tf.convert_to_tensor(tf.reduce_min(x, 1)), (1000, 1))
-        y = 10 - (y * y)
+data_source = BlueprintElement[DataSetDataSource]({'data_points': x, 'data_values': y})
+retrievement_strategy = BlueprintElement[NearestNeighboursFindStrategy]({'num_neighbours': 5})
+interpolation_strategy = BlueprintElement[FlatMapInterpolation]()
 
-        self.data_source = DataSetDataSource(x, y)
-        self.retrievement_strategy = NearestNeighboursFindStrategy(5)
-        self.interpolation_strategy = FlatMapInterpolation()
+augmentation_pipeline = BlueprintElement[NoAugmentation]()
 
-        self.augmentation_pipeline = NoAugmentation()
+instance_level_objective = BlueprintElement[ConstantInstanceObjective]()
+instance_cost = BlueprintElement[ConstantInstanceCost]()
 
-        self.instance_level_objective = ConstantInstanceObjective()
-        self.instance_cost = ConstantInstanceCost()
+surrogate_model = BlueprintElement[GaussianSurrogateModel]()
+training_strategy = BlueprintElement[DirectTrainingStrategy]()
 
-        self.surrogate_model = GaussianSurrogateModel()
-        self.training_strategy = DirectTrainingStrategy()
+selection_criteria = BlueprintElement[ExploreSelectionCriteria]()
+surrogate_sampler = BlueprintElement[RandomContinuousQuerySampler]()
+query_optimizer = BlueprintElement[FixedValueOptimizer]({'value':0.3})
 
-        self.selection_criteria = ExploreSelectionCriteria()
-        self.surrogate_sampler = RandomContinuousQuerySampler()
-        self.query_optimizer = FixedValueOptimizer(0.3)
+knowledge_discovery_sampler = BlueprintElement[RandomContinuousQuerySampler]()
+knowledge_discovery_task = BlueprintElement[MaximaKnowledgeDiscoveryTask]()
 
-        self.knowledge_discovery_sampler = RandomContinuousQuerySampler()
-        self.knowledge_discovery_task = MaximaKnowledgeDiscoveryTask()
-
-        self.evaluation_metrics = [TotalQueryTimeEvaluator(), TotalTrainingTimeEvaluator(),
-                                   TotalKnowledgeDiscoveryTimeEvaluator()]
+evaluation_metrics = [BlueprintElement[TotalQueryTimeEvaluator](), BlueprintElement[TotalTrainingTimeEvaluator](),
+                      BlueprintElement[TotalKnowledgeDiscoveryTimeEvaluator]()]

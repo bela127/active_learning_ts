@@ -1,11 +1,11 @@
 from __future__ import annotations
-from typing import Protocol
 
+from typing import Protocol
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from active_learning_ts.data_blackboard import Blackboard
-    from active_learning_ts.experiments.blueprint import Blueprint
+    from active_learning_ts.experiments.blueprint_instance import BlueprintInstance
     
 class EvaluationMetric(Protocol):
     """
@@ -13,7 +13,7 @@ class EvaluationMetric(Protocol):
     such as total number of elapsed rounds, average/total training time, uncertainty improvement per round...
     """
 
-    def post_init(self, blackboard: Blackboard, blueprint: Blueprint):
+    def post_init(self, blackboard: Blackboard, blueprint: BlueprintInstance):
         self.blackboard = blackboard
         self.blueprint = blueprint
         self.end_experiment = None

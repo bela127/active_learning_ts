@@ -4,6 +4,6 @@ from active_learning_ts.experiments.experiment_runner import ExperimentRunner
 
 def test_base_functionality():
     """compilation test"""
-    blueprints = [test_blueprint.TestBluePrint]
+    blueprints = [test_blueprint]
     er = ExperimentRunner(blueprints)
     er.run()

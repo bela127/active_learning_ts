@@ -1,7 +1,8 @@
 import traceback
-from typing import List, Type
+from typing import List
 
 from active_learning_ts.experiments.blueprint import Blueprint
+from active_learning_ts.experiments.blueprint_instance import BlueprintInstance
 from active_learning_ts.experiments.experiment import Experiment
 
 
@@ -10,21 +11,21 @@ class ExperimentRunner:
     Runs each experiment. In the Case multiple Experiments are to be run
     """
 
-    def __init__(self, experiment_blueprints: List[Type[Blueprint]], file: str = "data_log", log: bool = False,
+    def __init__(self, experiment_blueprints: List[Blueprint], file: str = "data_log", log: bool = False,
                  write_mode: str = 'w') -> None:
         self.experiment_blueprints = experiment_blueprints
         self.to_log = log
         if self.to_log:
             self.file = open(file, write_mode)
         self.experiment_list: List[Experiment] = []
-        self.blueprint_instance_list: List[Blueprint] = []
+        self.blueprint_instance_list: List[BlueprintInstance] = []
 
     def run(self):
         self.experiment_list = []
         self.blueprint_instance_list = []
         for experiment_blueprint in self.experiment_blueprints:
             for i in range(experiment_blueprint.repeat):
-                a = experiment_blueprint()
+                a = BlueprintInstance(experiment_blueprint)
                 self.blueprint_instance_list.append(a)
                 self.experiment_list.append(Experiment(a, i))
 

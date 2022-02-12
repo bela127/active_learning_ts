@@ -7,7 +7,7 @@ from active_learning_ts.data_retrievement.data_sources.test_data_source import (
 from active_learning_ts.data_retrievement.interpolation.interpolation_strategies.flat_map_interpolation import \
     FlatMapInterpolation
 from active_learning_ts.evaluation.evaluation_metrics.rounder_counter_evaluator import RoundCounterEvaluator
-from active_learning_ts.experiments.blueprint import Blueprint
+from active_learning_ts.experiments.blueprint_element import BlueprintElement
 from active_learning_ts.instance_properties.costs.constant_instance_cost import (
     ConstantInstanceCost,
 )
@@ -24,30 +24,27 @@ from active_learning_ts.query_selection.selection_criterias.no_selection_criteri
 from active_learning_ts.surrogate_models.no_surrogate_model import NoSurrogateModel
 from active_learning_ts.training.training_strategies.no_training_strategy import NoTrainingStrategy
 
+repeat = 2
 
-class TestBluePrint(Blueprint):
-    repeat = 2
+learning_steps = 10
+num_knowledge_discovery_queries = 0
 
-    def __init__(self):
-        self.learning_steps = 10
-        self.num_knowledge_discovery_queries = 0
+data_source = BlueprintElement[TestDataSource]()
+retrievement_strategy = BlueprintElement[ExactRetrievement]()
+augmentation_pipeline = BlueprintElement[NoAugmentation]()
+interpolation_strategy = BlueprintElement[FlatMapInterpolation]()
 
-        self.data_source = TestDataSource()
-        self.retrievement_strategy = ExactRetrievement()
-        self.augmentation_pipeline = NoAugmentation()
-        self.interpolation_strategy = FlatMapInterpolation()
+instance_level_objective = BlueprintElement[ConstantInstanceObjective]()
+instance_cost = BlueprintElement[ConstantInstanceCost]()
 
-        self.instance_level_objective = ConstantInstanceObjective()
-        self.instance_cost = ConstantInstanceCost()
+surrogate_model = BlueprintElement[NoSurrogateModel]()
+training_strategy = BlueprintElement[NoTrainingStrategy]()
 
-        self.surrogate_model = NoSurrogateModel()
-        self.training_strategy = NoTrainingStrategy()
+surrogate_sampler = BlueprintElement[RandomContinuousQuerySampler]()
+query_optimizer = BlueprintElement[NoQueryOptimizer]()
+selection_criteria = BlueprintElement[NoSelectionCriteria]()
 
-        self.surrogate_sampler = RandomContinuousQuerySampler()
-        self.query_optimizer = NoQueryOptimizer()
-        self.selection_criteria = NoSelectionCriteria()
+knowledge_discovery_sampler = BlueprintElement[RandomContinuousQuerySampler]()
+knowledge_discovery_task = BlueprintElement[NoKnowledgeDiscoveryTask]()
 
-        self.knowledge_discovery_sampler = RandomContinuousQuerySampler()
-        self.knowledge_discovery_task = NoKnowledgeDiscoveryTask()
-
-        self.evaluation_metrics = [RoundCounterEvaluator()]
+evaluation_metrics = [BlueprintElement[RoundCounterEvaluator]()]

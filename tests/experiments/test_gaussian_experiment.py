@@ -8,7 +8,7 @@ def test_gaussian_experiment():
     """
     technically a random test. but that high of an uncertainty is impossible, unless something is wrong
     """
-    er = ExperimentRunner([gaussian_blueprint.GaussianBlueprint])
+    er = ExperimentRunner([gaussian_blueprint])
     er.run()
 
     test = [tf.random.uniform(shape=(3,), minval=-5.0, maxval=5.0, seed=2) for _ in

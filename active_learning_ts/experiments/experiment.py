@@ -3,7 +3,7 @@ from active_learning_ts.data_blackboard import Blackboard
 from active_learning_ts.data_instance import DataInstance
 from active_learning_ts.data_retrievement.data_retriever import DataRetriever
 from active_learning_ts.evaluation.evaluator import Evaluator
-from active_learning_ts.experiments.blueprint import Blueprint
+from active_learning_ts.experiments.blueprint_instance import BlueprintInstance
 from active_learning_ts.knowledge_discovery.knowledge_discovery import KnowledgeDiscovery
 from active_learning_ts.oracle import Oracle
 from active_learning_ts.query_selection.query_selector import QuerySelector
@@ -22,14 +22,14 @@ class Experiment:
     An Evaluator in order to evaluate the Experiment, according to the given metrics
     """
 
-    def __init__(self, experiment_blueprint: Blueprint, experiment_number: int = 0) -> None:
+    def __init__(self, experiment_blueprint: BlueprintInstance, experiment_number: int = 0) -> None:
         self.experiment_number = experiment_number
         self.blackboard: Blackboard = Blackboard()
         self.surrogate_blackboard: Blackboard = Blackboard()
         self.experiment_blueprint = experiment_blueprint
         self.setup(self.experiment_blueprint)
 
-    def setup(self, experiment_blueprint: Blueprint):
+    def setup(self, experiment_blueprint: BlueprintInstance):
         self.repeat: int = experiment_blueprint.repeat
         self.learning_steps: int = experiment_blueprint.learning_steps
 

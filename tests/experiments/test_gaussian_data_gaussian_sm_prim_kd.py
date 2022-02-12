@@ -6,5 +6,5 @@ def test_gaussian_data_gaussian_sm_prim_kd():
     """
     Smoke test, of the entire framework. There is currently no way to write such a test
     """
-    er = ExperimentRunner([blueprint.GaussianDataGaussianSMPrim])
+    er = ExperimentRunner([blueprint])
     er.run()
