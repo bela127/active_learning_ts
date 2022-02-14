@@ -13,7 +13,7 @@ from active_learning_ts.instance_properties.costs.constant_instance_cost import 
 from active_learning_ts.instance_properties.objectives.constant_instance_objective import ConstantInstanceObjective
 from active_learning_ts.knowledge_discovery.extreme_point.maxima_knowledge_task import MaximaKnowledgeDiscoveryTask
 from active_learning_ts.pools.retrievement_strategies.nearest_neighbours_retreivement_strategy import \
-    NearestNeighboursFindStrategy
+    NearestNeighboursRetrievementStrategy
 from active_learning_ts.query_selection.query_optimizers.fixed_value_optimizer import FixedValueOptimizer
 from active_learning_ts.query_selection.query_samplers.random_query_sampler import RandomContinuousQuerySampler
 from active_learning_ts.query_selection.selection_criterias.explore_selection_criteria import ExploreSelectionCriteria
@@ -30,7 +30,7 @@ y = tf.reshape(tf.convert_to_tensor(tf.reduce_min(x, 1)), (1000, 1))
 y = 10 - (y * y)
 
 data_source = BlueprintElement[DataSetDataSource]({'data_points': x, 'data_values': y})
-retrievement_strategy = BlueprintElement[NearestNeighboursFindStrategy]({'num_neighbours': 5})
+retrievement_strategy = BlueprintElement[NearestNeighboursRetrievementStrategy]({'num_neighbours': 5})
 interpolation_strategy = BlueprintElement[FlatMapInterpolation]()
 
 augmentation_pipeline = BlueprintElement[NoAugmentation]()

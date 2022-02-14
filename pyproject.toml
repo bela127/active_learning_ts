@@ -9,6 +9,8 @@ python = ">=3.8,<3.10"
 tensorflow = "^2.7.0"
 sklearn = "^0.0"
 scipy = "^1.7.0"
+tensor-annotations = "^1.0.2"
+tensor-annotations-tensorflow-stubs = "^1.0.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.5"

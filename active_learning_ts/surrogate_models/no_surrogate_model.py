@@ -9,7 +9,7 @@ from active_learning_ts.surrogate_models.surrogate_model import SurrogateModel
 
 class NoSurrogateModel(SurrogateModel):
     def __init__(self):
-        self.data_retriever: DataRetriever = None
+        self.data_retriever: DataRetriever
 
     def uncertainty(self, points: tf.Tensor) -> tf.Tensor:
         return tf.convert_to_tensor([.0] * len(points))

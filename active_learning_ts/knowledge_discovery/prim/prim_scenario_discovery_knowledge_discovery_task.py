@@ -1,3 +1,4 @@
+from typing import List
 import numpy as np
 import tensorflow as tf
 
@@ -13,11 +14,11 @@ class PrimScenarioDiscoveryKnowledgeDiscoveryTask(KnowledgeDiscoveryTask):
             raise ValueError('The minimum value cannot be greater or equal to the maximum value.')
         y_max = float(y_max)
         y_min = float(y_min)
-        self.y_max = tf.convert_to_tensor(y_max, dtype=tf.dtypes.float32)
-        self.y_min = tf.convert_to_tensor(y_min, dtype=tf.dtypes.float32)
+        self.y_max: tf.Tensor = tf.convert_to_tensor(y_max, dtype=tf.dtypes.float32)
+        self.y_min: tf.Tensor = tf.convert_to_tensor(y_min, dtype=tf.dtypes.float32)
         self.range = self.y_max - self.y_min
         self.prim = PRIM()
-        self.boxes = []
+        self.boxes: List = []
         self.num_boxes = 0.
 
     def post_init(self, surrogate_model: Queryable, sampler: QuerySampler):
@@ -39,7 +40,7 @@ class PrimScenarioDiscoveryKnowledgeDiscoveryTask(KnowledgeDiscoveryTask):
                            tf.convert_to_tensor(self.prim.box_[1], dtype=np.float32)))
         self.num_boxes += 1.
 
-    def _uncertainty(self, point: tf.Tensor) -> float:
+    def _uncertainty(self, point: tf.Tensor) -> tf.Tensor:
         if len(self.boxes) == 0:
             return tf.convert_to_tensor(.0, dtype=tf.dtypes.float32)
         in_boxes = 0.

@@ -25,7 +25,7 @@ class DataRetriever(Queryable):
         self.data_source = data_source
         self.augmentation_pipeline = augmentation_pipeline
         self.interpolation_strategy = interpolation_strategy
-        self.query_pool: Pool = None
+        self.query_pool: Pool
 
     def query(self, query_candidates) -> Tuple[tf.Tensor, tf.Tensor]:
         actual_queries, query_results = self.retrieve(

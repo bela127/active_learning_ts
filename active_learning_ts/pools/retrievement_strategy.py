@@ -6,8 +6,11 @@ from active_learning_ts.pool import Pool
 
 
 class RetrievementStrategy(Protocol):
+
+    pool: Pool
+
     def __init__(self):
-        self.pool: Pool = None
+        ...
 
     def post_init(self, pool: Pool):
         self.pool = pool

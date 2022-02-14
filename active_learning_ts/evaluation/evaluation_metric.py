@@ -1,7 +1,8 @@
 from __future__ import annotations
+from typing import TYPE_CHECKING
 
 from typing import Protocol
-from typing import TYPE_CHECKING
+
 
 if TYPE_CHECKING:
     from active_learning_ts.data_blackboard import Blackboard
@@ -12,6 +13,9 @@ class EvaluationMetric(Protocol):
     Considering all parts of the experiment, (passed in as blueprint), measures certain metrics about the experiment,
     such as total number of elapsed rounds, average/total training time, uncertainty improvement per round...
     """
+    blackboard: Blackboard
+    blueprint: BlueprintInstance
+    end_experiment: None
 
     def post_init(self, blackboard: Blackboard, blueprint: BlueprintInstance):
         self.blackboard = blackboard

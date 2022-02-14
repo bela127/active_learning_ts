@@ -11,6 +11,8 @@ class KnowledgeDiscoveryTask(Protocol):
     The goal of a KnowledgeDiscoveryTask is to as best as possible, is to learn something about the given data.
     It uses the Surrogate Model to emulate the data, and learns from the data provided by the SurrogateModel.
     """
+    surrogate_model: Queryable
+    sampler: QuerySampler
 
     def post_init(self, surrogate_model: Queryable, sampler: QuerySampler):
         self.surrogate_model = surrogate_model
@@ -22,7 +24,7 @@ class KnowledgeDiscoveryTask(Protocol):
         :param points: the points at which the uncertainty should be measured
         :return: the uncertainties as a tensor.
         """
-        pass
+        ...
 
     def learn(self, num_queries):
         """
@@ -32,4 +34,4 @@ class KnowledgeDiscoveryTask(Protocol):
 
          :return: model specific
         """
-        pass
+        ...

@@ -7,7 +7,7 @@ class Pool(Protocol):
     """this is the pool of possible query candidates"""
 
     shape: Tuple[int]
-    ranges: Tuple
+    ranges: Tuple[Tuple[Tuple[float,float],...],...]
 
     def __init__(self):
         ...

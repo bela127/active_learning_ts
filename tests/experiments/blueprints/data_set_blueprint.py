@@ -11,7 +11,7 @@ from active_learning_ts.instance_properties.costs.constant_instance_cost import 
 from active_learning_ts.instance_properties.objectives.constant_instance_objective import ConstantInstanceObjective
 from active_learning_ts.knowledge_discovery.no_knowledge_discovery_task import NoKnowledgeDiscoveryTask
 from active_learning_ts.pools.retrievement_strategies.nearest_neighbours_retreivement_strategy import \
-    NearestNeighboursFindStrategy
+    NearestNeighboursRetrievementStrategy
 from active_learning_ts.query_selection.query_optimizers.maximum_query_optimizer import MaximumQueryOptimizer
 from active_learning_ts.query_selection.query_samplers.random_query_sampler import RandomContinuousQuerySampler
 from active_learning_ts.query_selection.selection_criterias.explore_selection_criteria import ExploreSelectionCriteria
@@ -29,7 +29,7 @@ for i in range(1, 100):
     x.append(tf.random.uniform(shape=(3,), minval=-5, maxval=5, seed=i))
     y.append(tf.random.uniform(shape=(3,), minval=-10, maxval=50, seed=i + 100))
 
-retrievement_strategy = BlueprintElement[NearestNeighboursFindStrategy]({'num_neighbours': 3})
+retrievement_strategy = BlueprintElement[NearestNeighboursRetrievementStrategy]({'num_neighbours': 3})
 data_source = BlueprintElement[DataSetDataSource]({'data_points': tf.convert_to_tensor(x),
                                                    'data_values': tf.convert_to_tensor(y)})
 

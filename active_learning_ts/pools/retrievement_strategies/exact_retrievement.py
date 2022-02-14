@@ -1,6 +1,8 @@
-from active_learning_ts.data_retrievement.data_source import DataSource
 from active_learning_ts.pools.retrievement_strategy import RetrievementStrategy
+from active_learning_ts.pool import Pool
 
 
 class ExactRetrievement(RetrievementStrategy):
-    pass
+    
+    def __init__(self):
+        self.pool: Pool

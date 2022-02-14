@@ -36,7 +36,7 @@ class ContinuousVectorPool(Pool):
         def get_at(self, interval: float):
             return self.lower + (self.size * interval)
 
-    def __init__(self, dim, ranges: List[List[Tuple[float, float]]]):
+    def __init__(self, dim, ranges: Tuple[Tuple[Tuple[float, float],...],...]):
         """
         Constructor takes a list of multiple ranges in each dimension.
         The ranges are independent in each dimension, meaning the validity of a value in one dimension cannot
@@ -52,8 +52,8 @@ class ContinuousVectorPool(Pool):
         self.shape = (dim,)
         self.ranges = ranges
         self.con_ranges = []
-        self.sizes = []
-        self.start_values = []
+        self.sizes: List = []
+        self.start_values: List = []
 
         for dimension in ranges:
             self.con_ranges.append([ContinuousVectorPool.Range(a, b) for a, b in dimension])
