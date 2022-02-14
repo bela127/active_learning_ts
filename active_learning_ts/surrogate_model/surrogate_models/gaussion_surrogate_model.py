@@ -4,7 +4,7 @@ import tensorflow as tf
 from sklearn.gaussian_process import GaussianProcessRegressor
 from sklearn.gaussian_process.kernels import RationalQuadratic
 
-from active_learning_ts.surrogate_models.surrogate_model import SurrogateModel
+from active_learning_ts.surrogate_model.surrogate_model import SurrogateModel
 
 
 class GaussianSurrogateModel(SurrogateModel):

@@ -2,11 +2,11 @@ from typing import Tuple
 
 import tensorflow as tf
 
-from active_learning_ts.data_blackboard import Blackboard
-from active_learning_ts.data_instance import DataInstanceFactory
+from active_learning_ts.logging.data_blackboard import Blackboard
+from active_learning_ts.logging.data_instance import DataInstanceFactory
 from active_learning_ts.instance_properties.instance_cost import InstanceCost
 from active_learning_ts.instance_properties.instance_objective import InstanceObjective
-from active_learning_ts.pool import Pool
+from active_learning_ts.data_retrievement.pool import Pool
 from active_learning_ts.queryable import Queryable
 
 

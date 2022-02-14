@@ -2,7 +2,7 @@ from typing import List
 
 import tensorflow as tf
 
-from active_learning_ts.data_instance import DataInstance
+from active_learning_ts.logging.data_instance import DataInstance
 
 
 class Blackboard:

@@ -4,7 +4,7 @@ from active_learning_ts.data_retrievement.augmentation.no_augmentation import (
 from active_learning_ts.data_retrievement.data_sources.test_data_source import (
     TestDataSource,
 )
-from active_learning_ts.data_retrievement.interpolation.interpolation_strategies.flat_map_interpolation import \
+from active_learning_ts.data_retrievement.interpolation_strategies.flat_map_interpolation import \
     FlatMapInterpolation
 from active_learning_ts.evaluation.evaluation_metrics.rounder_counter_evaluator import RoundCounterEvaluator
 from active_learning_ts.experiments.blueprint_element import BlueprintElement
@@ -14,14 +14,14 @@ from active_learning_ts.instance_properties.costs.constant_instance_cost import 
 from active_learning_ts.instance_properties.objectives.constant_instance_objective import (
     ConstantInstanceObjective,
 )
-from active_learning_ts.knowledge_discovery.no_knowledge_discovery_task import NoKnowledgeDiscoveryTask
-from active_learning_ts.pools.retrievement_strategies.exact_retrievement import ExactRetrievement
+from active_learning_ts.knowledge_discovery.discover_tasks.no_knowledge_discovery_task import NoKnowledgeDiscoveryTask
+from active_learning_ts.data_retrievement.retrievement_strategies.exact_retrievement import ExactRetrievement
 from active_learning_ts.query_selection.query_optimizers.no_query_optimizer import NoQueryOptimizer
 from active_learning_ts.query_selection.query_samplers.random_query_sampler import RandomContinuousQuerySampler
 from active_learning_ts.query_selection.selection_criterias.no_selection_criteria import (
     NoSelectionCriteria,
 )
-from active_learning_ts.surrogate_models.no_surrogate_model import NoSurrogateModel
+from active_learning_ts.surrogate_model.surrogate_models.no_surrogate_model import NoSurrogateModel
 from active_learning_ts.training.training_strategies.no_training_strategy import NoTrainingStrategy
 
 repeat = 2

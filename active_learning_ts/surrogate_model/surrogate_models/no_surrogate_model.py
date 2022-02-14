@@ -3,8 +3,8 @@ from typing import Tuple
 import tensorflow as tf
 
 from active_learning_ts.data_retrievement.data_retriever import DataRetriever
-from active_learning_ts.pool import Pool
-from active_learning_ts.surrogate_models.surrogate_model import SurrogateModel
+from active_learning_ts.data_retrievement.pool import Pool
+from active_learning_ts.surrogate_model.surrogate_model import SurrogateModel
 
 
 class NoSurrogateModel(SurrogateModel):

@@ -2,7 +2,7 @@ from typing import Tuple
 
 import tensorflow as tf
 
-from active_learning_ts.data_retrievement.interpolation.interpolation_strategy import InterpolationStrategy
+from active_learning_ts.data_retrievement.interpolation_strategy import InterpolationStrategy
 
 
 class FlatMapInterpolation(InterpolationStrategy):

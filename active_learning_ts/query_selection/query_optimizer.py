@@ -2,7 +2,7 @@ from typing import Protocol
 
 from active_learning_ts.query_selection.query_sampler import QuerySampler
 from active_learning_ts.query_selection.selection_criteria import SelectionCriteria
-from active_learning_ts.surrogate_models.surrogate_model import SurrogateModel
+from active_learning_ts.surrogate_model.surrogate_model import SurrogateModel
 
 
 class QueryOptimizer(Protocol):

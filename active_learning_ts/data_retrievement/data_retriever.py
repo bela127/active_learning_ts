@@ -4,8 +4,8 @@ import tensorflow as tf
 
 from active_learning_ts.data_pipeline import DataPipeline
 from active_learning_ts.data_retrievement.data_source import DataSource
-from active_learning_ts.data_retrievement.interpolation.interpolation_strategy import InterpolationStrategy
-from active_learning_ts.pool import Pool
+from active_learning_ts.data_retrievement.interpolation_strategy import InterpolationStrategy
+from active_learning_ts.data_retrievement.pool import Pool
 from active_learning_ts.queryable import Queryable
 
 

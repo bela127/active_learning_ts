@@ -2,9 +2,9 @@ from typing import List
 import tensorflow as tf
 from scipy.spatial import KDTree
 
-from active_learning_ts.pool import Pool
-from active_learning_ts.pools.continuous_vector_pool import ContinuousVectorPool
-from active_learning_ts.pools.retrievement_strategy import RetrievementStrategy
+from active_learning_ts.data_retrievement.pool import Pool
+from active_learning_ts.data_retrievement.pools.continuous_vector_pool import ContinuousVectorPool
+from active_learning_ts.data_retrievement.retrievement_strategy import RetrievementStrategy
 
 
 class NearestNeighboursRetrievementStrategy(RetrievementStrategy):

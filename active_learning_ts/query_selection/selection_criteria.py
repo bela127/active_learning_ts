@@ -5,7 +5,7 @@ import tensorflow as tf
 from active_learning_ts.instance_properties.instance_cost import InstanceCost
 from active_learning_ts.instance_properties.instance_objective import InstanceObjective
 from active_learning_ts.knowledge_discovery.knowledge_discovery_task import KnowledgeDiscoveryTask
-from active_learning_ts.surrogate_models.surrogate_model import SurrogateModel
+from active_learning_ts.surrogate_model.surrogate_model import SurrogateModel
 
 
 class SelectionCriteria(Protocol):

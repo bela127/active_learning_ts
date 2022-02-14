@@ -3,7 +3,7 @@ import numpy as np
 import tensorflow as tf
 
 from active_learning_ts.knowledge_discovery.knowledge_discovery_task import KnowledgeDiscoveryTask
-from active_learning_ts.knowledge_discovery.prim.prim import PRIM
+from active_learning_ts.knowledge_discovery.discover_tasks.prim.prim import PRIM
 from active_learning_ts.query_selection.query_sampler import QuerySampler
 from active_learning_ts.queryable import Queryable
 

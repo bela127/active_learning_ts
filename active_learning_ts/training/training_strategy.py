@@ -1,7 +1,7 @@
 from typing import Protocol
 
-from active_learning_ts.data_blackboard import Blackboard
-from active_learning_ts.surrogate_models.surrogate_model import SurrogateModel
+from active_learning_ts.logging.data_blackboard import Blackboard
+from active_learning_ts.surrogate_model.surrogate_model import SurrogateModel
 
 
 class TrainingStrategy(Protocol):

@@ -1,7 +1,7 @@
 from active_learning_ts.query_selection.selection_criteria import SelectionCriteria
 from active_learning_ts.query_selection.query_optimizer import QueryOptimizer
 from active_learning_ts.oracle import Oracle
-from active_learning_ts.data_blackboard import Blackboard
+from active_learning_ts.logging.data_blackboard import Blackboard
 
 
 class QuerySelector:

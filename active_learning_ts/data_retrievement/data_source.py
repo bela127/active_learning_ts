@@ -2,8 +2,8 @@ from typing import Protocol, Tuple
 
 import tensorflow as tf
 
-from active_learning_ts.pool import Pool
-from active_learning_ts.pools.retrievement_strategy import RetrievementStrategy
+from active_learning_ts.data_retrievement.pool import Pool
+from active_learning_ts.data_retrievement.retrievement_strategy import RetrievementStrategy
 
 
 class DataSource(Protocol):

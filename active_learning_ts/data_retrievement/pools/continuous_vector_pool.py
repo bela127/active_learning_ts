@@ -3,7 +3,7 @@ from typing import List, Tuple
 import numpy as np
 import tensorflow as tf
 
-from active_learning_ts.pool import Pool
+from active_learning_ts.data_retrievement.pool import Pool
 
 try:
     import operator

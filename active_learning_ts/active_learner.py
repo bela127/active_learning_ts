@@ -1,4 +1,4 @@
-from active_learning_ts.data_blackboard import Blackboard
+from active_learning_ts.logging.data_blackboard import Blackboard
 from active_learning_ts.evaluation.evaluator import Evaluator
 from active_learning_ts.knowledge_discovery.knowledge_discovery import KnowledgeDiscovery
 from active_learning_ts.oracle import Oracle

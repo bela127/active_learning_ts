@@ -1,4 +1,4 @@
-from active_learning_ts.data_blackboard import Blackboard
+from active_learning_ts.logging.data_blackboard import Blackboard
 from active_learning_ts.training.training_strategy import TrainingStrategy
 
 

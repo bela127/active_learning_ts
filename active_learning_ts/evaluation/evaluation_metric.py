@@ -5,7 +5,7 @@ from typing import Protocol
 
 
 if TYPE_CHECKING:
-    from active_learning_ts.data_blackboard import Blackboard
+    from active_learning_ts.logging.data_blackboard import Blackboard
     from active_learning_ts.experiments.blueprint_instance import BlueprintInstance
     
 class EvaluationMetric(Protocol):

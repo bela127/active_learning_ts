@@ -1,6 +1,6 @@
 from typing import List
 
-from active_learning_ts.data_blackboard import Blackboard
+from active_learning_ts.logging.data_blackboard import Blackboard
 from active_learning_ts.evaluation.evaluation_metric import EvaluationMetric
 from active_learning_ts.experiments.blueprint_instance import BlueprintInstance
 

@@ -2,7 +2,7 @@ from typing import Protocol, Tuple
 
 import tensorflow as tf
 
-from active_learning_ts.pool import Pool
+from active_learning_ts.data_retrievement.pool import Pool
 
 
 # TODO make datasource implement this

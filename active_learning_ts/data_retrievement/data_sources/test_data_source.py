@@ -3,12 +3,12 @@ import imp
 from typing import TYPE_CHECKING
 
 from active_learning_ts.data_retrievement.data_source import DataSource
-from active_learning_ts.pools.continuous_vector_pool import ContinuousVectorPool
+from active_learning_ts.data_retrievement.pools.continuous_vector_pool import ContinuousVectorPool
 
 if TYPE_CHECKING:
     import tensorflow as tf
     from typing import Tuple
-    from active_learning_ts.pool import Pool
+    from active_learning_ts.data_retrievement.pool import Pool
 
 class TestDataSource(DataSource):
     def __init__(self):

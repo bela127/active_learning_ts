@@ -1,8 +1,8 @@
 import tensorflow as tf
 from distribution_data_generation.data_sources.data_set_data_source import DataSetDataSource
 
-from active_learning_ts.pools.discrete_vector_pool import DiscreteVectorPool
-from active_learning_ts.pools.retrievement_strategies.nearest_neighbours_retreivement_strategy import \
+from active_learning_ts.data_retrievement.pools.discrete_vector_pool import DiscreteVectorPool
+from active_learning_ts.data_retrievement.retrievement_strategies.nearest_neighbours_retreivement_strategy import \
     NearestNeighboursRetrievementStrategy
 
 
