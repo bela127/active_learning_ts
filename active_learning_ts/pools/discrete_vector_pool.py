@@ -7,11 +7,11 @@ from active_learning_ts.pools.retrievement_strategy import RetrievementStrategy
 
 
 class DiscreteVectorPool(Pool):
-    def __init__(self, in_dim: int, queries: List[tf.Tensor], find_streategy: RetrievementStrategy):
+    def __init__(self, in_dim: int, queries: List[tf.Tensor], retrievement_streategy: RetrievementStrategy):
         self.queries = queries
         self.shape = (in_dim,)
         self.ranges = []
-        self.find_strategy = find_streategy
+        self.retrievement_streategy = retrievement_streategy
 
         for i in range(in_dim):
             minimum = queries[0][i]
@@ -23,7 +23,7 @@ class DiscreteVectorPool(Pool):
             self.ranges.append([(minimum, maximum)])
 
     def get_elements(self, elements: tf.Tensor) -> tf.Tensor:
-        return self.find_strategy.find(elements)
+        return self.retrievement_streategy.find(elements)
 
     def get_element_normalized(self, element: tf.Tensor) -> tf.Tensor:
         indices = tf.unstack(element)
