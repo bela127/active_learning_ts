@@ -17,3 +17,6 @@ class QuerySampler(Protocol):
 
     def sample(self, num_queries: int = 1) -> tf.Tensor:
         pass
+
+    def update_pool(self, pool):
+        raise NotImplementedError("Cannot dynamically change pool")
