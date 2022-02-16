@@ -12,6 +12,8 @@ class DiscreteVectorPool(Pool):
         self.shape = (in_dim,)
         self.retrievement_strategy = retrievement_strategy
 
+        if len(queries) == 0:
+            return
         ranges = []
         for i in range(in_dim):
             minimum: float = queries[0][i]
@@ -27,6 +29,8 @@ class DiscreteVectorPool(Pool):
         return self.retrievement_strategy.find(elements)
 
     def get_element_normalized(self, element: tf.Tensor) -> tf.Tensor:
+        if len(self.queries) == 0:
+            return None
         indices = tf.unstack(element)
 
         query = []

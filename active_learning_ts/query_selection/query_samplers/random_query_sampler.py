@@ -7,6 +7,8 @@ class RandomContinuousQuerySampler(QuerySampler):
     def sample(self, num_queries: int = 1) -> tf.Tensor:
         if self.pool.is_discrete():
             elems = self.pool.get_all_elements()
+            if len(elems) == 0:
+                return tf.convert_to_tensor([], dtype=tf.dtypes.int32)
             return tf.random.uniform((num_queries,), 0, len(elems), tf.dtypes.int32)
         else:
             a = self.pool.get_elements_normalized(tf.random.uniform(shape=(num_queries, self.pool.shape[0])))
