@@ -4,7 +4,6 @@ import tensorflow as tf
 
 from active_learning_ts.data_retrievement.data_retriever import DataRetriever
 from active_learning_ts.data_retrievement.pool import Pool
-from active_learning_ts.data_retrievement.pools.continuous_vector_pool import ContinuousVectorPool
 from active_learning_ts.queryable import Queryable
 
 
@@ -49,8 +48,4 @@ class SurrogateModel(Queryable, Protocol):
         ...
 
     def get_query_pool(self) -> Pool:
-        if not self.query_pool.is_discrete():
-            return self.query_pool
-        else:
-            self.query_pool = ContinuousVectorPool(self.query_pool.shape[0], ranges=self.query_pool.get_ranges())
-            return self.query_pool
+        return self.query_pool

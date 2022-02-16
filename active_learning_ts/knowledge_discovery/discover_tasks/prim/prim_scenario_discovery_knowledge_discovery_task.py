@@ -1,9 +1,12 @@
+from dataclasses import dataclass
 from typing import List
+
 import numpy as np
 import tensorflow as tf
 
-from active_learning_ts.knowledge_discovery.knowledge_discovery_task import KnowledgeDiscoveryTask
+from active_learning_ts.experiments.blueprint_element import BlueprintElement
 from active_learning_ts.knowledge_discovery.discover_tasks.prim.prim import PRIM
+from active_learning_ts.knowledge_discovery.knowledge_discovery_task import KnowledgeDiscoveryTask
 from active_learning_ts.query_selection.query_sampler import QuerySampler
 from active_learning_ts.queryable import Queryable
 
@@ -53,3 +56,10 @@ class PrimScenarioDiscoveryKnowledgeDiscoveryTask(KnowledgeDiscoveryTask):
 
     def uncertainty(self, points: tf.Tensor) -> tf.Tensor:
         return tf.map_fn(lambda t: self._uncertainty(t), points, parallel_iterations=10)
+
+
+@dataclass
+class PrimScenarioDiscoveryKnowledgeDiscoveryTaskConfig(BlueprintElement[PrimScenarioDiscoveryKnowledgeDiscoveryTask]):
+    y_max: float = 1.0
+    y_min: float = 0.
+    klass = PrimScenarioDiscoveryKnowledgeDiscoveryTask

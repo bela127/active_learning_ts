@@ -3,13 +3,13 @@ from distribution_data_generation.data_sources.multi_gausian_data_source import 
 from active_learning_ts.data_retrievement.augmentation.no_augmentation import NoAugmentation
 from active_learning_ts.data_retrievement.interpolation_strategies.flat_map_interpolation import \
     FlatMapInterpolation
+from active_learning_ts.data_retrievement.retrievement_strategies.exact_retrievement import ExactRetrievement
 from active_learning_ts.evaluation.evaluation_metrics.avg_round_time_evaluator import AvgRoundTimeEvaluator
 from active_learning_ts.experiments.blueprint_element import BlueprintElement
 from active_learning_ts.instance_properties.costs.constant_instance_cost import ConstantInstanceCost
 from active_learning_ts.instance_properties.objectives.constant_instance_objective import ConstantInstanceObjective
 from active_learning_ts.knowledge_discovery.discover_tasks.prim.prim_scenario_discovery_knowledge_discovery_task import \
-    PrimScenarioDiscoveryKnowledgeDiscoveryTask
-from active_learning_ts.data_retrievement.retrievement_strategies.exact_retrievement import ExactRetrievement
+    PrimScenarioDiscoveryKnowledgeDiscoveryTaskConfig
 from active_learning_ts.query_selection.query_optimizers.max_entropy_query_optimizer import MaximumEntropyQueryOptimizer
 from active_learning_ts.query_selection.query_samplers.random_query_sampler import RandomContinuousQuerySampler
 from active_learning_ts.query_selection.selection_criterias.composite_selection_criteria import \
@@ -44,6 +44,6 @@ query_optimizer = BlueprintElement[MaximumEntropyQueryOptimizer]({'num_tries': 1
 
 num_knowledge_discovery_queries = 100
 knowledge_discovery_sampler = BlueprintElement[RandomContinuousQuerySampler]()
-knowledge_discovery_task = BlueprintElement[PrimScenarioDiscoveryKnowledgeDiscoveryTask]()
+knowledge_discovery_task = PrimScenarioDiscoveryKnowledgeDiscoveryTaskConfig(y_max=1.0, y_min=0.)
 
 evaluation_metrics = [BlueprintElement[AvgRoundTimeEvaluator]()]
