@@ -24,4 +24,4 @@ class TestDataSource(DataSource):
         return actual_queries, actual_queries
 
     def possible_queries(self) -> Pool:
-        return None
+        return ContinuousVectorPool(self.point_shape, (((0,1),),))

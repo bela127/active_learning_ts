@@ -2,10 +2,12 @@ from typing import Protocol
 
 import tensorflow as tf
 
+from active_learning_ts.data_retrievement.pool import Pool
 
 class QuerySampler(Protocol):
+
     def __init__(self):
-        self.pool = None
+        self.pool: Pool = None
 
     def post_init(self, pool):
         """

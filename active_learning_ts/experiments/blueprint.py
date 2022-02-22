@@ -1,4 +1,4 @@
-from typing import List
+from typing import Iterable, Protocol
 
 from active_learning_ts.data_pipeline import DataPipeline
 from active_learning_ts.data_retrievement.data_source import DataSource
@@ -16,7 +16,7 @@ from active_learning_ts.surrogate_model.surrogate_model import SurrogateModel
 from active_learning_ts.training.training_strategy import TrainingStrategy
 
 
-class Blueprint:
+class Blueprint(Protocol):
     """
     A blueprint is created in order to set up an experiment.
 
@@ -40,7 +40,7 @@ class Blueprint:
     query_optimizer: BlueprintElement[QueryOptimizer] = None
     selection_criteria: BlueprintElement[SelectionCriteria] = None
 
-    evaluation_metrics: List[BlueprintElement[EvaluationMetric]] = None
+    evaluation_metrics: Iterable[BlueprintElement[EvaluationMetric]] = None
 
     knowledge_discovery_sampler: BlueprintElement[QuerySampler] = None
     knowledge_discovery_task: BlueprintElement[KnowledgeDiscoveryTask] = None
