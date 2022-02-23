@@ -1,11 +1,11 @@
-from typing import Protocol, Tuple
+from dataclasses import dataclass
+from typing import Protocol, Tuple, Type
 
 import tensorflow as tf
 
 from active_learning_ts.data_retrievement.data_retriever import DataRetriever
 from active_learning_ts.data_retrievement.pool import Pool
 from active_learning_ts.queryable import Queryable
-
 
 class SurrogateModel(Queryable, Protocol):
     """
@@ -49,3 +49,13 @@ class SurrogateModel(Queryable, Protocol):
 
     def get_query_pool(self) -> Pool:
         return self.query_pool
+
+@dataclass(frozen = True)    
+class SurrogateModelConfig():
+    surrogate_model: Type[SurrogateModel]
+
+@dataclass(frozen = True)    
+class SurrogateModelData():
+    query_candidates: tf.Tensor = tf.convert_to_tensor([])
+    actual_queries: tf.Tensor = tf.convert_to_tensor([])
+    query_results: tf.Tensor = tf.convert_to_tensor([])
