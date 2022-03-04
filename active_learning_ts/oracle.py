@@ -7,10 +7,10 @@ from active_learning_ts.logging.data_instance import DataInstanceFactory
 from active_learning_ts.instance_properties.instance_cost import InstanceCost
 from active_learning_ts.instance_properties.instance_objective import InstanceObjective
 from active_learning_ts.data_retrievement.pool import Pool
-from active_learning_ts.queryable import Queryable
+from active_learning_ts.pipeline_element import PipelineElement
 
 
-class Oracle(Queryable):
+class Oracle(PipelineElement):
     """
     The Oracle is a wrapper for the Data retrievement process.
 
@@ -22,19 +22,19 @@ class Oracle(Queryable):
             self,
             data_instance_factory: DataInstanceFactory,
             blackboard: Blackboard,
-            data_retriever: Queryable,
+            data_retriever: PipelineElement,
             instance_cost: InstanceCost,
             instance_level_objective: InstanceObjective,
     ) -> None:
-        self.point_shape = data_retriever.point_shape
-        self.value_shape = data_retriever.value_shape
+        self.query_shape = data_retriever.query_shape
+        self.result_shape = data_retriever.result_shape
         self.blackboard: Blackboard = blackboard
         self.data_instance_factory: DataInstanceFactory = data_instance_factory
-        self.data_retriever: Queryable = data_retriever
+        self.data_retriever: PipelineElement = data_retriever
         self.instance_level_objective: InstanceObjective = instance_level_objective
         self.instance_cost: InstanceCost = instance_cost
-        self.point_shape = data_retriever.point_shape
-        self.value_shape = data_retriever.value_shape
+        self.query_shape = data_retriever.query_shape
+        self.result_shape = data_retriever.result_shape
 
     def query(self, query_candidate_indices) -> Tuple[tf.Tensor, tf.Tensor]:
         new_instance = self.data_instance_factory()
@@ -58,5 +58,6 @@ class Oracle(Queryable):
 
         return actual_queries, query_results
 
-    def get_query_pool(self) -> Pool:
-        return self.data_retriever.get_query_pool()
+    @property
+    def query_pool(self) -> Pool:
+        return self.data_retriever.query_pool

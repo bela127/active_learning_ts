@@ -6,10 +6,10 @@ from active_learning_ts.data_pipeline import DataPipeline
 from active_learning_ts.data_retrievement.data_source import DataSource
 from active_learning_ts.data_retrievement.interpolation_strategy import InterpolationStrategy
 from active_learning_ts.data_retrievement.pool import Pool
-from active_learning_ts.queryable import Queryable
+from active_learning_ts.pipeline_element import PipelineElement
 
 
-class DataRetriever(Queryable):
+class DataRetriever(PipelineElement):
     """
     Uses the given retrievement strategy in order to retrieve data from the given data source
     """
@@ -20,12 +20,12 @@ class DataRetriever(Queryable):
             augmentation_pipeline: DataPipeline,
             interpolation_strategy: InterpolationStrategy
     ) -> None:
-        self.point_shape = data_source.point_shape
-        self.value_shape = data_source.value_shape
+        self.query_shape = data_source.point_shape
+        self.result_shape = data_source.value_shape
         self.data_source = data_source
         self.augmentation_pipeline = augmentation_pipeline
         self.interpolation_strategy = interpolation_strategy
-        self.query_pool: Pool
+        self._query_pool: Pool
 
     def query(self, query_candidates) -> Tuple[tf.Tensor, tf.Tensor]:
         actual_queries, query_results = self.retrieve(
@@ -53,5 +53,6 @@ class DataRetriever(Queryable):
     def possible_queries(self, query_candidates):
         return self.data_source.possible_queries().get_elements(query_candidates)
 
-    def get_query_pool(self) -> Pool:
+    @property
+    def query_pool(self) -> Pool:
         return self.data_source.possible_queries()

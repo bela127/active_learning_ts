@@ -4,14 +4,14 @@ from scipy import optimize
 
 from active_learning_ts.knowledge_discovery.knowledge_discovery_task import KnowledgeDiscoveryTask
 from active_learning_ts.query_selection.query_sampler import QuerySampler
-from active_learning_ts.queryable import Queryable
+from active_learning_ts.pipeline_element import PipelineElement
 
 
 class MaximaKnowledgeDiscoveryTask(KnowledgeDiscoveryTask):
-    def post_init(self, surrogate_model: Queryable, sampler: QuerySampler):
+    def post_init(self, surrogate_model: PipelineElement, sampler: QuerySampler):
         super(MaximaKnowledgeDiscoveryTask, self).post_init(surrogate_model, sampler)
-        if not (len(surrogate_model.point_shape) == 1 and len(surrogate_model.value_shape) == 1 and
-                surrogate_model.value_shape[0] == 1):
+        if not (len(surrogate_model.query_shape) == 1 and len(surrogate_model.result_shape) == 1 and
+                surrogate_model.result_shape[0] == 1):
             raise AttributeError('This class only works with  multivariate functions')
 
     def f(self, x):
@@ -28,7 +28,7 @@ class MaximaKnowledgeDiscoveryTask(KnowledgeDiscoveryTask):
 
     def learn(self, num_queries):
         return tf.convert_to_tensor(
-            optimize.fmin(lambda x: self.f(x), tf.fill(self.surrogate_model.point_shape, .5), maxfun=num_queries)[0])
+            optimize.fmin(lambda x: self.f(x), tf.fill(self.surrogate_model.query_shape, .5), maxfun=num_queries)[0])
 
     def uncertainty(self, points: tf.Tensor) -> tf.Tensor:
         return tf.fill(points[0].shape, .0)

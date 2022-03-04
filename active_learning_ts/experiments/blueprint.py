@@ -12,7 +12,7 @@ from active_learning_ts.data_retrievement.retrievement_strategy import Retrievem
 from active_learning_ts.query_selection.query_optimizer import QueryOptimizer
 from active_learning_ts.query_selection.query_sampler import QuerySampler
 from active_learning_ts.query_selection.selection_criteria import SelectionCriteria
-from active_learning_ts.surrogate_model.surrogate_model import SurrogateModel
+from active_learning_ts.surrogate_model.surrogate_model import SurrogateModel, SurrogateModelConfig
 from active_learning_ts.training.training_strategy import TrainingStrategy
 
 
@@ -33,7 +33,7 @@ class Blueprint(Protocol):
     instance_level_objective: BlueprintElement[InstanceObjective] = None
     instance_cost: BlueprintElement[InstanceCost] = None
 
-    surrogate_model: BlueprintElement[SurrogateModel] = None
+    surrogate_model: SurrogateModelConfig = None
     training_strategy: BlueprintElement[TrainingStrategy] = None
 
     surrogate_sampler: BlueprintElement[QuerySampler] = None

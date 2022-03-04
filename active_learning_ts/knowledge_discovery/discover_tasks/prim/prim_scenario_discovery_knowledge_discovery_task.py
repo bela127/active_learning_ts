@@ -8,7 +8,7 @@ from active_learning_ts.experiments.blueprint_element import BlueprintElement
 from active_learning_ts.knowledge_discovery.discover_tasks.prim.prim import PRIM
 from active_learning_ts.knowledge_discovery.knowledge_discovery_task import KnowledgeDiscoveryTask
 from active_learning_ts.query_selection.query_sampler import QuerySampler
-from active_learning_ts.queryable import Queryable
+from active_learning_ts.pipeline_element import PipelineElement
 
 
 class PrimScenarioDiscoveryKnowledgeDiscoveryTask(KnowledgeDiscoveryTask):
@@ -24,9 +24,9 @@ class PrimScenarioDiscoveryKnowledgeDiscoveryTask(KnowledgeDiscoveryTask):
         self.boxes: List = []
         self.num_boxes = 0.
 
-    def post_init(self, surrogate_model: Queryable, sampler: QuerySampler):
+    def post_init(self, surrogate_model: PipelineElement, sampler: QuerySampler):
         super(PrimScenarioDiscoveryKnowledgeDiscoveryTask, self).post_init(surrogate_model, sampler)
-        if not (surrogate_model.point_shape == (2,) and surrogate_model.value_shape == (1,)):
+        if not (surrogate_model.query_shape == (2,) and surrogate_model.result_shape == (1,)):
             raise ValueError('PrimScenarioDiscoveryKnowledgeDiscoveryTask requires a vector Surrogate input dimension '
                              '2 and output dimension 1')
 
