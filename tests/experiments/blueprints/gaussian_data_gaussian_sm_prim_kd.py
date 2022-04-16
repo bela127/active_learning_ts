@@ -38,7 +38,8 @@ training_strategy = BlueprintElement[DirectTrainingStrategy]()
 
 # TODO: HMMMMM might be problematic, problem due to composite pattern
 selection_criteria = BlueprintElement[CompositeSelectionCriteria](
-    {'selection_criteria': [KnowledgeUncertaintySelectionCriteria(), ExploreSelectionCriteria()]})
+    {'selection_criteria': [BlueprintElement[KnowledgeUncertaintySelectionCriteria](),
+                            BlueprintElement[ExploreSelectionCriteria]()]})
 surrogate_sampler = BlueprintElement[RandomContinuousQuerySampler]()
 query_optimizer = BlueprintElement[MaximumEntropyQueryOptimizer]({'num_tries': 10})
 

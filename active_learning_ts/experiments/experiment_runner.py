@@ -39,7 +39,7 @@ class ExperimentRunner:
             self.log()
 
     def log(self):
-        # TODO: add the other stuff
+        # TODO: add more things if necessary
         self.file.write('{\n')
         out = []
         for experiment in self.experiment_list:

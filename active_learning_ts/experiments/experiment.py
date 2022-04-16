@@ -75,9 +75,9 @@ class Experiment:
             self.sg_oracle
         )
 
-        # TODO also need surrogate blackboard?
         self.trainer = Trainer(
             self.blackboard,
+            self.surrogate_blackboard,
             experiment_blueprint.training_strategy
         )
 

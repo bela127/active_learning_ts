@@ -12,9 +12,9 @@ from active_learning_ts.queryable import Queryable
 
 class Oracle(Queryable):
     """
-    The Oracle is a wrapper for the Data retrievement process.
+    The Oracle is a wrapper for the querying process.
 
-    Queries passed to the oracle are queried from the Data retriever.
+    Queries passed to the oracle are queried from the given queryable.
     Cost, Object, the actual points queried, and the results are the then posted on the Blackboard
     """
 
@@ -37,6 +37,12 @@ class Oracle(Queryable):
         self.value_shape = data_retriever.value_shape
 
     def query(self, query_candidate_indices) -> Tuple[tf.Tensor, tf.Tensor]:
+        """
+        Passes the query candidate indices (see :func:`~active_learning_ts.data_retrievement.pool.Pool.get_elements`) to
+         the queryable object.
+        The query candidate indices, as well as the valid queries and query results are posted on the blackboard.
+        Additionaly posts the total cost and objective.
+        """
         new_instance = self.data_instance_factory()
         self.blackboard.add_instance(new_instance)
 
@@ -59,4 +65,7 @@ class Oracle(Queryable):
         return actual_queries, query_results
 
     def get_query_pool(self) -> Pool:
+        """
+        Returns the query pool of the given queryable
+        """
         return self.data_retriever.get_query_pool()

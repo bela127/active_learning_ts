@@ -9,10 +9,11 @@ class Trainer:
     The given Training strategy is used to train the Model.
     """
     def __init__(self,
-                 blackboard: Blackboard,
+                 data_blackboard: Blackboard,
+                 surrogate_blackboard: Blackboard,
                  training_strategy: TrainingStrategy):
         self.training_strategy = training_strategy
-        self.blackboard = blackboard
+        self.data_blackboard = data_blackboard
 
     def train(self):
-        self.training_strategy.train(self.blackboard)
+        self.training_strategy.train(self.data_blackboard)
