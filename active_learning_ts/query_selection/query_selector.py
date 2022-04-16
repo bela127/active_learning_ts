@@ -23,7 +23,7 @@ class QuerySelector:
     def select(self):
         """
         Generates queries
-        :return: a list of generated queries
+        :return: a list of generated query indices
         """
         query_candidates = self.query_optimizer.optimize_query_candidates()
         return query_candidates

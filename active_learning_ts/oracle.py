@@ -41,7 +41,7 @@ class Oracle(Queryable):
         Passes the query candidate indices (see :func:`~active_learning_ts.data_retrievement.pool.Pool.get_elements`) to
          the queryable object.
         The query candidate indices, as well as the valid queries and query results are posted on the blackboard.
-        Additionaly posts the total cost and objective.
+        Additionally, posts the total cost and objective.
         """
         new_instance = self.data_instance_factory()
         self.blackboard.add_instance(new_instance)

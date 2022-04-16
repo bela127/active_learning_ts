@@ -13,7 +13,7 @@ class TrainingStrategy(Protocol):
     train, or it may train the surrogate model itself.
     """
 
-    def train(self, blackboard: Blackboard):
+    def train(self, blackboard: Blackboard, surrogate_blackboard: Blackboard):
         pass
 
     def post_init(self, surrogate_model: SurrogateModel):

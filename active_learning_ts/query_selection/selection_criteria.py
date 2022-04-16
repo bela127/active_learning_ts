@@ -25,7 +25,8 @@ class SelectionCriteria(Protocol):
         """
         Scores the given queries on how good they are. The higher the number the better
         :param queries: the points to be scored
-        :return: a 2D tensor of their respective scores
+        :return: a 2D tensor of their respective scores (this is because a single selection criteria can score a point
+            using multiple different criteria)
         """
         pass
 

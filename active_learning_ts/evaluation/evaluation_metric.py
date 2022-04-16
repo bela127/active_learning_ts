@@ -3,11 +3,11 @@ from typing import TYPE_CHECKING
 
 from typing import Protocol
 
-
 if TYPE_CHECKING:
     from active_learning_ts.logging.data_blackboard import Blackboard
     from active_learning_ts.experiments.blueprint_instance import BlueprintInstance
-    
+
+
 class EvaluationMetric(Protocol):
     """
     Considering all parts of the experiment, (passed in as blueprint), measures certain metrics about the experiment,

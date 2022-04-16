@@ -14,5 +14,8 @@ class KnowledgeDiscovery:
         self.knowledge_discovery_task.post_init(surrogate_model, self.sampler)
 
     def discover(self):
+        """
+        Executes the knowledge discovery task
+        """
         self.sampler.update_pool(self.surrogate_model.get_query_pool())
         self.knowledge_discovery_task.learn(self.num_queries)

@@ -12,8 +12,9 @@ class Trainer:
                  data_blackboard: Blackboard,
                  surrogate_blackboard: Blackboard,
                  training_strategy: TrainingStrategy):
+        self.surrogate_blackboard = surrogate_blackboard
         self.training_strategy = training_strategy
         self.data_blackboard = data_blackboard
 
     def train(self):
-        self.training_strategy.train(self.data_blackboard)
+        self.training_strategy.train(self.data_blackboard, self.surrogate_blackboard)

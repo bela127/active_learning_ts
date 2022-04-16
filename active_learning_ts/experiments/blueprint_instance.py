@@ -2,6 +2,11 @@ from active_learning_ts.experiments.blueprint import Blueprint
 
 
 class BlueprintInstance:
+    """
+    Do not directly implement.
+
+    This is used to represent a blueprint, but where all the elements are instantiated
+    """
     
     def __init__(self, blueprint: Blueprint):
         self.repeat = blueprint.repeat

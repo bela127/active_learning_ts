@@ -20,12 +20,15 @@ class DataSource(Protocol):
     def query(self, actual_queries: tf.Tensor) -> Tuple[tf.Tensor, tf.Tensor]:
         """
 
-        :param actual_queries: 2D Tensor
-        :return: 2 2D Tensors
+        :param actual_queries: a list of the points to query.
+        :return: a tuple of lists of the queried points and the result of the queries
         """
         ...
 
     def possible_queries(self) -> Pool:
+        """
+        Returns a pool object to specify which queries are possible
+        """
         ...
 
     def post_init(self, retrievement_strategy: RetrievementStrategy):

@@ -29,4 +29,8 @@ class QueryOptimizer(Protocol):
             self.generic_query_optimizer.post_init(surrogate_model, selection_criteria, query_sampler)
 
     def optimize_query_candidates(self):
+        """
+        Generates optimal queries, according to the given selection criteria.
+        :return: a list of query indices
+        """
         pass
